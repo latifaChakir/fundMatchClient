@@ -45,5 +45,31 @@ export class AuthEffects {
       )
     )
   )
+  forgetPassword$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.forgetPassword),
+      mergeMap(({ user }) =>
+        this.authService.forgetPassword(user).pipe(
+          map(() => AuthActions.forgetUserSuccess({ user })),
+          catchError(error => of(AuthActions.forgetUserFailure({ error: error.message })))
+        )
+      )
+    )
+  );
+
+  resetPassword$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.resetPassword),
+      mergeMap(({ user }) =>
+        this.authService.resetPassword(user).pipe(
+          map(() => {
+            this.router.navigate(['/login']);
+            return AuthActions.resetUserSuccess({ user });
+          }),
+          catchError(error => of(AuthActions.resetUserFailure({ error: error.message })))
+        )
+      )
+    )
+  );
 
 }

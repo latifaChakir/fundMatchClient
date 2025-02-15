@@ -42,7 +42,32 @@ export const authFeature = createFeature({
         on(AuthActions.loginUserFailure, (state, { error }) => ({
             ...state,
             error,
-        }))
+        })),
+      //Forget Password
+      on(AuthActions.forgetPassword, (state) => ({
+        ...state,
+        error: null
+      })),
+      on(AuthActions.forgetUserSuccess, (state) => ({
+        ...state
+      })),
+      on(AuthActions.forgetUserFailure, (state, { error }) => ({
+        ...state,
+        error
+      })),
+
+      // Reset Password
+      on(AuthActions.resetPassword, (state) => ({
+        ...state,
+        error: null
+      })),
+      on(AuthActions.resetUserSuccess, (state) => ({
+        ...state
+      })),
+      on(AuthActions.resetUserFailure, (state, { error }) => ({
+        ...state,
+        error
+      }))
     )
     });
 export const {name: authFeautreKey, reducer:authReducer } = authFeature;

@@ -6,6 +6,8 @@ import {LoginRequest} from "../../models/login-request.model";
 import {RegisterRequest} from "../../models/Register-request.model";
 import {RegisterResponse} from "../../models/register-response.interface";
 import {LoginResponse} from "../../models/login-response.model";
+import {ForgetPassword} from "../../models/forget-password.model";
+import {ResetPassword} from "../../models/reset-password.model";
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +27,13 @@ export class AuthService {
 
   register(user: RegisterRequest): Observable<RegisterResponse> {
     return this.http.post<RegisterResponse>(`${this.api}/register`, user);
+  }
+
+  forgetPassword(user: ForgetPassword): Observable<void> {
+    return this.http.post<void>(`${this.api}/forgot-password`, user);
+  }
+
+  resetPassword(user: ResetPassword): Observable<void> {
+    return this.http.post<void>(`${this.api}/reset-password`, user);
   }
 }

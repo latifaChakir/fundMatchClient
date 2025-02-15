@@ -4,6 +4,8 @@ import {RegisterRequest} from "../../models/Register-request.model";
 import {LoginRequest} from "../../models/login-request.model";
 import {RegisterResponse} from "../../models/register-response.interface";
 import {LoginResponse} from "../../models/login-response.model";
+import {ForgetPassword} from "../../models/forget-password.model";
+import {ResetPassword} from "../../models/reset-password.model";
 
 export const AuthActions = createActionGroup({
   source: 'Auth',
@@ -15,5 +17,14 @@ export const AuthActions = createActionGroup({
     'Login User': props<{ login: LoginRequest }>(),
     'Login User Success': props<{ user: LoginResponse }>(),
     'Login User Failure': props<{ error: string }>(),
+
+    'Forget Password': props<{ user: ForgetPassword }>(),
+    'Forget User Success': props<{ user: ForgetPassword }>(),
+    'Forget User Failure': props<{ error: string }>(),
+
+    'Reset Password': props<{ user: ResetPassword }>(),
+    'Reset User Success': props<{ user: ResetPassword }>(),
+    'Reset User Failure': props<{ error: string }>(),
+
   }
 });
