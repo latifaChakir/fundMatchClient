@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Store} from "@ngrx/store";
-import {createRegisterValidator} from "../../core/validators/register-validators";
+import {createRegisterValidator} from "../../core/validators/auth/register-validators";
 import {AuthActions} from "../../core/stores/auth/auth.actions";
-import {RegisterRequest} from "../../core/models/Register-request.model";
+import {RegisterRequest} from "../../core/models/auth/Register-request.model";
 
 @Component({
   selector: 'app-register',

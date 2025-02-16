@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import {environment} from "../../../../environments/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {map, Observable} from "rxjs";
-import {LoginRequest} from "../../models/login-request.model";
-import {RegisterRequest} from "../../models/Register-request.model";
-import {RegisterResponse} from "../../models/register-response.interface";
-import {LoginResponse} from "../../models/login-response.model";
-import {ForgetPassword} from "../../models/forget-password.model";
-import {ResetPassword} from "../../models/reset-password.model";
+import {LoginRequest} from "../../models/auth/login-request.model";
+import {RegisterRequest} from "../../models/auth/Register-request.model";
+import {RegisterResponse} from "../../models/auth/register-response.interface";
+import {LoginResponse} from "../../models/auth/login-response.model";
+import {ForgetPassword} from "../../models/auth/forget-password.model";
+import {ResetPassword} from "../../models/auth/reset-password.model";
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,7 @@
 import {createFeature, createReducer, on} from '@ngrx/store';
 import { AuthActions } from './auth.actions';
-import {RegisterResponse} from "../../models/register-response.interface";
-import {LoginResponse} from "../../models/login-response.model";
+import {RegisterResponse} from "../../models/auth/register-response.interface";
+import {LoginResponse} from "../../models/auth/login-response.model";
 
 export const authFeatureKey = 'auth';
 

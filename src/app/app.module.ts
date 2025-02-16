@@ -12,6 +12,7 @@ import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {authReducer} from "./core/stores/auth/auth.reducer";
 import {AuthEffects} from "./core/stores/auth/auth.effects";
 import {StartupModule} from "./startup/startup.module";
+import {AdminModule} from "./admin/admin.module";
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import {StartupModule} from "./startup/startup.module";
     }),
     AuthModule,
     StartupModule,
+    AdminModule
 
   ],
   providers: [

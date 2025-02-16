@@ -1,11 +1,11 @@
 import { createActionGroup, props } from '@ngrx/store';
 
-import {RegisterRequest} from "../../models/Register-request.model";
-import {LoginRequest} from "../../models/login-request.model";
-import {RegisterResponse} from "../../models/register-response.interface";
-import {LoginResponse} from "../../models/login-response.model";
-import {ForgetPassword} from "../../models/forget-password.model";
-import {ResetPassword} from "../../models/reset-password.model";
+import {RegisterRequest} from "../../models/auth/Register-request.model";
+import {LoginRequest} from "../../models/auth/login-request.model";
+import {RegisterResponse} from "../../models/auth/register-response.interface";
+import {LoginResponse} from "../../models/auth/login-response.model";
+import {ForgetPassword} from "../../models/auth/forget-password.model";
+import {ResetPassword} from "../../models/auth/reset-password.model";
 
 export const AuthActions = createActionGroup({
   source: 'Auth',

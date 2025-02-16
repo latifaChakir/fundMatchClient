@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Store} from "@ngrx/store";
-import {createLoginValidator} from "../../core/validators/login-validators";
-import {LoginRequest} from "../../core/models/login-request.model";
+import {createLoginValidator} from "../../core/validators/auth/login-validators";
+import {LoginRequest} from "../../core/models/auth/login-request.model";
 import {AuthActions} from "../../core/stores/auth/auth.actions";
 
 @Component({
