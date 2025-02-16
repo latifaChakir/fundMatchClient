@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../../../environments/environment";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {map, Observable} from "rxjs";
 import {LoginRequest} from "../../models/login-request.model";
 import {RegisterRequest} from "../../models/Register-request.model";
@@ -36,4 +36,6 @@ export class AuthService {
   resetPassword(user: ResetPassword): Observable<void> {
     return this.http.post<void>(`${this.api}/reset-password`, user);
   }
+
+
 }

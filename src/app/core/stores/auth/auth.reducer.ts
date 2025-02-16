@@ -48,10 +48,10 @@ export const authFeature = createFeature({
         ...state,
         error: null
       })),
-      on(AuthActions.forgetUserSuccess, (state) => ({
+      on(AuthActions.forgetPasswordSuccess, (state) => ({
         ...state
       })),
-      on(AuthActions.forgetUserFailure, (state, { error }) => ({
+      on(AuthActions.forgetPasswordFailure, (state, { error }) => ({
         ...state,
         error
       })),
@@ -61,10 +61,10 @@ export const authFeature = createFeature({
         ...state,
         error: null
       })),
-      on(AuthActions.resetUserSuccess, (state) => ({
+      on(AuthActions.resetPasswordSuccess, (state) => ({
         ...state
       })),
-      on(AuthActions.resetUserFailure, (state, { error }) => ({
+      on(AuthActions.resetPasswordFailure, (state, { error }) => ({
         ...state,
         error
       }))

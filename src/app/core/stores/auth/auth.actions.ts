@@ -19,12 +19,12 @@ export const AuthActions = createActionGroup({
     'Login User Failure': props<{ error: string }>(),
 
     'Forget Password': props<{ user: ForgetPassword }>(),
-    'Forget User Success': props<{ user: ForgetPassword }>(),
-    'Forget User Failure': props<{ error: string }>(),
+    'Forget Password Success': props<{ user: ForgetPassword }>(),
+    'Forget Password Failure': props<{ error: string }>(),
 
     'Reset Password': props<{ user: ResetPassword }>(),
-    'Reset User Success': props<{ user: ResetPassword }>(),
-    'Reset User Failure': props<{ error: string }>(),
+    'Reset Password Success': props<{ user: ResetPassword }>(),
+    'Reset Password Failure': props<{ error: string }>(),
 
   }
 });
