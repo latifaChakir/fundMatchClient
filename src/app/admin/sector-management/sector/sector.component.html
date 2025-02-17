@@ -1,4 +1,4 @@
-<body class="nk-body ui-rounder has-sidebar ">
+<div class="nk-body ui-rounder has-sidebar ">
 <div class="nk-app-root">
   <div class="nk-main ">
     <div class="nk-sidebar is-light nk-sidebar-fixed is-light " data-content="sidebarMenu">
@@ -16,7 +16,7 @@
           <div class="nk-block-head nk-block-head-sm">
             <div class="nk-block-between">
               <div class="nk-block-head-content">
-                <h3 class="nk-block-title page-title">Products</h3>
+                <h3 class="nk-block-title page-title">Sectors</h3>
               </div>
               <div class="nk-block-head-content">
                 <div class="toggle-wrap nk-block-tools-toggle">
@@ -31,21 +31,9 @@
                           <input type="text" class="form-control" id="default-04" placeholder="Quick search by id">
                         </div>
                       </li>
-                      <li>
-                        <div class="drodown">
-                          <a href="#" class="dropdown-toggle dropdown-indicator btn btn-outline-light btn-white" data-bs-toggle="dropdown">Status</a>
-                          <div class="dropdown-menu dropdown-menu-end">
-                            <ul class="link-list-opt no-bdr">
-                              <li><a href="#"><span>New Items</span></a></li>
-                              <li><a href="#"><span>Featured</span></a></li>
-                              <li><a href="#"><span>Out of Stock</span></a></li>
-                            </ul>
-                          </div>
-                        </div>
-                      </li>
                       <li class="nk-block-tools-opt">
-                        <a href="#" data-target="addProduct" class="toggle btn btn-icon btn-primary d-md-none"><em class="icon ni ni-plus"></em></a>
-                        <a href="#" data-target="addProduct" class="toggle btn btn-primary d-none d-md-inline-flex"><em class="icon ni ni-plus"></em><span>Add Product</span></a>
+                        <a (click)="showModal = true" class="toggle btn btn-icon btn-primary d-md-none"><em class="icon ni ni-plus"></em></a>
+                        <a (click)="showModal = true" class="toggle btn btn-primary d-none d-md-inline-flex"><em class="icon ni ni-plus"></em><span>Add Sector</span></a>
                       </li>
                     </ul>
                   </div>
@@ -66,11 +54,6 @@
                         </div>
                       </div>
                       <div class="nk-tb-col tb-col-sm"><span>Name</span></div>
-                      <div class="nk-tb-col"><span>SKU</span></div>
-                      <div class="nk-tb-col"><span>Price</span></div>
-                      <div class="nk-tb-col"><span>Stock</span></div>
-                      <div class="nk-tb-col tb-col-md"><span>Category</span></div>
-                      <div class="nk-tb-col tb-col-md"><em class="tb-asterisk icon ni ni-star-round"></em></div>
                       <div class="nk-tb-col nk-tb-col-tools">
                         <ul class="nk-tb-actions gx-1 my-n1">
                           <li class="me-n1">
@@ -89,8 +72,7 @@
                         </ul>
                       </div>
                     </div>
-
-                    <div class="nk-tb-item">
+                    <div *ngFor="let sector of sectors$ | async" class="nk-tb-item">
                       <div class="nk-tb-col nk-tb-col-check">
                         <div class="custom-control custom-control-sm custom-checkbox notext">
                           <input type="checkbox" class="custom-control-input" id="pid1">
@@ -98,28 +80,11 @@
                         </div>
                       </div>
                       <div class="nk-tb-col tb-col-sm">
-                                                            <span class="tb-product">
-                                                                <img src="./images/product/a.png" alt="" class="thumb">
-                                                                <span class="title">Pink Fitness Tracker</span>
-                                                            </span>
+                         <span class="tb-product">
+                           <span class="title">{{ sector.name }}</span>
+                         </span>
                       </div>
-                      <div class="nk-tb-col">
-                        <span class="tb-sub">UY3749</span>
-                      </div>
-                      <div class="nk-tb-col">
-                        <span class="tb-lead">$ 99.49</span>
-                      </div>
-                      <div class="nk-tb-col">
-                        <span class="tb-sub">49</span>
-                      </div>
-                      <div class="nk-tb-col tb-col-md">
-                        <span class="tb-sub">Fitbit, Tracker</span>
-                      </div>
-                      <div class="nk-tb-col tb-col-md">
-                        <div class="asterisk tb-asterisk">
-                          <a href="#"><em class="asterisk-off icon ni ni-star"></em><em class="asterisk-on icon ni ni-star-fill"></em></a>
-                        </div>
-                      </div>
+
                       <div class="nk-tb-col nk-tb-col-tools">
                         <ul class="nk-tb-actions gx-1 my-n1">
                           <li class="me-n1">
@@ -127,10 +92,8 @@
                               <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                               <div class="dropdown-menu dropdown-menu-end">
                                 <ul class="link-list-opt no-bdr">
-                                  <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit Product</span></a></li>
-                                  <li><a href="#"><em class="icon ni ni-eye"></em><span>View Product</span></a></li>
-                                  <li><a href="#"><em class="icon ni ni-activity-round"></em><span>Product Orders</span></a></li>
-                                  <li><a href="#"><em class="icon ni ni-trash"></em><span>Remove Product</span></a></li>
+                                  <li><a (click)="sector.id? editSector(sector.id) : null"><em class="icon ni ni-edit"></em><span>Edit Sector</span></a></li>
+                                  <li><a href="#"><em class="icon ni ni-trash"></em><span>Remove Sector</span></a></li>
                                 </ul>
                               </div>
                             </div>
@@ -188,86 +151,6 @@
               </div>
             </div>
           </div><!-- .nk-block -->
-          <div class="nk-add-product toggle-slide toggle-slide-right" data-content="addProduct" data-toggle-screen="any" data-toggle-overlay="true" data-toggle-body="true" data-simplebar>
-            <div class="nk-block-head">
-              <div class="nk-block-head-content">
-                <h5 class="nk-block-title">New Product</h5>
-                <div class="nk-block-des">
-                  <p>Add information and add new product.</p>
-                </div>
-              </div>
-            </div><!-- .nk-block-head -->
-            <div class="nk-block">
-              <div class="row g-3">
-                <div class="col-12">
-                  <div class="form-group">
-                    <label class="form-label" for="product-title">Product Title</label>
-                    <div class="form-control-wrap">
-                      <input type="text" class="form-control" id="product-title">
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="form-label" for="regular-price">Regular Price</label>
-                    <div class="form-control-wrap">
-                      <input type="number" class="form-control" id="regular-price">
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="form-label" for="sale-price">Sale Price</label>
-                    <div class="form-control-wrap">
-                      <input type="number" class="form-control" id="sale-price">
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="form-label" for="stock">Stock</label>
-                    <div class="form-control-wrap">
-                      <input type="text" class="form-control" id="stock">
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="form-label" for="SKU">SKU</label>
-                    <div class="form-control-wrap">
-                      <input type="text" class="form-control" id="SKU">
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="form-group">
-                    <label class="form-label" for="category">Category</label>
-                    <div class="form-control-wrap">
-                      <input type="text" class="form-control" id="category">
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="form-group">
-                    <label class="form-label" for="tags">Tags</label>
-                    <div class="form-control-wrap">
-                      <input type="text" class="form-control" id="tags">
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <div class="upload-zone small bg-lighter my-2">
-                    <div class="dz-message">
-                      <span class="dz-message-text">Drag and drop file</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <button class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Add New</span></button>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -275,3 +158,10 @@
 
 </div>
 </div>
+</div>
+<app-add-sector
+  *ngIf="showModal"
+  [initialRequestData]="selectedSector"
+  (openPopup)="openPopup()"
+  (closePopup)="closePopup()"
+></app-add-sector>

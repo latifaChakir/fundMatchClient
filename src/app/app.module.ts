@@ -13,6 +13,8 @@ import {authReducer} from "./core/stores/auth/auth.reducer";
 import {AuthEffects} from "./core/stores/auth/auth.effects";
 import {StartupModule} from "./startup/startup.module";
 import {AdminModule} from "./admin/admin.module";
+import {sectorReducer, sectorsFeatureKey, selectSectors} from "./core/stores/sector/sector.reducer";
+import {SectorEffects} from "./core/stores/sector/sector.effects";
 
 
 @NgModule({
@@ -21,8 +23,11 @@ import {AdminModule} from "./admin/admin.module";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    StoreModule.forRoot({ auth: authReducer }),
-    EffectsModule.forRoot([AuthEffects]),
+    StoreModule.forRoot({
+      auth: authReducer,
+      [sectorsFeatureKey]: sectorReducer,
+    }),
+    EffectsModule.forRoot([AuthEffects, SectorEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: !isDevMode(),

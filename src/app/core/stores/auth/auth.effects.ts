@@ -37,7 +37,7 @@ export class AuthEffects {
         this.authService.login(action.login).pipe(
           map(user => {
             localStorage.setItem('token', user.token);
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/sectors']);
             return AuthActions.loginUserSuccess({ user });
           }),
           catchError(error => of(AuthActions.loginUserFailure({ error: error.message })))

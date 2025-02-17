@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {SectorComponent} from "./sector/sector.component";
+import {SectorComponent} from "./sector-management/sector/sector.component";
+import {StageComponent} from "./stage/stage.component";
 
 const routes: Routes = [
   {path: 'sectors', component: SectorComponent},
+  {path: 'stages', component: StageComponent},
 ];
 
 @NgModule({
