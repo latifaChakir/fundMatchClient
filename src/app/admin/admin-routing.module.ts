@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {SectorComponent} from "./sector-management/sector/sector.component";
-import {StageComponent} from "./stage/stage.component";
+import {StageComponent} from "./stage-management/stage/stage.component";
 
 const routes: Routes = [
   {path: 'sectors', component: SectorComponent},

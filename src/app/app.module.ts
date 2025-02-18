@@ -1,5 +1,4 @@
 import {isDevMode, NgModule} from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import {AuthModule} from "./auth/auth.module";
@@ -15,10 +14,15 @@ import {StartupModule} from "./startup/startup.module";
 import {AdminModule} from "./admin/admin.module";
 import {sectorReducer, sectorsFeatureKey, selectSectors} from "./core/stores/sector/sector.reducer";
 import {SectorEffects} from "./core/stores/sector/sector.effects";
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {DialogModule} from "@angular/cdk/dialog";
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  declarations: [AppComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -35,10 +39,12 @@ import {SectorEffects} from "./core/stores/sector/sector.effects";
     }),
     AuthModule,
     StartupModule,
+    DialogModule,
     AdminModule
 
   ],
   providers: [
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })

@@ -3,3 +3,28 @@
   color: red;
   margin-left: 4px;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.custom-dialog {
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.warning-icon {
+  font-size: 3rem;
+  color: orange;
+}
+.p-dialog {
+  z-index: 1050 !important;
+}
+.warning-icon {
+  font-size: 35px;
+  color: #f39c12;
+}
+
+

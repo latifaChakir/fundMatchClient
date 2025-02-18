@@ -8,7 +8,6 @@ import {map, Observable} from "rxjs";
   providedIn: 'root'
 })
 export class SectorService {
-
   private api = `${environment.apiUrl}/sectors`;
 
   constructor(private http: HttpClient) { }
