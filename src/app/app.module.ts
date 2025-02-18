@@ -17,6 +17,8 @@ import {SectorEffects} from "./core/stores/sector/sector.effects";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {DialogModule} from "@angular/cdk/dialog";
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {StageEffects} from "./core/stores/stage/stage.effects";
+import {stageReducer, stagesFeatureKey} from "./core/stores/stage/stage.reducer";
 
 
 @NgModule({
@@ -30,8 +32,9 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     StoreModule.forRoot({
       auth: authReducer,
       [sectorsFeatureKey]: sectorReducer,
+      [stagesFeatureKey]: stageReducer
     }),
-    EffectsModule.forRoot([AuthEffects, SectorEffects]),
+    EffectsModule.forRoot([AuthEffects, SectorEffects, StageEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: !isDevMode(),

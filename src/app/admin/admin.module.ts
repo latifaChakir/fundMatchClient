@@ -11,15 +11,16 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DialogModule} from "primeng/dialog";
 import {Button} from "primeng/button";
 import {CdkOverlayOrigin} from "@angular/cdk/overlay";
-import {AppModule} from "../app.module";
 import {PaginationComponent} from "../shared/pagination/pagination.component";
+import {AddStageComponent} from "./stage-management/add-stage/add-stage.component";
 
 
 @NgModule({
   declarations: [
     SectorComponent,
-    StageComponent,
     AddSectorComponent,
+    StageComponent,
+    AddStageComponent
   ],
   imports: [
     CommonModule,

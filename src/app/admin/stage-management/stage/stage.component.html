@@ -16,7 +16,9 @@
               <div class="nk-block-head nk-block-head-sm">
                 <div class="nk-block-between">
                   <div class="nk-block-head-content">
-                    <h3 class="nk-block-title page-title">Stages</h3>
+                    <h3 class="nk-block-title page-title" style="font-family: Nunito, sans-serif;
+                    font-size: 1.5rem;
+                    font-weight: 700; margin: 0;">Stages</h3>
                   </div>
                   <div class="nk-block-head-content">
                     <div class="toggle-wrap nk-block-tools-toggle">
@@ -32,8 +34,8 @@
                             </div>
                           </li>
                           <li class="nk-block-tools-opt">
-                            <a href="#" data-target="addProduct" class="toggle btn btn-icon btn-primary d-md-none"><em class="icon ni ni-plus"></em></a>
-                            <a href="#" data-target="addProduct" class="toggle btn btn-primary d-none d-md-inline-flex"><em class="icon ni ni-plus"></em><span>Add Product</span></a>
+                            <a (click)="showModal = true" class="toggle btn btn-icon btn-primary d-md-none"><em class="icon ni ni-plus"></em></a>
+                            <a (click)="showModal = true" class="toggle btn btn-primary d-none d-md-inline-flex"><em class="icon ni ni-plus"></em><span>Add Stage</span></a>
                           </li>
                         </ul>
                       </div>
@@ -73,7 +75,7 @@
                           </div>
                         </div>
 
-                        <div class="nk-tb-item">
+                        <div *ngFor="let stage of Stages$ | async" class="nk-tb-item">
                           <div class="nk-tb-col nk-tb-col-check">
                             <div class="custom-control custom-control-sm custom-checkbox notext">
                               <input type="checkbox" class="custom-control-input" id="pid1">
@@ -81,9 +83,9 @@
                             </div>
                           </div>
                           <div class="nk-tb-col tb-col-sm">
-                             <span class="tb-product">
-                                 <span class="title">Pink Fitness Tracker</span>
-                             </span>
+                         <span class="tb-product">
+                           <span class="title">{{ stage.name }}</span>
+                         </span>
                           </div>
 
                           <div class="nk-tb-col nk-tb-col-tools">
@@ -93,8 +95,12 @@
                                   <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                   <div class="dropdown-menu dropdown-menu-end">
                                     <ul class="link-list-opt no-bdr">
-                                      <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit Sector</span></a></li>
-                                      <li><a href="#"><em class="icon ni ni-trash"></em><span>Remove Sector</span></a></li>
+                                      <li><a (click)="stage.id? editStage(stage.id) : null" style="cursor:pointer"><em class="icon ni ni-edit"></em><span>Edit Sector</span></a></li>
+                                      <li>
+                                        <a (click)="stage.id ? showDeleteConfirmation(stage.id) : null" style="cursor:pointer">
+                                          <em class="icon ni ni-trash"></em><span>Remove Sector</span>
+                                        </a>
+                                      </li>
                                     </ul>
                                   </div>
                                 </div>
@@ -146,88 +152,8 @@
                             </div>
                             <div>OF 102</div>
                           </div>
-                        </div><!-- .pagination-goto -->
-                      </div><!-- .nk-block-between -->
-                    </div>
-                  </div>
-                </div>
-              </div><!-- .nk-block -->
-              <div class="nk-add-product toggle-slide toggle-slide-right" data-content="addProduct" data-toggle-screen="any" data-toggle-overlay="true" data-toggle-body="true" data-simplebar>
-                <div class="nk-block-head">
-                  <div class="nk-block-head-content">
-                    <h5 class="nk-block-title">New Product</h5>
-                    <div class="nk-block-des">
-                      <p>Add information and add new product.</p>
-                    </div>
-                  </div>
-                </div><!-- .nk-block-head -->
-                <div class="nk-block">
-                  <div class="row g-3">
-                    <div class="col-12">
-                      <div class="form-group">
-                        <label class="form-label" for="product-title">Product Title</label>
-                        <div class="form-control-wrap">
-                          <input type="text" class="form-control" id="product-title">
                         </div>
                       </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="form-label" for="regular-price">Regular Price</label>
-                        <div class="form-control-wrap">
-                          <input type="number" class="form-control" id="regular-price">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="form-label" for="sale-price">Sale Price</label>
-                        <div class="form-control-wrap">
-                          <input type="number" class="form-control" id="sale-price">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="form-label" for="stock">Stock</label>
-                        <div class="form-control-wrap">
-                          <input type="text" class="form-control" id="stock">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="form-label" for="SKU">SKU</label>
-                        <div class="form-control-wrap">
-                          <input type="text" class="form-control" id="SKU">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <div class="form-group">
-                        <label class="form-label" for="category">Category</label>
-                        <div class="form-control-wrap">
-                          <input type="text" class="form-control" id="category">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <div class="form-group">
-                        <label class="form-label" for="tags">Tags</label>
-                        <div class="form-control-wrap">
-                          <input type="text" class="form-control" id="tags">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <div class="upload-zone small bg-lighter my-2">
-                        <div class="dz-message">
-                          <span class="dz-message-text">Drag and drop file</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <button class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Add New</span></button>
                     </div>
                   </div>
                 </div>
@@ -240,3 +166,32 @@
     </div>
   </div>
 </div>
+<app-add-stage
+  *ngIf="showModal"
+  [initialRequestData]="selectedStage"
+  (openPopup)="openPopup()"
+  (closePopup)="closePopup()"
+></app-add-stage>
+<p-dialog
+  [draggable]="true"
+  [resizable]="false"
+  [modal]="true"
+  [(visible)]="visible"
+  [baseZIndex]="100000"
+  [style]="{ width: '20rem'}"
+  [closable]="false"
+  closeIcon="false"
+  contentStyleClass="custom-dialog"
+>
+  <div class="text-center" >
+    <em class="icon ni ni-alert-circle warning-icon"></em>
+    <h3 class="font-bold mt-3 fw-bold">Are you sure?</h3>
+    <p class="text-secondary">You really want deleting this sector</p>
+  </div>
+
+  <div class="d-flex justify-content-center gap-3 mt-4 mb-4">
+    <button class="btn btn-primary" style="height: 25px" (click)="confirmDeleteSector()">Yes!</button>
+    <button class="btn btn-danger " style="height: 25px" (click)="visible = false">Cancel</button>
+  </div>
+
+</p-dialog>
