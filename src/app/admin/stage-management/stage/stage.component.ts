@@ -3,7 +3,7 @@ import {Store} from "@ngrx/store";
 import {Observable, take} from "rxjs";
 import {Stage} from "../../../core/models/stage/stage.model";
 import {StageActions} from "../../../core/stores/stage/stage.actions";
-import {selectStages} from "../../../core/stores/stage/stage.reducer";
+import {selectFilteredStages, selectStages} from "../../../core/stores/stage/stage.reducer";
 @Component({
   selector: 'app-stage',
   templateUrl: './stage.component.html',
@@ -17,7 +17,7 @@ export class StageComponent implements OnInit{
   visible: boolean = false;
   stageIdToDelete: number | null = null;
   constructor(private store: Store) {
-    this.Stages$ =this.store.select(selectStages);
+    this.Stages$ = this.store.select(selectFilteredStages);
   }
   ngOnInit() {
     this.store.dispatch(StageActions.loadStages());
@@ -52,5 +52,11 @@ export class StageComponent implements OnInit{
       this.store.dispatch(StageActions.deleteStage({ id: this.stageIdToDelete }));
     }
     this.visible = false;
+  }
+
+  onSearchChange(event: any) {
+    console.log(event.target.value);
+    const value = event.target.value;
+    this.store.dispatch(StageActions.filterStages({ searchTerm: value }));
   }
 }

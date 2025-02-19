@@ -25,5 +25,8 @@ export const SectorActions = createActionGroup({
     'Delete Sector': props<{ id: number }>(),
     'Delete Sector Success': props<{ id: number }>(),
     'Delete Sector Failure': props<{ error: string }>(),
+
+    'Filter Sectors': props<{ searchTerm: string }>(),
+
   }
 });

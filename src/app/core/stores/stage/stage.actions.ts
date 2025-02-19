@@ -24,5 +24,7 @@ export const StageActions = createActionGroup({
     'Delete Stage': props<{ id: number }>(),
     'Delete Stage Success': props<{ id: number }>(),
     'Delete Stage Failure': props<{ error: string }>(),
+
+    'Filter Stages': props<{ searchTerm: string }>(),
   }
 });

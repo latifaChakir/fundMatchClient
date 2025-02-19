@@ -4,11 +4,15 @@ import {Stage} from "../../models/stage/stage.model";
 
 export interface StageState {
   stages: Stage[];
+  filteredStages: Stage[];
+  searchTerm: string;
   error: string | null;
 }
 
 const initialState: StageState = {
   stages: [],
+  filteredStages: [],
+  searchTerm: '',
   error: null,
 };
 
@@ -23,6 +27,7 @@ export const StagesFeature = createFeature({
     })),
     on(StageActions.loadStagesSuccess, (state, { stages }) => ({
       ...state,
+      filteredStages: stages,
       stages
     })),
     on(StageActions.loadStagesFailure, (state, { error }) => ({
@@ -85,8 +90,15 @@ export const StagesFeature = createFeature({
     on(StageActions.deleteStageFailure, (state, { error }) => ({
       ...state,
       error
+    })),
+    on(StageActions.filterStages, (state, { searchTerm }) => ({
+      ...state,
+      searchTerm,
+      filteredStages: state.stages.filter(stage =>
+        stage.name.toLowerCase().includes(searchTerm.toLowerCase())
+      ),
     }))
   )
 });
 
-export const { name: stagesFeatureKey, reducer: stageReducer, selectStages } = StagesFeature;
+export const { name: stagesFeatureKey, reducer: stageReducer, selectStages , selectFilteredStages} = StagesFeature;

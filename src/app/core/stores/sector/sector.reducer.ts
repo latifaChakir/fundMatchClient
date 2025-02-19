@@ -4,11 +4,15 @@ import { Sector } from '../../models/sector/sector.model';
 
 export interface SectorState {
   sectors: Sector[];
+  filteredSectors: Sector[];
+  searchTerm: string;
   error: string | null;
 }
 
 const initialState: SectorState = {
   sectors: [],
+  filteredSectors: [],
+  searchTerm: '',
   error: null,
 };
 
@@ -23,7 +27,9 @@ export const sectorsFeature = createFeature({
     })),
     on(SectorActions.loadSectorsSuccess, (state, { sectors }) => ({
       ...state,
-      sectors
+      filteredSectors: sectors,
+      sectors,
+
     })),
     on(SectorActions.loadSectorsFailure, (state, { error }) => ({
       ...state,
@@ -85,8 +91,15 @@ export const sectorsFeature = createFeature({
     on(SectorActions.deleteSectorFailure, (state, { error }) => ({
       ...state,
       error
+    })),
+    on(SectorActions.filterSectors, (state, { searchTerm }) => ({
+      ...state,
+      searchTerm,
+      filteredSectors: state.sectors.filter(sector =>
+        sector.name.toLowerCase().includes(searchTerm.toLowerCase())
+      ),
     }))
   )
 });
 
-export const { name: sectorsFeatureKey, reducer: sectorReducer, selectSectors } = sectorsFeature;
+export const { name: sectorsFeatureKey, reducer: sectorReducer, selectSectors, selectFilteredSectors } = sectorsFeature;

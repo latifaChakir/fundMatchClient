@@ -30,7 +30,10 @@
                               <div class="form-icon form-icon-right">
                                 <em class="icon ni ni-search"></em>
                               </div>
-                              <input type="text" class="form-control" id="default-04" placeholder="Quick search by id">
+                              <input type="text"
+                                     class="form-control"
+                                     id="default-04" placeholder="Quick search by name"
+                                     (input)="onSearchChange($event)" >
                             </div>
                           </li>
                           <li class="nk-block-tools-opt">
@@ -59,17 +62,7 @@
                           <div class="nk-tb-col nk-tb-col-tools">
                             <ul class="nk-tb-actions gx-1 my-n1">
                               <li class="me-n1">
-                                <div class="dropdown">
-                                  <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                  <div class="dropdown-menu dropdown-menu-end">
-                                    <ul class="link-list-opt no-bdr">
-                                      <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit Selected</span></a></li>
-                                      <li><a href="#"><em class="icon ni ni-trash"></em><span>Remove Selected</span></a></li>
-                                      <li><a href="#"><em class="icon ni ni-bar-c"></em><span>Update Stock</span></a></li>
-                                      <li><a href="#"><em class="icon ni ni-invest"></em><span>Update Price</span></a></li>
-                                    </ul>
-                                  </div>
-                                </div>
+                                <div class="tb-col-sm"><span>Actions</span></div>
                               </li>
                             </ul>
                           </div>

@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from "@ngrx/store";
 import { Sector } from "../../../core/models/sector/sector.model";
 import {Observable, Subject, take} from "rxjs";
-import { selectSectors } from "../../../core/stores/sector/sector.reducer";
+import {selectFilteredSectors, selectSectors} from "../../../core/stores/sector/sector.reducer";
 import { SectorActions } from "../../../core/stores/sector/sector.actions";
 import { takeUntil } from 'rxjs/operators';
 
@@ -20,13 +20,13 @@ export class SectorComponent implements OnInit, OnDestroy {
   visible: boolean = false;
   sectorIdToDelete: number | null = null;
 
-  itemsPerPage: number = 2;
+  itemsPerPage: number = 3;
   currentPage: number = 1;
 
   private unsubscribe$ = new Subject<void>();
 
   constructor(private store: Store) {
-    this.sectors$ = this.store.select(selectSectors);
+    this.sectors$ = this.store.select(selectFilteredSectors);
   }
 
   ngOnInit() {
@@ -105,5 +105,9 @@ export class SectorComponent implements OnInit, OnDestroy {
       this.currentPage++;
       this.updateDisplayedSectors();
     }
+  }
+  onSearchChange(event: any) {
+    const value = event.target.value;
+    this.store.dispatch(SectorActions.filterSectors({ searchTerm: value }));
   }
 }
