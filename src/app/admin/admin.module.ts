@@ -13,6 +13,7 @@ import {Button} from "primeng/button";
 import {CdkOverlayOrigin} from "@angular/cdk/overlay";
 import {PaginationComponent} from "../shared/pagination/pagination.component";
 import {AddStageComponent} from "./stage-management/add-stage/add-stage.component";
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {AddStageComponent} from "./stage-management/add-stage/add-stage.componen
     DialogModule,
     Button,
     CdkOverlayOrigin,
-    PaginationComponent
+    PaginationComponent,
+    NgxPaginationModule
   ]
 })
 export class AdminModule { }

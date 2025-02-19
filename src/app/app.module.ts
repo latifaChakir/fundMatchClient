@@ -19,6 +19,7 @@ import {DialogModule} from "@angular/cdk/dialog";
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {StageEffects} from "./core/stores/stage/stage.effects";
 import {stageReducer, stagesFeatureKey} from "./core/stores/stage/stage.reducer";
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import {stageReducer, stagesFeatureKey} from "./core/stores/stage/stage.reducer"
     AuthModule,
     StartupModule,
     DialogModule,
-    AdminModule
+    AdminModule,
+    NgxPaginationModule
 
   ],
   providers: [

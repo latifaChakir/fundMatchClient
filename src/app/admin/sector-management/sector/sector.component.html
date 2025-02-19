@@ -111,15 +111,15 @@
                   </div>
                 </div>
                 <div class="card-inner">
-                  <div class="nk-block-between-md g-3">
+                  <div class="">
                     <div class="g">
-                      <ul class="pagination justify-content-center justify-content-md-start">
+                      <ul class="pagination justify-content-center justify-content-md-end">
                         <li class="page-item" [class.disabled]="currentPage === 1">
-                          <a class="page-link" (click)="previousPage()" style="cursor: pointer;">
+                          <a class="page-link" (click)="previousPage()" style="cursor: pointer; ">
                             <em class="icon ni ni-chevrons-left"></em>
                           </a>
                         </li>
-                        <li *ngFor="let page of [].constructor(totalPages); let i = index" class="page-item" [class.active]="currentPage === (i+1)">
+                        <li *ngFor="let page of [].constructor(totalPages); let i = index" class="page-item"  [class.active]="currentPage === (i+1)">
                           <a class="page-link" (click)="onPageChange(i+1)" style="cursor: pointer;">{{ i + 1 }}</a>
                         </li>
                         <li class="page-item" [class.disabled]="currentPage === totalPages">

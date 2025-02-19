@@ -26,5 +26,78 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   font-size: 35px;
   color: #f39c12;
 }
+.myPagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 20px 0;
+  --bs-pagination-border-color: #e5e9f2;
+
+}
+
+.myPagination button {
+  background-color: #8351ec !important; /* Couleur de fond */
+  color: white; /* Couleur du texte */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px; /* Espacement interne */
+  margin: 0 5px; /* Espacement entre les boutons */
+  cursor: pointer;
+  transition: background-color 0.3s;
 
 
+}
+
+.myPagination button:hover {
+  background-color: #8351ec !important; /* Couleur au survol */
+}
+
+.myPagination button:disabled {
+  background-color: #ccc; /* Couleur pour les boutons désactivés */
+  cursor: not-allowed;
+}
+
+.myPagination span {
+  margin: 0 5px; /* Espacement autour du texte */
+  font-size: 16px; /* Taille de la police */
+}
+.ngx-pagination .current {
+  padding: .1875rem .625rem;
+  background: #8351ec !important;
+  color: #fefefe;
+  cursor: default;
+}
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #8351ec !important;
+  border-color: #8351ec !important;
+}
+.ngx-pagination {
+    --bs-pagination-padding-x: 0.625rem;
+    --bs-pagination-padding-y: 0.5625rem;
+    --bs-pagination-font-size: 0.8125rem;
+    --bs-pagination-color: #526484;
+    --bs-pagination-bg: #fff;
+    --bs-pagination-border-width: 1px;
+    --bs-pagination-border-color: #e5e9f2;
+    /* --bs-pagination-border-radius: var(--bs-border-radius); */
+    --bs-pagination-hover-color: #6d33e9;
+    --bs-pagination-hover-bg: #ebeef2;
+    --bs-pagination-hover-border-color: #e5e9f2;
+    --bs-pagination-focus-color: var(--bs-link-hover-color);
+    --bs-pagination-focus-bg: var(--bs-secondary-bg);
+    --bs-pagination-focus-box-shadow: none;
+    --bs-pagination-active-color: #fff;
+    --bs-pagination-active-bg: #733AEA;
+    --bs-pagination-active-border-color: #733AEA;
+    --bs-pagination-disabled-color: #dbdfea;
+    --bs-pagination-disabled-bg: #fff;
+    --bs-pagination-disabled-border-color: #e5e9f2;
+    display: flex
+  ;
+    padding-left: 0;
+    list-style: none;
+
+}

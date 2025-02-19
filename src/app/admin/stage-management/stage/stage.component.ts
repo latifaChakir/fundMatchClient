@@ -10,6 +10,7 @@ import {selectStages} from "../../../core/stores/stage/stage.reducer";
   styleUrl: './stage.component.css'
 })
 export class StageComponent implements OnInit{
+  p: number = 1;
   showModal = false;
   Stages$: Observable<Stage[]>;
   selectedStage: Stage | null = null;
