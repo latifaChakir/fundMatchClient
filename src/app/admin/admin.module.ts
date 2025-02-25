@@ -7,11 +7,10 @@ import {NavbarComponent} from "../layouts/navbar/navbar.component";
 import {SidebarComponent} from "../layouts/sidebar/sidebar.component";
 import {StageComponent} from "./stage-management/stage/stage.component";
 import {AddSectorComponent} from "./sector-management/add-sector/add-sector.component";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from "@angular/forms";
 import {DialogModule} from "primeng/dialog";
 import {Button} from "primeng/button";
 import {CdkOverlayOrigin} from "@angular/cdk/overlay";
-import {PaginationComponent} from "../shared/pagination/pagination.component";
 import {AddStageComponent} from "./stage-management/add-stage/add-stage.component";
 import {NgxPaginationModule} from "ngx-pagination";
 
@@ -32,7 +31,6 @@ import {NgxPaginationModule} from "ngx-pagination";
     DialogModule,
     Button,
     CdkOverlayOrigin,
-    PaginationComponent,
     NgxPaginationModule
   ]
 })

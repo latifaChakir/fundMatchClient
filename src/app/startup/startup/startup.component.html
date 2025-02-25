@@ -1,1 +1,114 @@
-<p>startup works!</p>
+<div class="nk-body ui-rounder has-sidebar">
+  <div class="nk-app-root">
+    <div class="nk-main">
+      <div class="nk-sidebar is-light nk-sidebar-fixed is-light" data-content="sidebarMenu">
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class="nk-wrap">
+        <div class="nk-header is-light nk-header-fixed is-light">
+          <app-navbar></app-navbar>
+        </div>
+
+        <!-------------content------------------>
+        <div class="nk-content nk-content-fluid">
+          <div class="container-xl wide-xl">
+            <div class="nk-content-body">
+              <div class="components-preview wide-xl mx-auto">
+                <div class="nk-block nk-block-lg">
+                  <div class="nk-block-head">
+                    <div class="nk-block-head-content">
+                      <h4 class="title nk-block-title">Startup Form - Basic</h4>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-inner">
+                      <mat-horizontal-stepper [linear]="true" #stepper>
+                        <mat-step [stepControl]="startupForm.controls['general']">
+                          <ng-template matStepLabel>General Information</ng-template>
+                          <form [formGroup]="startupForm">
+                            <div formGroupName="general" class="step-content two-columns">
+                              <mat-form-field appearance="fill">
+                                <mat-label>Company Name</mat-label>
+                                <input matInput formControlName="companyName" required>
+                              </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>Headquarters</mat-label>
+                                <input matInput formControlName="headquarters" required>
+                              </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>Pitch Video URL</mat-label>
+                                <input matInput formControlName="pitchVideoUrl" required>
+                              </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>Founded Year</mat-label>
+                                <input type="number" matInput formControlName="foundedYear" required>
+                              </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>Description</mat-label>
+                                <textarea matInput formControlName="description" required></textarea>
+                              </mat-form-field>
+                            </div>
+                            <button mat-button matStepperNext [disabled]="!startupForm.get('general')?.valid">Next</button>
+                          </form>
+                        </mat-step>
+
+                        <mat-step [stepControl]="startupForm.controls['financials']">
+                          <ng-template matStepLabel>Financial Details</ng-template>
+                          <form [formGroup]="startupForm">
+                            <div formGroupName="financials" class="step-content two-columns">
+                              <mat-form-field appearance="fill">
+                                <mat-label>Funding Needed</mat-label>
+                                <input matInput type="number" formControlName="fundingNeeded" required>
+                              </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>Revenue</mat-label>
+                                <input matInput type="number" formControlName="revenue" required>
+                              </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>Growth Rate</mat-label>
+                                <input matInput type="number" formControlName="growthRate" required>
+                              </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>Team Size</mat-label>
+                                <input matInput type="number" formControlName="teamSize" required>
+                              </mat-form-field>
+                            </div>
+                            <div style="display:flex; gap: 15px">
+                              <button mat-button matStepperPrevious>Back</button>
+                              <button mat-button matStepperNext [disabled]="!startupForm.get('financials')?.valid">Next</button>
+                            </div>
+                          </form>
+                        </mat-step>
+
+                        <mat-step [stepControl]="startupForm.controls['sectorsAndStages']">
+                          <ng-template matStepLabel>Sectors & Stages</ng-template>
+                          <form [formGroup]="startupForm">
+                            <div formGroupName="sectorsAndStages" class="step-content two-columns">
+                              <mat-form-field appearance="fill">
+                                <mat-label>Sectors</mat-label>
+                                <input matInput formControlName="sectors" required>
+                              </mat-form-field>
+                            </div>
+                            <div style="display:flex; gap: 15px">
+                              <button mat-button matStepperPrevious>Back</button>
+                              <button mat-button (click)="submit()">Submit</button>
+                            </div>
+                          </form>
+                        </mat-step>
+                      </mat-horizontal-stepper>
+
+                      <!-- La ligne personnalisée -->
+                      <div class="custom-stepper-line"></div>
+                    </div>
+                  </div>
+                </div><!-- .nk-block -->
+
+              </div><!-- .components-preview -->
+            </div>
+          </div>
+        </div>
+
+    </div>
+      </div>
+    </div>
+  </div>

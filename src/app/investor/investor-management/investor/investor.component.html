@@ -1,0 +1,181 @@
+<div class="nk-body ui-rounder has-sidebar ">
+  <div class="nk-app-root">
+    <div class="nk-main ">
+      <div class="nk-sidebar is-light nk-sidebar-fixed is-light " data-content="sidebarMenu">
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class="nk-wrap ">
+        <div class="nk-header is-light nk-header-fixed is-light">
+          <app-navbar></app-navbar>
+        </div>
+
+        <div class="nk-content nk-content-fluid">
+          <div class="container-xl wide-xl">
+            <div class="nk-content-body">
+              <div class="nk-block-head nk-block-head-sm">
+                <div class="nk-block-between">
+                  <div class="nk-block-head-content">
+                    <h3 class="nk-block-title page-title" style="font-family: Nunito, sans-serif;
+                font-size: 1.5rem;
+                font-weight: 700; margin: 0;">Invertissor</h3>
+                  </div>
+                  <div class="nk-block-head-content">
+                    <div class="toggle-wrap nk-block-tools-toggle">
+                      <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
+                      <div class="toggle-expand-content" data-content="pageMenu">
+                        <ul class="nk-block-tools g-3">
+                          <li>
+                            <div class="form-control-wrap">
+                              <div class="form-icon form-icon-right">
+                                <em class="icon ni ni-search"></em>
+                              </div>
+                              <input
+                                type="text" class="form-control"
+                                id="default-04" placeholder="Quick search by name"
+                                (input)="onSearchChange($event)">
+                            </div>
+                          </li>
+                          <li class="nk-block-tools-opt">
+                            <a (click)="showModal = true"  data-target="addProduct" class="toggle btn btn-icon btn-primary d-md-none"><em class="icon ni ni-plus"></em></a>
+                            <a (click)="showModal = true"  data-target="addProduct" class="toggle btn btn-primary d-none d-md-inline-flex"><em class="icon ni ni-plus"></em><span>Add Investor</span></a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="nk-block">
+                <div class="card">
+                  <div class="card-inner-group">
+                    <div class="card-inner p-0">
+                      <div class="nk-tb-list">
+                        <div class="nk-tb-item nk-tb-head">
+                          <div class="nk-tb-col nk-tb-col-check">
+                            <div class="custom-control custom-control-sm custom-checkbox notext">
+                              <input type="checkbox" class="custom-control-input" id="pid">
+                              <label class="custom-control-label" for="pid"></label>
+                            </div>
+                          </div>
+                          <div class="nk-tb-col tb-col-sm"><span>Name</span></div>
+                          <div class="nk-tb-col tb-col-sm"><span>InvestmentType</span></div>
+                          <div class="nk-tb-col tb-col-sm"><span>Location</span></div>
+                          <div class="nk-tb-col tb-col-sm"><span>ExperienceYears</span></div>
+                          <div class="nk-tb-col tb-col-sm"><span>Preferred Geographies</span></div>
+                          <div class="nk-tb-col nk-tb-col-tools">
+                            <ul class="nk-tb-actions gx-1 my-n1">
+                              <li class="me-n1">
+                                <div class="tb-col-sm"><span>Actions</span></div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div *ngFor="let investor of (investors$ | async) ?? [] | paginate: { itemsPerPage: 3, currentPage: p }" class="nk-tb-item">
+                          <div class="nk-tb-col nk-tb-col-check">
+                            <div class="custom-control custom-control-sm custom-checkbox notext">
+                              <input type="checkbox" class="custom-control-input" id="pid1">
+                              <label class="custom-control-label" for="pid1"></label>
+                            </div>
+                          </div>
+                          <div class="nk-tb-col tb-col-sm">
+                             <span class="tb-product">
+                                 <span class="title">{{ investor.organization }}</span>
+                             </span>
+                          </div>
+
+                          <div class="nk-tb-col tb-col-sm">
+                             <span class="tb-product">
+                                 <span class="title">{{ investor.investmentType }}</span>
+                             </span>
+                          </div>
+                          <div class="nk-tb-col tb-col-sm">
+                             <span class="tb-product">
+                                 <span class="title">{{ investor.location }}</span>
+                             </span>
+                          </div>
+
+                          <div class="nk-tb-col tb-col-sm">
+                             <span class="tb-product">
+                                 <span class="tb-sub">{{ investor.experienceYears }}</span>
+                             </span>
+                          </div>
+                          <div class="nk-tb-col tb-col-sm">
+                             <span class="tb-product">
+                                 <span class="title">{{ investor.preferredGeographies.join(', ') }}</span>
+                             </span>
+                          </div>
+
+                          <div class="nk-tb-col nk-tb-col-tools">
+                            <ul class="nk-tb-actions gx-1 my-n1">
+                              <li class="me-n1">
+                                <div class="dropdown">
+                                  <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                  <div class="dropdown-menu dropdown-menu-end">
+                                    <ul class="link-list-opt no-bdr">
+                                      <li>
+                                        <a (click)="investor.id ? editInvestor(investor.id) : null" style="cursor:pointer">
+                                          <em class="icon ni ni-edit"></em><span>Edit Sector</span>
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a (click)="investor.id ? showDeleteConfirmation(investor.id) : null" style="cursor:pointer">
+                                          <em class="icon ni ni-trash"></em><span>Remove Sector</span>
+                                        </a>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                    <pagination-controls
+                      class="myPagination"
+                      previousLabel=""
+                      nextLabel=""
+                      (pageChange)="p = $event"
+                    >
+                    </pagination-controls>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<app-add-investor
+  *ngIf="showModal"
+  [initialRequestData]="selectedInvestor"
+  (openPopup)="openPopup()"
+  (closePopup)="closePopup()"
+></app-add-investor>
+<p-dialog
+  [draggable]="true"
+  [resizable]="false"
+  [modal]="true"
+  [(visible)]="visible"
+  [baseZIndex]="100000"
+  [style]="{ width: '20rem'}"
+  [closable]="false"
+  closeIcon="false"
+  contentStyleClass="custom-dialog"
+>
+  <div class="text-center" >
+    <em class="icon ni ni-alert-circle warning-icon"></em>
+    <h3 class="font-bold mt-3 fw-bold">Are you sure?</h3>
+    <p class="text-secondary">You really want deleting this sector</p>
+  </div>
+
+  <div class="d-flex justify-content-center gap-3 mt-4 mb-4">
+    <button class="btn btn-primary" style="height: 25px" (click)="confirmDeleteInvestissor()">Yes!</button>
+    <button class="btn btn-danger " style="height: 25px" (click)="visible = false">Cancel</button>
+  </div>
+
+</p-dialog>

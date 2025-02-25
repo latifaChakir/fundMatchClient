@@ -1,0 +1,82 @@
+<div *ngIf="openPopup" class="modal fade show d-block" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Manage Investor</h5>
+        <button type="button" class="close" (click)="cancel()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
+        <form [formGroup]="investorForm" (ngSubmit)="onSubmit()">
+
+          <div class="form-group">
+            <label for="organization">Organization:</label><span class="required-indicator">*</span>
+            <input id="organization" type="text" class="form-control" formControlName="organization" />
+            <div *ngIf="investorForm.controls['organization'].invalid && investorForm.controls['organization'].touched" class="text-danger">
+              Organization is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="sectors">Sectors:</label><span class="required-indicator">*</span>
+            <select id="sectors" class="form-control" formControlName="sectors" multiple>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="minInvestment">Minimum Investment:</label>
+            <input id="minInvestment" type="number" class="form-control" formControlName="minInvestment" />
+          </div>
+
+          <div class="form-group">
+            <label for="maxInvestment">Maximum Investment:</label>
+            <input id="maxInvestment" type="number" class="form-control" formControlName="maxInvestment" />
+          </div>
+
+          <div class="form-group">
+            <label for="investmentType">Investment Type:</label>
+            <input id="investmentType" type="text" class="form-control" formControlName="investmentType" />
+          </div>
+
+          <div class="form-group">
+            <label for="location">Location:</label>
+            <input id="location" type="text" class="form-control" formControlName="location" />
+          </div>
+
+          <div class="form-group">
+            <label for="experienceYears">Experience (Years):</label>
+            <input id="experienceYears" type="number" class="form-control" formControlName="experienceYears" />
+          </div>
+
+          <div class="form-group">
+            <label for="averageInvestmentsPerYear">Average Investments Per Year:</label>
+            <input id="averageInvestmentsPerYear" type="number" class="form-control" formControlName="averageInvestmentsPerYear" />
+          </div>
+
+          <div class="form-group">
+            <label for="investmentStrategy">Investment Strategy:</label>
+            <textarea id="investmentStrategy" class="form-control" formControlName="investmentStrategy"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="preferredGeographies">Preferred Geographies:</label>
+            <select id="preferredGeographies" class="form-control" formControlName="preferredGeographies" multiple>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="contactInfo">Contact Info:</label>
+            <input id="contactInfo" type="email" class="form-control" formControlName="contactInfo" />
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="cancel()">Close</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

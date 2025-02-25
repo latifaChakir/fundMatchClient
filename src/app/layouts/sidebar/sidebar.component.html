@@ -46,7 +46,7 @@
             aria-controls="data"
           >
             <span class="nk-menu-icon">
-              <em class="icon ni ni-tile-thumb"></em>
+              <em class="icon ni ni-setting-alt"></em>
             </span>
             <span class="nk-menu-text">Basic Data</span>
           </a>
@@ -116,6 +116,97 @@
             </ul>
           </div>
         </li>
+
+        <li class="nk-menu-item has-sub" routerLinkActive="active">
+          <a
+            href="#startup"
+            class="nk-menu-link nk-menu-toggle"
+            data-bs-toggle="collapse"
+            role="button"
+            aria-expanded="false"
+            aria-controls="startup"
+          >
+          <span class="nk-menu-icon">
+            <em class="icon ni ni-layers"></em>
+          </span>
+            <span class="nk-menu-text">Startup</span>
+          </a>
+          <div class="collapse" id="startup">
+            <ul class="nk-menu-sub">
+              <li class="nk-menu-item" routerLinkActive="active">
+                <a routerLink="/startup-overview"routerLinkActive="active" class="nk-menu-link">
+                  <span class="nk-menu-text">Overview</span>
+                </a>
+              </li>
+              <li class="nk-menu-item">
+                <a routerLink="/startup-investors" class="nk-menu-link">
+                  <span class="nk-menu-text">Investors</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="nk-menu-item has-sub" routerLinkActive="active">
+          <a
+            href="#invertissor"
+            class="nk-menu-link nk-menu-toggle"
+            data-bs-toggle="collapse"
+            role="button"
+            aria-expanded="false"
+            aria-controls="invertissor"
+          >
+    <span class="nk-menu-icon">
+      <em class="icon ni ni-coin"></em>
+    </span>
+            <span class="nk-menu-text">Invertissor</span>
+          </a>
+          <div class="collapse" id="invertissor">
+            <ul class="nk-menu-sub">
+              <li class="nk-menu-item" routerLinkActive="active">
+                <a routerLink="/invertissor-list" class="nk-menu-link" routerLinkActive="active">
+                  <span class="nk-menu-text">Investor List</span>
+                </a>
+              </li>
+              <li class="nk-menu-item">
+                <a routerLink="/invertissor-details" class="nk-menu-link">
+                  <span class="nk-menu-text">Investor Details</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="nk-menu-item has-sub" routerLinkActive="active">
+          <a
+            href="#project"
+            class="nk-menu-link nk-menu-toggle"
+            data-bs-toggle="collapse"
+            role="button"
+            aria-expanded="false"
+            aria-controls="project"
+          >
+    <span class="nk-menu-icon">
+      <em class="icon ni ni-folder"></em>
+    </span>
+            <span class="nk-menu-text">Project</span>
+          </a>
+          <div class="collapse" id="project">
+            <ul class="nk-menu-sub">
+              <li class="nk-menu-item">
+                <a routerLink="/project-dashboard" class="nk-menu-link">
+                  <span class="nk-menu-text">Dashboard</span>
+                </a>
+              </li>
+              <li class="nk-menu-item">
+                <a routerLink="/project-tasks" class="nk-menu-link">
+                  <span class="nk-menu-text">Tasks</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
 
       </ul>
     </div>

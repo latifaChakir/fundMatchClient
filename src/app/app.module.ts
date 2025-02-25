@@ -20,6 +20,9 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {StageEffects} from "./core/stores/stage/stage.effects";
 import {stageReducer, stagesFeatureKey} from "./core/stores/stage/stage.reducer";
 import {NgxPaginationModule} from "ngx-pagination";
+import {InvestorModule} from "./investor/investor.module";
+import {InvestorEffects} from "./core/stores/investor/investor.effects";
+import {investorReducer, investorsFeatureKey} from "./core/stores/investor/investor.reducer";
 
 
 @NgModule({
@@ -33,9 +36,10 @@ import {NgxPaginationModule} from "ngx-pagination";
     StoreModule.forRoot({
       auth: authReducer,
       [sectorsFeatureKey]: sectorReducer,
-      [stagesFeatureKey]: stageReducer
+      [stagesFeatureKey]: stageReducer,
+      [investorsFeatureKey]: investorReducer,
     }),
-    EffectsModule.forRoot([AuthEffects, SectorEffects, StageEffects]),
+    EffectsModule.forRoot([AuthEffects, SectorEffects, StageEffects , InvestorEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: !isDevMode(),
@@ -45,6 +49,7 @@ import {NgxPaginationModule} from "ngx-pagination";
     StartupModule,
     DialogModule,
     AdminModule,
+    InvestorModule,
     NgxPaginationModule
 
   ],
