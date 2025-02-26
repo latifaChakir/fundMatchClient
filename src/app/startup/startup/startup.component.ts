@@ -1,37 +1,47 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators, NonNullableFormBuilder} from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Observable, combineLatest } from "rxjs";
+import { map } from "rxjs/operators";
+import { Stage } from "../../core/models/stage/stage.model";
+import { Sector } from "../../core/models/sector/sector.model";
+import { Store } from "@ngrx/store";
+import { selectStages } from "../../core/stores/stage/stage.reducer";
+import { selectSectors } from "../../core/stores/sector/sector.reducer";
+import { createStartupValidator } from "../../core/validators/startup/startup-validators";
+import {StageActions} from "../../core/stores/stage/stage.actions";
+import {SectorActions} from "../../core/stores/sector/sector.actions";
 
 @Component({
   selector: 'app-startup',
   templateUrl: './startup.component.html',
   styleUrls: ['./startup.component.css']
 })
-export class StartupComponent implements OnInit{
+export class StartupComponent implements OnInit {
+  stages$: Observable<Stage[]>;
+  sectors$: Observable<Sector[]>;
   startupForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
-    this.startupForm = this.fb.group({
-      general: this.fb.group({
-        companyName: ['', Validators.required],
-        description: ['', Validators.required],
-        pitchVideoUrl: [''],
-        foundedYear: ['', [Validators.required, Validators.min(1900)]],
-        headquarters: ['', Validators.required],
-      }),
-      financials: this.fb.group({
-        fundingNeeded: ['', [Validators.required, Validators.min(0)]],
-        revenue: ['', [Validators.required, Validators.min(0)]],
-        growthRate: ['', [Validators.required, Validators.min(0), Validators.max(100)]],
-        teamSize: ['', [Validators.required, Validators.min(1)]],
-      }),
-      sectorsAndStages: this.fb.group({
-        sectors: [[], Validators.required],
-        stages: [[], Validators.required],
-      })
-    }) as NonNullable<FormGroup>;
+  sectorsData$: Observable<any[]>;
+  stagesData$: Observable<any[]>;
+
+  constructor(private fb: FormBuilder, private store: Store) {
+    this.stages$ = this.store.select(selectStages);
+    this.sectors$ = this.store.select(selectSectors);
+    this.startupForm = createStartupValidator(this.fb);
+    this.sectorsData$ = this.sectors$.pipe(
+      map(sectors => sectors.map(sector => ({ id: sector.id, text: sector.name })))
+    );
+
+    this.stagesData$ = this.stages$.pipe(
+      map(stages => stages.map(stage => ({ id: stage.id, text: stage.name })))
+    );
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.store.dispatch(StageActions.loadStages());
+    this.store.dispatch(SectorActions.loadSectors());
+
+  }
 
   submit() {
     if (this.startupForm.valid) {

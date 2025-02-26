@@ -17,7 +17,10 @@
                 <div class="nk-block nk-block-lg">
                   <div class="nk-block-head">
                     <div class="nk-block-head-content">
-                      <h4 class="title nk-block-title">Startup Form - Basic</h4>
+                      <h4 class="title nk-block-title">Wizard Form - Basic</h4>
+                      <div class="nk-block-des">
+                        <p>A basic demostration of wizard form.</p>
+                      </div>
                     </div>
                   </div>
                   <div class="card">
@@ -86,8 +89,21 @@
                             <div formGroupName="sectorsAndStages" class="step-content two-columns">
                               <mat-form-field appearance="fill">
                                 <mat-label>Sectors</mat-label>
-                                <input matInput formControlName="sectors" required>
+                                <mat-select formControlName="sectors" multiple>
+                                  <mat-option *ngFor="let sector of sectorsData$ | async" [value]="sector.id">
+                                    {{ sector.text }}
+                                  </mat-option>
+                                </mat-select>
                               </mat-form-field>
+                              <mat-form-field appearance="fill">
+                                <mat-label>Stages</mat-label>
+                                <mat-select formControlName="stages" multiple>
+                                  <mat-option *ngFor="let stage of stagesData$ | async" [value]="stage.id">
+                                    {{ stage.text }}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+
                             </div>
                             <div style="display:flex; gap: 15px">
                               <button mat-button matStepperPrevious>Back</button>
@@ -96,14 +112,11 @@
                           </form>
                         </mat-step>
                       </mat-horizontal-stepper>
-
-                      <!-- La ligne personnalisée -->
-                      <div class="custom-stepper-line"></div>
                     </div>
                   </div>
-                </div><!-- .nk-block -->
+                </div>
 
-              </div><!-- .components-preview -->
+              </div>
             </div>
           </div>
         </div>

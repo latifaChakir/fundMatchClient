@@ -10,7 +10,7 @@ import {MatStep, MatStepper, MatStepperModule} from "@angular/material/stepper";
 import {MatFormField} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
-
+import {MatOption, MatSelect} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -27,7 +27,10 @@ import {MatButtonModule} from "@angular/material/button";
     MatStepperModule,
     MatInputModule,
     MatButtonModule,
-    MatFormField
+    MatFormField,
+    MatSelect,
+    MatOption,
+
   ]
 })
 export class StartupModule { }
