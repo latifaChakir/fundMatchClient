@@ -14,7 +14,7 @@ export class StartupEffects {
       ofType(StartupActions.loadStartups),
       mergeMap(() =>
         this.startupService.getStartups().pipe(
-          map((Startups) => StartupActions.loadStartupsSuccess({ startups })),
+          map((startups) => StartupActions.loadStartupsSuccess({ startups })),
           catchError((error) => of(StartupActions.loadStartupsFailure({ error: error.message })))
         )
       )

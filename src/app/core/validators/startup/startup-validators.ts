@@ -8,6 +8,7 @@ export function createStartupValidator(fb: FormBuilder): FormGroup {
       pitchVideoUrl: [''],
       foundedYear: ['', [Validators.required, Validators.min(1900)]],
       headquarters: ['', Validators.required],
+      contactInfo: ['', Validators.required],
     }),
     financials: fb.group({
       fundingNeeded: ['', [Validators.required, Validators.min(0)]],

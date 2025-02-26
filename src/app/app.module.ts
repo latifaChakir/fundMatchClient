@@ -3,7 +3,7 @@ import {isDevMode, NgModule} from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import {AuthModule} from "./auth/auth.module";
 import {AppComponent} from "./app.component";
-import {HttpClientModule, provideHttpClient} from "@angular/common/http";
+import {HttpClientModule, provideHttpClient, withInterceptors} from "@angular/common/http";
 import {BrowserModule} from "@angular/platform-browser";
 import {StoreModule} from "@ngrx/store";
 import {EffectsModule} from "@ngrx/effects";
@@ -23,6 +23,9 @@ import {NgxPaginationModule} from "ngx-pagination";
 import {InvestorModule} from "./investor/investor.module";
 import {InvestorEffects} from "./core/stores/investor/investor.effects";
 import {investorReducer, investorsFeatureKey} from "./core/stores/investor/investor.reducer";
+import {startupReducer, startupsFeatureKey} from "./core/stores/startup/startup.reducer";
+import {StartupEffects} from "./core/stores/startup/startup.effects";
+import {authInterceptor} from "./core/interceptors/auth.interceptor";
 
 
 @NgModule({
@@ -38,8 +41,9 @@ import {investorReducer, investorsFeatureKey} from "./core/stores/investor/inves
       [sectorsFeatureKey]: sectorReducer,
       [stagesFeatureKey]: stageReducer,
       [investorsFeatureKey]: investorReducer,
+      [startupsFeatureKey]: startupReducer,
     }),
-    EffectsModule.forRoot([AuthEffects, SectorEffects, StageEffects , InvestorEffects]),
+    EffectsModule.forRoot([AuthEffects, SectorEffects, StageEffects , InvestorEffects, StartupEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: !isDevMode(),
@@ -54,6 +58,7 @@ import {investorReducer, investorsFeatureKey} from "./core/stores/investor/inves
 
   ],
   providers: [
+    provideHttpClient(withInterceptors([authInterceptor])),
     provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]

@@ -54,7 +54,7 @@ export const StartupsFeature = createFeature({
       ...state,
       error: null
     })),
-    on(StartupActions.getStartupByIdSuccess, (state, { Startup }) => ({
+    on(StartupActions.getStartupByIdSuccess, (state, { startup }) => ({
       ...state,
       startups: state.startups.map(s => s.id === startup.id ? startup : s),
       error: null
@@ -68,7 +68,7 @@ export const StartupsFeature = createFeature({
       ...state,
       error: null
     })),
-    on(StartupActions.updateStartupSuccess, (state, { Startup }) => ({
+    on(StartupActions.updateStartupSuccess, (state, { startup }) => ({
       ...state,
       startups: state.startups.map(s => s.id === startup.id ? startup : s),
       error: null
@@ -95,7 +95,7 @@ export const StartupsFeature = createFeature({
       ...state,
       searchTerm,
       filteredStartups: state.startups.filter(startup =>
-        startup.name.toLowerCase().includes(searchTerm.toLowerCase())
+        startup.companyName.toLowerCase().includes(searchTerm.toLowerCase())
       ),
     }))
   )

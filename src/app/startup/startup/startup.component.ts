@@ -10,6 +10,8 @@ import { selectSectors } from "../../core/stores/sector/sector.reducer";
 import { createStartupValidator } from "../../core/validators/startup/startup-validators";
 import {StageActions} from "../../core/stores/stage/stage.actions";
 import {SectorActions} from "../../core/stores/sector/sector.actions";
+import {StartupActions} from "../../core/stores/startup/startup.actions";
+import {Startup} from "../../core/models/startup/startup.model";
 
 @Component({
   selector: 'app-startup',
@@ -45,7 +47,21 @@ export class StartupComponent implements OnInit {
 
   submit() {
     if (this.startupForm.valid) {
-      console.log('Form Submitted:', this.startupForm.value);
+      const formValues = this.startupForm.value;
+
+      const startup: Startup = {
+        ...formValues.general,
+        ...formValues.financials,
+        sectors: formValues.sectorsAndStages.sectors.map((id: number) => ({ id })),
+        stages: formValues.sectorsAndStages.stages.map((id: number) => ({ id })),
+      };
+
+      console.log("Startup Payload:", startup);
+
+      this.store.dispatch(StartupActions.addStartup({ startup }));
+    } else {
+      console.log("Formulaire invalide", this.startupForm.errors);
     }
   }
+
 }
