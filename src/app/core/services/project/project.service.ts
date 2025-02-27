@@ -35,7 +35,9 @@ export class ProjectService {
       map(response => response.data)
     );
   }
-  updateProjectStatus(projectId: number){
-    return this.http.get(`${this.api}/updateStatus/${projectId}`);
+  updateProjectStatus(projectId: number): Observable<Project>{
+    return this.http.get<{ data: Project }>(`${this.api}/updateStatus/${projectId}`, {}).pipe(
+      map(response => response.data)
+    );
   }
 }

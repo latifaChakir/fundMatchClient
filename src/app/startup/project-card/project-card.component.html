@@ -77,7 +77,11 @@
                               <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 me-n1" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                               <div class="dropdown-menu dropdown-menu-end">
                                 <ul class="link-list-opt no-bdr">
-                                  <li><a href="#"><em class="icon ni ni-check-round-cut"></em><span>Mark As Done</span></a></li>
+                                  <li>
+                                    <a (click)="project.id ? updateStatus(project.id) : null" style="cursor:pointer">
+                                      <em class="icon ni ni-check-round-cut"></em><span>Mark As Done</span>
+                                    </a>
+                                  </li>
                                 </ul>
                               </div>
                             </div>

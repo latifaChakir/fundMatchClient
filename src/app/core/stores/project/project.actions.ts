@@ -27,8 +27,8 @@ export const ProjectActions = createActionGroup({
 
     'Filter Projects': props<{ searchTerm: string }>(),
 
-    'Update Project Status': props<{ projectId: number, status: ProjectStatus }>(),
-    'Update Project Status Success': emptyProps(),
+    'Update Project Status': props<{ projectId: number }>(),
+    'Update Project Status Success':props<{ project: Project }>(),
     'Update Project Status Failure': props<{ error: string }>(),
   }
 });

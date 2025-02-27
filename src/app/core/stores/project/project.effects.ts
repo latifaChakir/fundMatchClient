@@ -4,6 +4,7 @@ import {catchError, map, mergeMap, tap} from 'rxjs/operators';
 import { of } from 'rxjs';
 import {ProjectActions} from "./project.actions";
 import {ProjectService} from "../../services/project/project.service";
+import {Project} from "../../models/project/project.model";
 
 @Injectable()
 export class ProjectEffects {
@@ -85,9 +86,9 @@ export class ProjectEffects {
       ofType(ProjectActions.updateProjectStatus),
       mergeMap((action) =>
         this.projectService.updateProjectStatus(action.projectId).pipe(
-          map((success) => {
-            if (success) {
-              return ProjectActions.updateProjectStatusSuccess();
+          map((project: Project) => {  // Specify Project type here
+            if (project) {
+              return ProjectActions.updateProjectStatusSuccess({ project });
             } else {
               return ProjectActions.updateProjectStatusFailure({ error: 'Status update failed' });
             }
@@ -97,5 +98,8 @@ export class ProjectEffects {
       )
     )
   );
+
+
+
 
 }

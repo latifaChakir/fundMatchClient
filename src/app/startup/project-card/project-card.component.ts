@@ -25,15 +25,7 @@ export class ProjectCardComponent implements OnInit{
     const value = event.target.value;
     this.store.dispatch(ProjectActions.filterProjects({ searchTerm: value }));
   }
-  updateStatus(projectId: number, status: ProjectStatus) {
-    this.store.dispatch(ProjectActions.updateProjectStatus({ projectId, status }));
-
-    this.store.select(selectProjectError).subscribe(error => {
-      if (error) {
-        console.error('Failed to update project status:', error);
-      } else {
-        console.log('Project status updated successfully');
-      }
-    });
+  updateStatus(projectId: number) {
+    this.store.dispatch(ProjectActions.updateProjectStatus({ projectId }));
   }
 }

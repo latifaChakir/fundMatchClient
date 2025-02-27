@@ -105,11 +105,17 @@ export const ProjectsFeature = createFeature({
       ...state,
       error: null
     })),
-    on(ProjectActions.updateProjectStatusSuccess, (state) => ({
+    on(ProjectActions.updateProjectStatusSuccess, (state, { project }) => ({
       ...state,
-      error: null,
+      projects: state.projects.map(p =>
+        p.id === project.id ? { ...p, status: project.status } : p
+      ),
+      filteredProjects: state.filteredProjects.map(p =>
+        p.id === project.id ? { ...p, status: project.status } : p
+      ),
+      error: null
     })),
-    on(ProjectActions.updateProjectStatusFailure, (state, { error }) => ({
+  on(ProjectActions.updateProjectStatusFailure, (state, { error }) => ({
       ...state,
       error
     })),
