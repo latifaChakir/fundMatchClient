@@ -35,4 +35,7 @@ export class ProjectService {
       map(response => response.data)
     );
   }
+  updateProjectStatus(projectId: number){
+    return this.http.get(`${this.api}/updateStatus/${projectId}`);
+  }
 }

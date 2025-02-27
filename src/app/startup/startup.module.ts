@@ -16,12 +16,15 @@ import {AddProjectComponent} from "./add-project/add-project.component";
 import {DialogModule} from "primeng/dialog";
 import {NgxPaginationModule} from "ngx-pagination";
 import {QuillEditorComponent} from "ngx-quill";
+import {ProjectCardComponent} from "./project-card/project-card.component";
+import {MatProgressBar} from "@angular/material/progress-bar";
 
 @NgModule({
   declarations: [
     StartupComponent,
     ProjectComponent,
-    AddProjectComponent
+    AddProjectComponent,
+    ProjectCardComponent
   ],
   imports: [
     CommonModule,
@@ -40,6 +43,7 @@ import {QuillEditorComponent} from "ngx-quill";
     DialogModule,
     NgxPaginationModule,
     QuillEditorComponent,
+    MatProgressBar,
 
   ]
 })

@@ -1,0 +1,131 @@
+<div class="nk-body ui-rounder has-sidebar ">
+  <div class="nk-app-root">
+    <div class="nk-main ">
+      <div class="nk-sidebar is-light nk-sidebar-fixed is-light " data-content="sidebarMenu">
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class="nk-wrap ">
+        <div class="nk-header is-light nk-header-fixed is-light">
+          <app-navbar></app-navbar>
+        </div>
+
+        <!-------------content------------------>
+        <div class="nk-content nk-content-fluid">
+          <div class="container-xl wide-xl">
+            <div class="nk-content-body">
+              <div class="nk-block-head nk-block-head-sm">
+                <div class="nk-block-between">
+                  <div class="nk-block-head-content">
+                    <h3 class="nk-block-title page-title" style="font-family: Nunito, sans-serif;
+                    font-size: 1.5rem;
+                    font-weight: 700; margin: 0; color: #364a63">projects</h3>
+                    <div class="nk-block-des text-soft">
+                    </div>
+                  </div>
+                  <div class="nk-block-head-content">
+                    <div class="toggle-wrap nk-block-tools-toggle">
+                      <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-menu-alt-r"></em></a>
+                      <div class="toggle-expand-content" data-content="pageMenu">
+                        <ul class="nk-block-tools g-3">
+                          <li>
+                            <div class="form-control-wrap">
+                              <div class="form-icon form-icon-right">
+                                <em class="icon ni ni-search"></em>
+                              </div>
+                              <input type="text"
+                                     class="form-control"
+                                     id="default-04" placeholder="Quick search by name"
+                                     (input)="onSearchChange($event)" >
+                            </div>
+                          </li>
+                          <li>
+                            <div class="drodown">
+                              <a href="#" class="dropdown-toggle btn btn-white btn-dim btn-outline-light" data-bs-toggle="dropdown"><em class="d-none d-sm-inline icon ni ni-filter-alt"></em><span>Filtered By</span><em class="dd-indc icon ni ni-chevron-right"></em></a>
+                              <div class="dropdown-menu dropdown-menu-end">
+                                <ul class="link-list-opt no-bdr">
+                                  <li><a href="#"><span>Open</span></a></li>
+                                  <li><a href="#"><span>Done</span></a></li>
+                                </ul>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="nk-block-tools-opt d-block d-sm-none">
+                            <a href="#" class="btn btn-icon btn-primary"><em class="icon ni ni-plus"></em></a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="nk-block">
+                <div class="row g-gs">
+
+                  <div *ngFor="let project of (projects$ | async) ?? [] | paginate: { itemsPerPage: 6, currentPage: p }" class="col-sm-6 col-xl-4">
+                    <div class="card h-100">
+                      <div class="card-inner">
+                        <div class="project">
+                          <div class="project-head">
+                            <a href="html/apps-kanban.html" class="project-title">
+                              <div class="user-avatar sq"><span>RW</span></div>
+                              <div class="project-info">
+                                <h6 class="title">{{ project.title }}</h6>
+                                <span class="sub-text">{{ project.stage }}</span>
+                              </div>
+                            </a>
+                            <div class="drodown">
+                              <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger mt-n1 me-n1" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                              <div class="dropdown-menu dropdown-menu-end">
+                                <ul class="link-list-opt no-bdr">
+                                  <li><a href="#"><em class="icon ni ni-check-round-cut"></em><span>Mark As Done</span></a></li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="project-details">
+                            <p [innerHTML]="project.description"></p>
+                          </div>
+                          <div class="project-progress">
+                            <div class="project-progress-details">
+                              <div class="project-progress-task"><em class="icon ni ni-check-round-cut"></em><span>Project Status</span></div>
+                            </div>
+                            <mat-progress-bar
+                              *ngIf="project.status === 'PENDING'"
+                              mode="indeterminate"
+                              class="progress-bar-pending">
+                            </mat-progress-bar>
+
+                            <mat-progress-bar
+                              *ngIf="project.status === 'COMPLETED' || project.status === 'ACTIVE' "
+                              mode="determinate"
+                              value="100"
+                              class="progress-bar-completed">
+                            </mat-progress-bar>
+
+                          </div>
+                          <div class="project-meta">
+                            <ul class="project-users g-1">
+                            </ul>
+                            <span class="badge badge-dim bg-light text-gray"><em class="icon ni ni-clock"></em><span>{{ project.createdAt }}</span></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <pagination-controls
+                    class="myPagination"
+                    previousLabel=""
+                    nextLabel=""
+                    (pageChange)="p = $event"
+                  >
+                  </pagination-controls>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

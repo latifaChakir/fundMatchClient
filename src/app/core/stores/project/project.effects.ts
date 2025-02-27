@@ -79,4 +79,23 @@ export class ProjectEffects {
       )
     )
   );
+
+  updateProjectStatus$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ProjectActions.updateProjectStatus),
+      mergeMap((action) =>
+        this.projectService.updateProjectStatus(action.projectId).pipe(
+          map((success) => {
+            if (success) {
+              return ProjectActions.updateProjectStatusSuccess();
+            } else {
+              return ProjectActions.updateProjectStatusFailure({ error: 'Status update failed' });
+            }
+          }),
+          catchError((error) => of(ProjectActions.updateProjectStatusFailure({ error: error.message })))
+        )
+      )
+    )
+  );
+
 }

@@ -1,3 +1,9 @@
+export enum ProjectStatus{
+  PENDING = "PENDING",
+  ACTIVE = "ACTIVE",
+  COMPLETED = "COMPLETED",
+  CANCELED = "CANCELED",
+}
 export interface Project {
   id?: number;
   title: string;
@@ -6,4 +12,5 @@ export interface Project {
   stage: string;
   createdAt: string;
   viewCount: number;
+  status: ProjectStatus;
 }

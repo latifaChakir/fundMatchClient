@@ -16,6 +16,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-color: white;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
+.nk-block-title page-title{
+  color: #364a63 !important;
+}
 
 
 .warning-icon {
@@ -276,4 +279,18 @@ h3 {
 }
 .mat-pseudo-checkbox-full.mat-pseudo-checkbox-checked::after, .mat-pseudo-checkbox-full.mat-pseudo-checkbox-indeterminate::after {
   color: white !important;
+}
+/* Lorsque le status est 'PENDING', utilisez une couleur orangée (par exemple) */
+.progress-bar-pending .mdc-linear-progress__bar-inner {
+  border-color: #ffa353 !important;
+}
+
+/* Lorsque le status est 'COMPLETED', utilisez une couleur verte */
+.progress-bar-completed .mdc-linear-progress__bar-inner {
+  border-color: #0FCA7A !important;
+  background-color: #0FCA7A !important;  /* Change aussi la couleur de remplissage */
+}
+
+.mat-mdc-progress-bar {
+  --mdc-linear-progress-track-color: rgba(0, 0, 0, 0.125);
 }

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Project} from "../../core/models/project/project.model";
+import {Project, ProjectStatus} from "../../core/models/project/project.model";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Store} from "@ngrx/store";
 import {createprojectValidator} from "../../core/validators/project/project-validators";
@@ -33,6 +33,7 @@ export class AddProjectComponent {
       stage : formValues.stage,
       createdAt : formValues.createdAt,
       viewCount : formValues.viewCount,
+      status : ProjectStatus.PENDING
     }
     if (this.initialRequestData) {
       this.store.dispatch(ProjectActions.updateProject({ project }));

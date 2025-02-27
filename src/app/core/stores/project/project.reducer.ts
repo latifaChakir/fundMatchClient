@@ -100,7 +100,20 @@ export const ProjectsFeature = createFeature({
       filteredProjects: state.projects.filter(project =>
         project.title.toLowerCase().includes(searchTerm.toLowerCase())
       ),
-    }))
+    })),
+    on(ProjectActions.updateProjectStatus, (state) => ({
+      ...state,
+      error: null
+    })),
+    on(ProjectActions.updateProjectStatusSuccess, (state) => ({
+      ...state,
+      error: null,
+    })),
+    on(ProjectActions.updateProjectStatusFailure, (state, { error }) => ({
+      ...state,
+      error
+    })),
+
   )
 });
 

@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import {Project} from "../../models/project/project.model";
+import {Project, ProjectStatus} from "../../models/project/project.model";
 
 
 export const ProjectActions = createActionGroup({
@@ -26,5 +26,9 @@ export const ProjectActions = createActionGroup({
     'Delete Project Failure': props<{ error: string }>(),
 
     'Filter Projects': props<{ searchTerm: string }>(),
+
+    'Update Project Status': props<{ projectId: number, status: ProjectStatus }>(),
+    'Update Project Status Success': emptyProps(),
+    'Update Project Status Failure': props<{ error: string }>(),
   }
 });
