@@ -26,6 +26,9 @@ import {investorReducer, investorsFeatureKey} from "./core/stores/investor/inves
 import {startupReducer, startupsFeatureKey} from "./core/stores/startup/startup.reducer";
 import {StartupEffects} from "./core/stores/startup/startup.effects";
 import {authInterceptor} from "./core/interceptors/auth.interceptor";
+import {projectReducer, projectsFeatureKey} from "./core/stores/project/project.reducer";
+import {ProjectEffects} from "./core/stores/project/project.effects";
+import {QuillModule} from "ngx-quill";
 
 
 @NgModule({
@@ -42,8 +45,9 @@ import {authInterceptor} from "./core/interceptors/auth.interceptor";
       [stagesFeatureKey]: stageReducer,
       [investorsFeatureKey]: investorReducer,
       [startupsFeatureKey]: startupReducer,
+      [projectsFeatureKey]: projectReducer,
     }),
-    EffectsModule.forRoot([AuthEffects, SectorEffects, StageEffects , InvestorEffects, StartupEffects]),
+    EffectsModule.forRoot([AuthEffects, SectorEffects, StageEffects , InvestorEffects, StartupEffects, ProjectEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: !isDevMode(),
@@ -54,7 +58,8 @@ import {authInterceptor} from "./core/interceptors/auth.interceptor";
     DialogModule,
     AdminModule,
     InvestorModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    QuillModule.forRoot()
 
   ],
   providers: [

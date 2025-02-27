@@ -11,10 +11,17 @@ import {MatFormField} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatOption, MatSelect} from "@angular/material/select";
+import {ProjectComponent} from "./project/project.component";
+import {AddProjectComponent} from "./add-project/add-project.component";
+import {DialogModule} from "primeng/dialog";
+import {NgxPaginationModule} from "ngx-pagination";
+import {QuillEditorComponent} from "ngx-quill";
 
 @NgModule({
   declarations: [
-    StartupComponent
+    StartupComponent,
+    ProjectComponent,
+    AddProjectComponent
   ],
   imports: [
     CommonModule,
@@ -30,6 +37,9 @@ import {MatOption, MatSelect} from "@angular/material/select";
     MatFormField,
     MatSelect,
     MatOption,
+    DialogModule,
+    NgxPaginationModule,
+    QuillEditorComponent,
 
   ]
 })

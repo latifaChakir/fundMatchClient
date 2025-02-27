@@ -55,10 +55,9 @@ export class StartupComponent implements OnInit {
         sectors: formValues.sectorsAndStages.sectors.map((id: number) => ({ id })),
         stages: formValues.sectorsAndStages.stages.map((id: number) => ({ id })),
       };
-
-      console.log("Startup Payload:", startup);
-
       this.store.dispatch(StartupActions.addStartup({ startup }));
+      this.startupForm.reset();
+
     } else {
       console.log("Formulaire invalide", this.startupForm.errors);
     }

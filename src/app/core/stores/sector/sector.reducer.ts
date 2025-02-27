@@ -43,6 +43,7 @@ export const sectorsFeature = createFeature({
     on(SectorActions.addSectorSuccess, (state, { sector }) => ({
       ...state,
       sectors: [...state.sectors, sector],
+      filteredSectors: [...state.filteredSectors, sector],
       error: null
     })),
 
@@ -72,6 +73,7 @@ export const sectorsFeature = createFeature({
     on(SectorActions.updateSectorSuccess, (state, { sector }) => ({
       ...state,
       sectors: state.sectors.map(s => s.id === sector.id ? sector : s),
+      filteredSectors: state.filteredSectors.map(s => s.id === sector.id ? sector : s),
       error: null
     })),
   on(SectorActions.updateSectorFailure, (state, { error }) => ({
@@ -86,6 +88,7 @@ export const sectorsFeature = createFeature({
     on(SectorActions.deleteSectorSuccess, (state, { id }) => ({
       ...state,
       sectors: state.sectors.filter(s => s.id !== id),
+      filteredSectors: state.filteredSectors.filter(s => s.id !== id),
       error: null
     })),
     on(SectorActions.deleteSectorFailure, (state, { error }) => ({

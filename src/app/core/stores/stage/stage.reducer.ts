@@ -42,6 +42,7 @@ export const StagesFeature = createFeature({
     on(StageActions.addStageSuccess, (state, { stage }) => ({
       ...state,
       stages: [...state.stages, stage],
+      filteredStages: [...state.filteredStages, stage],
       error: null
     })),
 
@@ -71,6 +72,7 @@ export const StagesFeature = createFeature({
     on(StageActions.updateStageSuccess, (state, { stage }) => ({
       ...state,
       stages: state.stages.map(s => s.id === stage.id ? stage : s),
+      filteredStages: state.filteredStages.map(s => s.id === stage.id ? stage : s),
       error: null
     })),
   on(StageActions.updateStageFailure, (state, { error }) => ({
@@ -85,6 +87,7 @@ export const StagesFeature = createFeature({
     on(StageActions.deleteStageSuccess, (state, { id }) => ({
       ...state,
       stages: state.stages.filter(s => s.id !== id),
+      filteredStages: state.filteredStages.filter(s => s.id !== id),
       error: null
     })),
     on(StageActions.deleteStageFailure, (state, { error }) => ({

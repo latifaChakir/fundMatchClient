@@ -54,6 +54,8 @@
                                 <mat-label>Description</mat-label>
                                 <textarea matInput formControlName="description" required></textarea>
                               </mat-form-field>
+                              <quill-editor formControlName="description" theme="snow"></quill-editor>
+
                             </div>
                             <button mat-button matStepperNext [disabled]="!startupForm.get('general')?.valid">Next</button>
                           </form>
