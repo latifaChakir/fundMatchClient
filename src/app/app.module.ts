@@ -29,6 +29,8 @@ import {authInterceptor} from "./core/interceptors/auth.interceptor";
 import {projectReducer, projectsFeatureKey} from "./core/stores/project/project.reducer";
 import {ProjectEffects} from "./core/stores/project/project.effects";
 import {QuillModule} from "ngx-quill";
+import {eventReducer, eventsFeatureKey} from "./core/stores/event/event.reducer";
+import {EventEffects} from "./core/stores/event/event.effects";
 
 
 @NgModule({
@@ -46,8 +48,9 @@ import {QuillModule} from "ngx-quill";
       [investorsFeatureKey]: investorReducer,
       [startupsFeatureKey]: startupReducer,
       [projectsFeatureKey]: projectReducer,
+      [eventsFeatureKey]: eventReducer,
     }),
-    EffectsModule.forRoot([AuthEffects, SectorEffects, StageEffects , InvestorEffects, StartupEffects, ProjectEffects]),
+    EffectsModule.forRoot([AuthEffects, SectorEffects, StageEffects , InvestorEffects, StartupEffects, ProjectEffects, EventEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: !isDevMode(),

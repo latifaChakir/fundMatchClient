@@ -13,6 +13,9 @@ import {Button} from "primeng/button";
 import {CdkOverlayOrigin} from "@angular/cdk/overlay";
 import {AddStageComponent} from "./stage-management/add-stage/add-stage.component";
 import {NgxPaginationModule} from "ngx-pagination";
+import {EventComponent} from "./event-management/event/event.component";
+import {AddEventComponent} from "./event-management/add-event/add-event.component";
+import {QuillEditorComponent} from "ngx-quill";
 
 
 @NgModule({
@@ -20,7 +23,9 @@ import {NgxPaginationModule} from "ngx-pagination";
     SectorComponent,
     AddSectorComponent,
     StageComponent,
-    AddStageComponent
+    AddStageComponent,
+    EventComponent,
+    AddEventComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +36,8 @@ import {NgxPaginationModule} from "ngx-pagination";
     DialogModule,
     Button,
     CdkOverlayOrigin,
-    NgxPaginationModule
+    NgxPaginationModule,
+    QuillEditorComponent
   ]
 })
 export class AdminModule { }

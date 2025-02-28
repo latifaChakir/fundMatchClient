@@ -1,0 +1,75 @@
+<div *ngIf="openPopup" class="modal fade show d-block" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Manage Events</h5>
+        <button type="button" class="close" (click)="cancel()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="max-height: 400px; overflow-y: auto; ">
+        <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="title">Title :</label><span class="required-indicator">*</span>
+            <input id="title" type="text" class="form-control" formControlName="title"  />
+            <div *ngIf="eventForm.controls['title'].invalid && eventForm.controls['title'].touched" class="text-danger">
+              Title is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label >Description :</label><span class="required-indicator">*</span>
+            <quill-editor formControlName="description"  theme="snow"></quill-editor>
+            <div *ngIf="eventForm.controls['description'].invalid && eventForm.controls['description'].touched" class="text-danger">
+              description is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="type">Event Type :</label><span class="required-indicator">*</span>
+            <select id="type" class="form-control" formControlName="type">
+              <option *ngFor="let type of eventTypes" [value]="type">{{ type }}</option>
+            </select>
+            <div *ngIf="eventForm.controls['type'].invalid && eventForm.controls['type'].touched" class="text-danger">
+              Event type is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="location">Location :</label><span class="required-indicator">*</span>
+            <input id="location" type="text" class="form-control" formControlName="location"  />
+            <div *ngIf="eventForm.controls['location'].invalid && eventForm.controls['location'].touched" class="text-danger">
+              location is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="maxParticipants">Max Participants :</label><span class="required-indicator">*</span>
+            <input id="maxParticipants" type="number" class="form-control" formControlName="maxParticipants"  />
+            <div *ngIf="eventForm.controls['maxParticipants'].invalid && eventForm.controls['maxParticipants'].touched" class="text-danger">
+              max Participants is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="cost">Cost :</label><span class="required-indicator">*</span>
+            <input id="cost" type="number" class="form-control" formControlName="cost"  />
+            <div *ngIf="eventForm.controls['cost'].invalid && eventForm.controls['cost'].touched" class="text-danger">
+              cost is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="date">Date :</label><span class="required-indicator">*</span>
+            <input id="date" type="date" class="form-control" formControlName="date"  />
+            <div *ngIf="eventForm.controls['date'].invalid && eventForm.controls['date'].touched" class="text-danger">
+             Date is required
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="cancel()">Close</button>
+            <button type="submit" class="btn btn-primary" >Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
