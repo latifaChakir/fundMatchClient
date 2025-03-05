@@ -31,11 +31,15 @@ import {ProjectEffects} from "./core/stores/project/project.effects";
 import {QuillModule} from "ngx-quill";
 import {eventReducer, eventsFeatureKey} from "./core/stores/event/event.reducer";
 import {EventEffects} from "./core/stores/event/event.effects";
-
+import {HomeComponent} from "./user/home/home.component";
+import {EventComponent} from "./user/event/event.component";
+import {UserModule} from "./user/user.module";
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [AppComponent,
+    HomeComponent,
+    EventComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +54,7 @@ import {EventEffects} from "./core/stores/event/event.effects";
       [projectsFeatureKey]: projectReducer,
       [eventsFeatureKey]: eventReducer,
     }),
-    EffectsModule.forRoot([AuthEffects, SectorEffects, StageEffects , InvestorEffects, StartupEffects, ProjectEffects, EventEffects]),
+    EffectsModule.forRoot([AuthEffects, SectorEffects, StageEffects, InvestorEffects, StartupEffects, ProjectEffects, EventEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: !isDevMode(),
@@ -62,7 +66,8 @@ import {EventEffects} from "./core/stores/event/event.effects";
     AdminModule,
     InvestorModule,
     NgxPaginationModule,
-    QuillModule.forRoot()
+    QuillModule.forRoot(),
+    UserModule,
 
   ],
   providers: [

@@ -36,7 +36,6 @@ export class StartupEffects {
       )
     )
   );
-
   addStartup$ = createEffect(() =>
     this.actions$.pipe(
       ofType(StartupActions.addStartup),
@@ -48,6 +47,7 @@ export class StartupEffects {
       )
     )
   );
+
 
 
   updateStartup$ = createEffect(() =>

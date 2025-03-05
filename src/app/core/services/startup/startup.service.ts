@@ -11,13 +11,13 @@ export class StartupService {
   private api = `${environment.apiUrl}/startups`;
 
   constructor(private http: HttpClient) { }
-  saveStartup(Startup: Startup): Observable<Startup> {
-    return this.http.post<{ data:Startup }>(`${this.api}/save`, Startup).pipe(
+  saveStartup(startup: FormData): Observable<Startup> {
+    return this.http.post<{ data: Startup }>(`${this.api}/save`, startup).pipe(
       map(response => response.data)
     );
   }
   getStartups(): Observable<Startup[]> {
-    return this.http.get<{ data: Startup[] }>(this.api).pipe(
+    return this.http.get<{ data: Startup[] }>(`${this.api}/all`).pipe(
       map(response => response.data)
     );
   }

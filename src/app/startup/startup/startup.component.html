@@ -54,6 +54,9 @@
                                 <mat-label>Description</mat-label>
                                 <textarea matInput formControlName="description" required></textarea>
                               </mat-form-field>
+                              <mat-label>Image</mat-label>
+                              <input type="file" (change)="onFileChange($event)" accept="image/*" required>
+
                             </div>
                             <button mat-button matStepperNext [disabled]="!startupForm.get('general')?.valid">Next</button>
                           </form>

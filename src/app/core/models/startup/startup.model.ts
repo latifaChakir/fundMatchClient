@@ -15,4 +15,5 @@ export interface Startup {
   contactInfo: string;
   sectors: Sector[];
   stages: Stage[];
+  imagePath?: string;
 }

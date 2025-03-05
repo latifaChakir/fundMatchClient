@@ -1,9 +1,10 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Project, ProjectStatus} from "../../core/models/project/project.model";
+import {Project, ProjectStage, ProjectStatus} from "../../core/models/project/project.model";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Store} from "@ngrx/store";
 import {createprojectValidator} from "../../core/validators/project/project-validators";
 import {ProjectActions} from "../../core/stores/project/project.actions";
+import {EventType} from "../../core/models/event/event.model";
 
 @Component({
   selector: 'app-add-project',
@@ -15,6 +16,8 @@ export class AddProjectComponent {
   @Output() openPopup = new EventEmitter<void>();
   @Input() initialRequestData: Project | null = null;
   projectForm!: FormGroup;
+  projectStages = Object.values(ProjectStage);
+
 
   constructor(private fb: FormBuilder, private store: Store) { }
   ngOnInit() {

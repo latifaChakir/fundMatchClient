@@ -25,9 +25,11 @@
           </div>
           <div class="form-group">
             <label for="stage">Stage :</label><span class="required-indicator">*</span>
-            <input id="stage" type="text" class="form-control" formControlName="stage"  />
+            <select id="stage" class="form-control" formControlName="stage">
+              <option *ngFor="let stage of projectStages" [value]="stage">{{ stage }}</option>
+            </select>
             <div *ngIf="projectForm.controls['stage'].invalid && projectForm.controls['stage'].touched" class="text-danger">
-              Stage is required
+              Project stage is required
             </div>
           </div>
           <div class="form-group">

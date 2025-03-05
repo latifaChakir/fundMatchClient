@@ -9,7 +9,7 @@ export const StartupActions = createActionGroup({
     'Load Startups Success': props<{ startups: Startup[] }>(),
     'Load Startups Failure': props<{ error: string }>(),
 
-    'Add Startup': props<{ startup: Startup }>(),
+    'Add Startup': props<{ startup: any }>(),
     'Add Startup Success': props<{ startup: Startup }>(),
     'Add Startup Failure': props<{ error: string }>(),
 

@@ -32,13 +32,13 @@
                               </div>
                               <input type="text"
                                      class="form-control"
-                                     id="default-04" placeholder="Quick search by name"
+                                     id="default-04" placeholder="Quick search by title"
                                      (input)="onSearchChange($event)" >
                             </div>
                           </li>
                           <li class="nk-block-tools-opt">
                             <a (click)="showModal = true" class="toggle btn btn-icon btn-primary d-md-none"><em class="icon ni ni-plus"></em></a>
-                            <a (click)="showModal = true" class="toggle btn btn-primary d-none d-md-inline-flex"><em class="icon ni ni-plus"></em><span>Add Stage</span></a>
+                            <a (click)="showModal = true" class="toggle btn btn-primary d-none d-md-inline-flex"><em class="icon ni ni-plus"></em><span>Add Event</span></a>
                           </li>
                         </ul>
                       </div>
@@ -58,7 +58,11 @@
                               <label class="custom-control-label" for="pid"></label>
                             </div>
                           </div>
-                          <div class="nk-tb-col tb-col-sm"><span>Name</span></div>
+                          <div class="nk-tb-col tb-col-sm"><span>Title</span></div>
+                          <div class="nk-tb-col tb-col-sm"><span>Type</span></div>
+                          <div class="nk-tb-col tb-col-sm"><span>Location</span></div>
+                          <div class="nk-tb-col tb-col-sm"><span>Date</span></div>
+                          <div class="nk-tb-col tb-col-sm"><span>Max Participants</span></div>
                           <div class="nk-tb-col nk-tb-col-tools">
                             <ul class="nk-tb-actions gx-1 my-n1">
                               <li class="me-n1">
@@ -78,6 +82,28 @@
                           <div class="nk-tb-col tb-col-sm">
                               <span class="tb-product">
                                 <span class="title">{{ event.title }}</span>
+                              </span>
+                          </div>
+                          <div class="nk-tb-col tb-col-sm">
+                              <span class="tb-product">
+                                <span class="title">{{ event.type }}</span>
+                              </span>
+                          </div>
+                          <div class="nk-tb-col tb-col-sm">
+                              <span class="tb-product">
+                                <span class="title">{{ event.location }}</span>
+                              </span>
+                          </div>
+
+                          <div class="nk-tb-col tb-col-sm">
+                              <span class="tb-product">
+                                <span class="title">{{ event.date }}</span>
+                              </span>
+                          </div>
+
+                          <div class="nk-tb-col tb-col-sm">
+                              <span class="tb-product">
+                                <span class="title">{{ event.maxParticipants }}</span>
                               </span>
                           </div>
                           <div class="nk-tb-col nk-tb-col-tools">

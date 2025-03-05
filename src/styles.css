@@ -294,3 +294,9 @@ h3 {
 .mat-mdc-progress-bar {
   --mdc-linear-progress-track-color: rgba(0, 0, 0, 0.125);
 }
+
+
+
+.header_navbar[_ngcontent-ng-c542901167] {
+  position: fixed !important;
+}
