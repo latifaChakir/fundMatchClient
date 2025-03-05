@@ -250,10 +250,17 @@
     <div class="row">
       <div *ngFor="let startup of (startups$ | async) ?? [] | paginate: { itemsPerPage: 3, currentPage: p }" class="col-lg-4 col-md-6 mb-4">
         <div class="card blog-card">
-          <img src="./../../../assets/home/images/about.jpg" class="card-img-top blog-image" alt="Startup 1">
+          <img src="{{startup.imagePath}}" class="card-img-top blog-image" alt="Startup 1">
           <div class="card-body blog-content">
-            <h5 class="card-title">{{ startup.companyName }}</h5>
-            <p class="card-text">{{startup.description}}</p>
+            <a (click)="startup.id ? loadStartup(startup.id) : null" style="cursor: pointer"><h5 class="card-title">{{ startup.companyName }}</h5></a>
+            <p class="card-text">{{ startup.description | slice:0:100 }}{{ startup.description.length > 100 ? '...' : '' }}</p>
+            <div>
+            <span *ngFor="let sector of startup.sectors"
+                  class="badge"
+                  [ngStyle]="{'background-color': '#733AEA', 'margin-right': '5px'}">
+              {{ sector.name }}
+            </span>
+            </div>
           </div>
         </div>
       </div>
@@ -270,6 +277,12 @@
 </section>
 
 <app-footer></app-footer>
+
+<app-startup-detail
+  *ngIf="showModal"
+  [initialRequestData]="selectedStartup"
+  (closePopup)="closePopup()"
+></app-startup-detail>
 
 <a href="#" class="back-to-top"><i class="lni lni-chevron-up"></i></a>
 

@@ -31,7 +31,7 @@ export class StartupService {
     );
   }
   getStartupById(StartupId: number): Observable<Startup> {
-    return this.http.get<{ data: Startup }>(`${this.api}/${StartupId}`).pipe(
+    return this.http.get<{ data: Startup }>(`${this.api}/detail/${StartupId}`).pipe(
       map(response => response.data)
     );
   }

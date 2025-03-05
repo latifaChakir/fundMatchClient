@@ -1,0 +1,51 @@
+<div class="modal fade show d-block" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+        <div class="d-flex g-1">
+          <span><strong>{{ initialRequestData?.companyName }} - </strong></span>
+           <span class="mx-1"><strong> {{ initialRequestData?.teamSize }} employees</strong></span>
+        </div>
+        </div>
+        <button type="button" class="btn-close" (click)="cancel()"></button>
+      </div>
+
+      <div class="modal-body d-flex">
+        <div>
+          <img src="{{ initialRequestData?.imagePath  }}" alt="Company Logo" class="company-image">
+        </div>
+        <div class="ms-3">
+          <p>{{ initialRequestData?.description }}</p>
+          <div>
+            <strong>Secteurs : </strong>
+            <span *ngFor="let sector of initialRequestData?.sectors"
+                  class="badge"
+                  [ngStyle]="{'background-color': '#733AEA', 'margin-right': '5px'}">
+              {{ sector.name }}
+            </span>
+          </div>
+          <div>
+            <strong>Stages : </strong>
+            <span *ngFor="let stage of initialRequestData?.stages"
+                  class="badge"
+                  [ngStyle]="{'background-color': '#733AEA', 'margin-right': '5px'}">
+              {{ stage.name }}
+            </span>
+          </div>
+          <div>
+            <strong>Contact : </strong>
+            <span>{{ initialRequestData?.contactInfo }}</span>
+          </div>
+          <div>
+            <strong>Created At : </strong>
+            <span>{{ initialRequestData?.foundedYear }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="cancel()">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>

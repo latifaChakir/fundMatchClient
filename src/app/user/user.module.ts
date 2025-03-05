@@ -3,20 +3,29 @@ import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from './user-routing.module';
 import {FooterComponent} from "./layout/footer/footer.component";
 import {NavComponent} from "./layout/nav/nav.component";
+import {StartupDetailComponent} from "./startup-detail/startup-detail.component";
+import {PaginatorModule} from "primeng/paginator";
+import {QuillEditorComponent} from "ngx-quill";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
   declarations: [
     FooterComponent,
-    NavComponent
+    NavComponent,
+    StartupDetailComponent
   ],
   exports: [
     NavComponent,
-    FooterComponent
+    FooterComponent,
+    StartupDetailComponent
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    PaginatorModule,
+    QuillEditorComponent,
+    ReactiveFormsModule
   ]
 })
 export class UserModule { }

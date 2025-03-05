@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Project, ProjectStage, ProjectStatus} from "../../core/models/project/project.model";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Store} from "@ngrx/store";
@@ -11,7 +11,7 @@ import {EventType} from "../../core/models/event/event.model";
   templateUrl: './add-project.component.html',
   styleUrl: './add-project.component.css'
 })
-export class AddProjectComponent {
+export class AddProjectComponent implements OnInit{
   @Output() closePopup = new EventEmitter<void>();
   @Output() openPopup = new EventEmitter<void>();
   @Input() initialRequestData: Project | null = null;
