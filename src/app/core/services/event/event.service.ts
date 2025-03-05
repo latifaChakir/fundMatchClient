@@ -11,7 +11,7 @@ export class EventService {
   private api = `${environment.apiUrl}/events`;
 
   constructor(private http: HttpClient) { }
-  saveEvent(event: Event): Observable<Event> {
+  saveEvent(event: FormData): Observable<Event> {
     return this.http.post<{ data:Event }>(`${this.api}/save`, event).pipe(
       map(response => response.data)
     );

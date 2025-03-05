@@ -9,5 +9,6 @@ export function createEventValidator(fb: FormBuilder) {
     date: ['', Validators.required],
     cost: ['', Validators.required],
     maxParticipants: ['', Validators.required],
+    sector: ['', Validators.required],
   });
 }

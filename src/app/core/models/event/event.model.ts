@@ -1,3 +1,5 @@
+import {Sector} from "../sector/sector.model";
+
 export enum EventType {
   PITCH_EVENT = 'PITCH_EVENT',
   NETWORKING = 'NETWORKING',
@@ -12,4 +14,6 @@ export interface Event {
   cost: number;
   type: EventType;
   maxParticipants: number;
+  sector?: Sector;
+  imagePath?: string;
 }

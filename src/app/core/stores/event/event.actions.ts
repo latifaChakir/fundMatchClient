@@ -9,7 +9,7 @@ export const EventActions = createActionGroup({
     'Load Events Success': props<{ events: Event[] }>(),
     'Load Events Failure': props<{ error: string }>(),
 
-    'Add Event': props<{ event: Event }>(),
+    'Add Event': props<{ event:any  }>(),
     'Add Event Success': props<{ event: Event }>(),
     'Add Event Failure': props<{ error: string }>(),
 
@@ -17,7 +17,7 @@ export const EventActions = createActionGroup({
     'Get Event By Id Success': props<{ event: Event }>(),
     'Get Event By Id Failure': props<{ error: string }>(),
 
-    'Update Event': props<{ event: Event }>(),
+    'Update Event': props<{ event: any }>(),
     'Update Event Success': props<{ event: Event }>(),
     'Update Event Failure': props<{ error: string }>(),
 
