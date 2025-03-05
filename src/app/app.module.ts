@@ -32,14 +32,13 @@ import {QuillModule} from "ngx-quill";
 import {eventReducer, eventsFeatureKey} from "./core/stores/event/event.reducer";
 import {EventEffects} from "./core/stores/event/event.effects";
 import {HomeComponent} from "./user/home/home.component";
-import {EventComponent} from "./user/event/event.component";
 import {UserModule} from "./user/user.module";
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [AppComponent,
     HomeComponent,
-    EventComponent
+
   ],
   imports: [
     BrowserModule,

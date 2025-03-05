@@ -7,13 +7,15 @@ import {StartupDetailComponent} from "./startup-detail/startup-detail.component"
 import {PaginatorModule} from "primeng/paginator";
 import {QuillEditorComponent} from "ngx-quill";
 import {ReactiveFormsModule} from "@angular/forms";
+import {EventComponent} from "./event/event.component";
 
 
 @NgModule({
   declarations: [
     FooterComponent,
     NavComponent,
-    StartupDetailComponent
+    StartupDetailComponent,
+    EventComponent
   ],
   exports: [
     NavComponent,
