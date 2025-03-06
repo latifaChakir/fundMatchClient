@@ -13,7 +13,7 @@ import {EventActions} from "../../../core/stores/event/event.actions";
 export class EventComponent implements OnInit{
   p: number = 1;
   showModal = false;
- events$: Observable<Event[]>;
+  events$: Observable<Event[]>;
   selectedEvent: Event | null = null;
   visible: boolean = false;
   eventIdToDelete: number | null = null;

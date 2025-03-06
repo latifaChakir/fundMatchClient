@@ -17,7 +17,7 @@ export class SectorService {
     );
   }
   getSectors(): Observable<Sector[]> {
-    return this.http.get<{ data: Sector[] }>(this.api).pipe(
+    return this.http.get<{ data: Sector[] }>(`${this.api}/all`).pipe(
       map(response => response.data)
     );
   }

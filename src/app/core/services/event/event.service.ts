@@ -17,7 +17,7 @@ export class EventService {
     );
   }
   getEvents(): Observable<Event[]> {
-    return this.http.get<{ data: Event[] }>(this.api).pipe(
+    return this.http.get<{ data: Event[] }>(`${this.api}/all`).pipe(
       map(response => response.data)
     );
   }

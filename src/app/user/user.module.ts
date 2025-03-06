@@ -8,6 +8,7 @@ import {PaginatorModule} from "primeng/paginator";
 import {QuillEditorComponent} from "ngx-quill";
 import {ReactiveFormsModule} from "@angular/forms";
 import {EventComponent} from "./event/event.component";
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {EventComponent} from "./event/event.component";
     UserRoutingModule,
     PaginatorModule,
     QuillEditorComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 export class UserModule { }
