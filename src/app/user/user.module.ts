@@ -10,6 +10,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {EventComponent} from "./event/event.component";
 import {NgxPaginationModule} from "ngx-pagination";
 import {ReservationComponent} from "./reservation-event/reservation/reservation.component";
+import {PaymentComponent} from "./payment/payment.component";
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {ReservationComponent} from "./reservation-event/reservation/reservation.
     NavComponent,
     StartupDetailComponent,
     EventComponent,
-    ReservationComponent
+    ReservationComponent,
+    PaymentComponent
   ],
   exports: [
     NavComponent,

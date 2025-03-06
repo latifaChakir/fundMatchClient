@@ -1,0 +1,54 @@
+.payment-form {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#card-element {
+  background: white;
+  border: 1px solid #ced4da;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+small.text-muted {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+  color: #6c757d;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background: #6f42c1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #563d7c;
+}

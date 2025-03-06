@@ -1,0 +1,13 @@
+<div class="payment-form">
+  <h2>Paiement</h2>
+  <form (submit)="pay()">
+    <div class="form-group">
+      <label for="card-element">Numéro de carte</label>
+      <div id="card-element"></div>
+      <small class="text-muted">MM / AA  -  CVC</small>
+      <div id="card-errors" role="alert"></div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Pay Now</button>
+  </form>
+</div>

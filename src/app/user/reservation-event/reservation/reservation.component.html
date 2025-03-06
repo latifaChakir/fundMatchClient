@@ -92,7 +92,7 @@
               Click the button below to pay for your course.</ul>
           </div>
           <div class="ticket-footer text-center">
-            <a href="#" class="btn btn-transparent-md">Buy a ticket</a>
+            <a [routerLink]="'/ticket/' + selectedEvent?.id" class="btn btn-transparent-md">Buy a ticket</a>
           </div>
         </div>
       </div>
