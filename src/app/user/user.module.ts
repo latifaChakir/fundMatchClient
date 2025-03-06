@@ -9,6 +9,7 @@ import {QuillEditorComponent} from "ngx-quill";
 import {ReactiveFormsModule} from "@angular/forms";
 import {EventComponent} from "./event/event.component";
 import {NgxPaginationModule} from "ngx-pagination";
+import {ReservationComponent} from "./reservation-event/reservation/reservation.component";
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {NgxPaginationModule} from "ngx-pagination";
     FooterComponent,
     NavComponent,
     StartupDetailComponent,
-    EventComponent
+    EventComponent,
+    ReservationComponent
   ],
   exports: [
     NavComponent,
