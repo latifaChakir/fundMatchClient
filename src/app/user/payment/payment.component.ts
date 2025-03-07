@@ -13,6 +13,7 @@ export class PaymentComponent implements OnInit {
   private stripe = Stripe('pk_test_51OgSTnFbafuC7MxDt8egQAmWMfi7XBXglYIUNmhY7hECOW0KiSf4NmmQplnel38WbNktGzF7L4D9YxMqjmQYRled00ymDPuccC');
   card: any;
   eventId!: number;
+  paymentSuccess = false;
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -64,6 +65,8 @@ export class PaymentComponent implements OnInit {
     }).subscribe(
       response => {
         console.log('Paiement réussi:', response);
+        this.card.clear();
+        this.paymentSuccess = true;
       },
       err => {
         console.error('Erreur lors du paiement:', err);

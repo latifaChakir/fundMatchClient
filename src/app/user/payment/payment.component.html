@@ -1,3 +1,12 @@
+<div *ngIf="paymentSuccess"
+     class="alert alert-primary alert-icon alert-dismissible fade show d-inline-block w-auto"
+     style="background: #0FCA7A; color: #fff"
+     role="alert">
+  <em class="icon ni ni-check-circle"></em>
+  <strong>Paiement réussi!</strong> Votre réservation a été confirmée, Merci de vérifier ton email et télécharger le ticket.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="background: #0FCA7A;"></button>
+</div>
+
 <div class="payment-form">
   <h2>Paiement</h2>
   <form (submit)="pay()">

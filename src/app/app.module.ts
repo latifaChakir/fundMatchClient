@@ -35,6 +35,7 @@ import {HomeComponent} from "./user/home/home.component";
 import {UserModule} from "./user/user.module";
 import {reservationReducer, reservationsFeatureKey} from "./core/stores/reservation/reservation.reducer";
 import {ReservationEffects} from "./core/stores/reservation/reservation.effects";
+import {DashboardModule} from "./dashboard/dashboard.module";
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -72,6 +73,7 @@ import {ReservationEffects} from "./core/stores/reservation/reservation.effects"
     NgxPaginationModule,
     QuillModule.forRoot(),
     UserModule,
+    DashboardModule
 
   ],
   providers: [
