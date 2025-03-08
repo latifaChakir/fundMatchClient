@@ -14,6 +14,7 @@ export class PaymentComponent implements OnInit {
   card: any;
   eventId!: number;
   paymentSuccess = false;
+  isLoading = false;
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -47,15 +48,18 @@ export class PaymentComponent implements OnInit {
   }
 
   async pay() {
+    this.isLoading = true;
     const { token, error } = await this.stripe.createToken(this.card);
 
     if (error) {
       console.error("Erreur de création du token:", error);
+      this.isLoading = false;
       return;
     }
 
     if (!this.eventId) {
       console.error("eventId non défini. Vérifiez l'URL.");
+      this.isLoading = false;
       return;
     }
 
@@ -67,9 +71,11 @@ export class PaymentComponent implements OnInit {
         console.log('Paiement réussi:', response);
         this.card.clear();
         this.paymentSuccess = true;
+        this.isLoading = false;
       },
       err => {
         console.error('Erreur lors du paiement:', err);
+        this.isLoading = false;
       }
     );
   }
