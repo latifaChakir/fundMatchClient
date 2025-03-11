@@ -1,12 +1,55 @@
-<div class="chat-container">
-  <div class="messages">
-    <div *ngFor="let msg of messages" class="message">
-      <strong>{{ msg.senderId }}:</strong> {{ msg.content }}
+<div class="chat-wrapper">
+  <!-- Barre latérale -->
+  <div class="sidebar">
+    <div
+      class="conversation"
+      *ngFor="let user of users$ | async"
+      (click)="selectUser(user)"
+      [ngClass]="{'active': user.id === selectedReceiverId}"
+    >
+      <div class="avatar">
+        {{ user.firstName.slice(0,1).toUpperCase() }}{{ user.lastName.slice(0,1).toUpperCase() }}
+      </div>
+      <div class="conversation-details">
+        <div class="user-name">{{ user.firstName }} {{ user.lastName }}</div>
+        <div class="last-message">Dernier message...</div>
+      </div>
+      <div class="conversation-time">6 Apr</div>
     </div>
   </div>
 
-  <div class="chat-input">
-    <input type="text" [(ngModel)]="newMessage" placeholder="Écrire un message..." />
-    <button (click)="sendMessage()">Envoyer</button>
+  <!-- Zone de chat -->
+  <div class="chat-area">
+    <div class="chat-header" *ngIf="selectedUser">
+      <div class="avatar">
+        {{ selectedUser.firstName.slice(0,1).toUpperCase() }}{{ selectedUser.lastName.slice(0,1).toUpperCase() }}
+      </div>
+      <div class="chat-header-info">
+        <h2>{{ selectedUser.firstName }} {{ selectedUser.lastName }}</h2>
+        <p>Now</p>
+      </div>
+    </div>
+
+    <!-- Liste des messages -->
+    <div class="messages">
+      <div
+        *ngFor="let msg of filteredMessages"
+        class="message-container"
+        [ngClass]="{'sent': msg.sent, 'received': !msg.sent}"
+      >
+        <div class="message-content">
+          <p>{{ msg.content }}</p>
+          <span class="timestamp">
+            {{ msg.timestamp | date:'shortTime' }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Zone de saisie -->
+    <div class="chat-input">
+      <input type="text" [(ngModel)]="newMessage" placeholder="Tapez votre message..." />
+      <button (click)="sendMessage()">Envoyer</button>
+    </div>
   </div>
 </div>

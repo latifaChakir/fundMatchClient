@@ -36,6 +36,8 @@ import {UserModule} from "./user/user.module";
 import {reservationReducer, reservationsFeatureKey} from "./core/stores/reservation/reservation.reducer";
 import {ReservationEffects} from "./core/stores/reservation/reservation.effects";
 import {DashboardModule} from "./dashboard/dashboard.module";
+import {userReducer, usersFeatureKey} from "./core/stores/user/user.reducer";
+import {UserEffects} from "./core/stores/user/user.effects";
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -56,9 +58,11 @@ import {DashboardModule} from "./dashboard/dashboard.module";
       [projectsFeatureKey]: projectReducer,
       [eventsFeatureKey]: eventReducer,
       [reservationsFeatureKey]: reservationReducer,
+      [usersFeatureKey]: userReducer,
     }),
     EffectsModule.forRoot([AuthEffects, SectorEffects,
       StageEffects, InvestorEffects, StartupEffects,
+      UserEffects,
       ProjectEffects, EventEffects, ReservationEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
