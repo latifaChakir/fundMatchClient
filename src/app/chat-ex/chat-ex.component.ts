@@ -53,7 +53,7 @@ export class ChatExComponent implements OnInit {
         };
 
         this.messages.push(messageWithSentStatus);
-        this.filterMessages();  // Maintenant avec senderId et receiverId correctement définis
+        this.filterMessages();
         this.cdRef.detectChanges();
       }
     });
@@ -90,7 +90,7 @@ export class ChatExComponent implements OnInit {
     this.selectedUser = user;
     this.selectedReceiverId = user.id;
     this.filterMessages();
-    this.cdRef.detectChanges(); // 🔹 Forcer la mise à jour de l'affichage
+    this.cdRef.detectChanges();
   }
 
   filterMessages() {
@@ -129,7 +129,8 @@ export class ChatExComponent implements OnInit {
       this.webSocketService.sendMessage(messagePayload);
       this.newMessage = '';
 
-      this.cdRef.detectChanges(); // 🔹 Assurer la mise à jour de l'UI
+      this.cdRef.detectChanges();
     }
   }
+
 }
