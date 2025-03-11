@@ -1,0 +1,162 @@
+<div class="nk-body ui-rounder has-sidebar ">
+  <div class="nk-app-root">
+    <div class="nk-main ">
+      <div class="nk-sidebar is-light nk-sidebar-fixed is-light " data-content="sidebarMenu">
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class="nk-wrap ">
+        <div class="nk-header is-light nk-header-fixed is-light">
+          <app-navbar></app-navbar>
+        </div>
+
+        <!-------------content------------------>
+        <div class="nk-content nk-content-fluid">
+          <div class="container-xl wide-xl">
+            <div class="nk-content-body">
+              <div class="nk-block-head nk-block-head-sm">
+                <div class="nk-block-between">
+                  <div class="nk-block-head-content">
+                    <h3 class="nk-block-title page-title" style="font-family: Nunito, sans-serif;
+                    font-size: 1.5rem;
+                    font-weight: 700; margin: 0; color: #364a63 ">Campaign Management</h3>
+                  </div><!-- .nk-block-head-content -->
+                  <div class="nk-block-head-content">
+                    <div class="toggle-wrap nk-block-tools-toggle">
+                      <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
+                      <div class="toggle-expand-content" data-content="pageMenu">
+                        <ul class="nk-block-tools g-3">
+                          <li>
+                            <a href="#" class="dropdown-toggle btn btn-white btn-dim btn-outline-light" data-bs-toggle="dropdown"><em class="icon ni ni-plus"></em><span><span class="d-md-none">Add</span><span class="d-none d-md-block">Add Campaign</span></span></a>
+                          </li>
+                          <li class="nk-block-tools-opt"><a href="#" class="btn btn-primary"><em class="icon ni ni-reports"></em><span>Reports</span></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="nk-block">
+                <div class="row g-gs">
+                  <div class="col-lg-3 col-sm-6">
+                    <div class="card h-100 bg-primary">
+                      <div class="nk-cmwg nk-cmwg1">
+                        <div class="card-inner pt-3">
+                          <div class="d-flex justify-content-between">
+                            <div class="flex-item">
+                              <div class="text-white d-flex flex-wrap">
+                                <span class="fs-2 me-1">{{ users }}</span>
+                              </div>
+                              <h6 class="text-white">Total Users</h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-sm-6">
+                    <div class="card h-100 bg-info">
+                      <div class="nk-cmwg nk-cmwg1">
+                        <div class="card-inner pt-3">
+                          <div class="d-flex justify-content-between">
+                            <div class="flex-item">
+                              <div class="text-white d-flex flex-wrap">
+                                <span class="fs-2 me-1">{{ startups }}</span>
+                              </div>
+                              <h6 class="text-white">Total Startups</h6>
+                            </div>
+                            <div class="card-tools me-n1"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-sm-6">
+                    <div class="card h-100 bg-warning">
+                      <div class="nk-cmwg nk-cmwg1">
+                        <div class="card-inner pt-3">
+                          <div class="d-flex justify-content-between">
+                            <div class="flex-item">
+                              <div class="text-white d-flex flex-wrap">
+                            <span class="fs-2 me-1">
+                              {{ investisseurs }}
+                            </span>
+                              </div>
+                              <h6 class="text-white">Total Investissors</h6>
+                            </div>
+                            <div class="card-tools me-n1"></div>
+                          </div>
+                        </div>
+                        <div class="nk-ck-wrap mt-auto overflow-hidden rounded-bottom"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-sm-6">
+                    <div class="card h-100 bg-danger">
+                      <div class="nk-cmwg nk-cmwg1">
+                        <div class="card-inner pt-3">
+                          <div class="d-flex justify-content-between">
+                            <div class="flex-item">
+                              <div class="text-white d-flex flex-wrap">
+                            <span class="fs-2 me-1">
+                              {{ events }}
+                            </span>
+                              </div>
+                              <h6 class="text-white">Total Events</h6>
+                            </div>
+                            <div class="card-tools me-n1"></div>
+                          </div>
+                        </div>
+                        <div class="nk-ck-wrap mt-auto overflow-hidden rounded-bottom"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xxl-8 col-lg-7">
+                    <div class="card card-full">
+                      <div class="card-inner">
+                        <div class="card-title-group">
+                          <div class="card-title">
+                            <h6 class="title"style="font-family: Nunito, sans-serif;
+                              font-size: 1rem;
+                              font-weight: 700; margin: 0; color: #364a63 ">Line Chart </h6>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-inner pt-0">
+                        <canvas
+                          baseChart
+                          [data]="lineChartData"
+                          [type]="lineChartType"
+                          style="width: 500px; height: 400px;">
+                        </canvas>
+                      </div>
+                      </div>
+                  </div>
+                  <div class="col-xxl-4 col-lg-5">
+                    <div class="card card-full">
+                      <div class="card-inner">
+                        <div class="card-title-group">
+                          <div class="card-title">
+                            <h6 class="title" style="font-family: Nunito, sans-serif;
+                              font-size: 1rem;
+                              font-weight: 700; margin: 0; color: #364a63 ">Startups Per Sector </h6>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-inner pt-0">
+                        <canvas baseChart
+                                [data]="doughnutChartData"
+                                [type]="doughnutChartType">
+                        </canvas>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

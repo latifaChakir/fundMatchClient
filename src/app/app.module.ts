@@ -38,6 +38,7 @@ import {ReservationEffects} from "./core/stores/reservation/reservation.effects"
 import {DashboardModule} from "./dashboard/dashboard.module";
 import {userReducer, usersFeatureKey} from "./core/stores/user/user.reducer";
 import {UserEffects} from "./core/stores/user/user.effects";
+import {provideCharts, withDefaultRegisterables} from "ng2-charts";
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -82,7 +83,8 @@ import {UserEffects} from "./core/stores/user/user.effects";
   ],
   providers: [
     provideHttpClient(withInterceptors([authInterceptor])),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideCharts(withDefaultRegisterables())
   ],
   bootstrap: [AppComponent]
 })

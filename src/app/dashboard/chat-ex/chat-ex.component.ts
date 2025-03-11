@@ -1,12 +1,12 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { ChatService } from "../core/services/webSocket/chat.service";
-import { Message, MessageType } from "../core/models/message/message.model";
+import { ChatService } from "../../core/services/webSocket/chat.service";
+import { Message, MessageType } from "../../core/models/message/message.model";
 import { Observable } from "rxjs";
-import { User } from "../core/models/user/user.model";
+import { User } from "../../core/models/user/user.model";
 import { Store } from "@ngrx/store";
-import { selectFilteredUsers } from "../core/stores/user/user.reducer";
-import { UserActions } from "../core/stores/user/user.actions";
-import { UserService } from "../core/services/user/user.service";
+import { selectFilteredUsers } from "../../core/stores/user/user.reducer";
+import { UserActions } from "../../core/stores/user/user.actions";
+import { UserService } from "../../core/services/user/user.service";
 
 @Component({
   selector: 'app-chat-ex',
