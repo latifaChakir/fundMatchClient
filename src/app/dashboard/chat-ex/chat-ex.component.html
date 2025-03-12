@@ -122,7 +122,6 @@
           </div>
         </div>
 
-        <!-- Chat body section -->
         <div class="nk-chat-body profile-shown">
           <div class="nk-chat-head" *ngIf="selectedUser">
             <ul class="nk-chat-head-info">
@@ -161,62 +160,67 @@
           </div>
 
           <div class="nk-chat-panel" data-simplebar>
-            <div *ngFor="let msg of filteredMessages"
-                 [ngClass]="msg.sent ? 'chat is-me' : 'chat is-you'">
-
-              <div class="chat-avatar" *ngIf="!msg.sent">
-                <div class="user-avatar bg-purple">
-                <span>
-                  {{ (selectedUser?.firstName?.[0] || '').toUpperCase() }}
-                  {{ (selectedUser?.lastName?.[0] || '').toUpperCase() }}
-                </span>
-                </div>
-              </div>
-
-              <div class="chat-content">
-                <div class="chat-bubbles">
-                  <div class="chat-bubble">
-                    <div class="chat-msg">{{ msg.content }}</div>
-                    <ul class="chat-msg-more">
-                      <li class="d-none d-sm-block">
-                        <a href="#" class="btn btn-icon btn-sm btn-trigger">
-                          <em class="icon ni ni-reply-fill"></em>
-                        </a>
-                      </li>
-                      <li>
-                        <div class="dropdown">
-                          <a href="#" class="btn btn-icon btn-sm btn-trigger dropdown-toggle" data-bs-toggle="dropdown">
-                            <em class="icon ni ni-more-h"></em>
-                          </a>
-                          <!-- Correction pour le dropdown-menu -->
-                          <div class="dropdown-menu dropdown-menu-sm" [ngClass]="{'dropdown-menu-end': !msg.sent}">
-                            <ul class="link-list-opt no-bdr">
-                              <li class="d-sm-none">
-                                <a href="#"><em class="icon ni ni-reply-fill"></em> Reply</a>
-                              </li>
-                              <li>
-                                <a href="#"><em class="icon ni ni-pen-alt-fill"></em> Edit</a>
-                              </li>
-                              <li>
-                                <a href="#"><em class="icon ni ni-trash-fill"></em> Remove</a>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
+            <ng-container *ngIf="selectedUser; else noUserSelected">
+              <div *ngFor="let msg of filteredMessages" [ngClass]="msg.sent ? 'chat is-me' : 'chat is-you'">
+                <div class="chat-avatar" *ngIf="!msg.sent">
+                  <div class="user-avatar bg-purple">
+            <span>
+              {{ (selectedUser?.firstName?.[0] || '').toUpperCase() }}
+              {{ (selectedUser?.lastName?.[0] || '').toUpperCase() }}
+            </span>
                   </div>
                 </div>
-                <ul class="chat-meta">
-                  <li *ngIf="msg.sent">You</li>
-                  <li *ngIf="!msg.sent">{{ selectedUser?.firstName }} {{ selectedUser?.lastName }}</li>
-                  <li>{{ msg.timestamp | date:'shortTime' }}</li>
-                </ul>
+
+                <div class="chat-content">
+                  <div class="chat-bubbles">
+                    <div class="chat-bubble">
+                      <div class="chat-msg">{{ msg.content }}</div>
+                      <ul class="chat-msg-more">
+                        <li class="d-none d-sm-block">
+                          <a href="#" class="btn btn-icon btn-sm btn-trigger">
+                            <em class="icon ni ni-reply-fill"></em>
+                          </a>
+                        </li>
+                        <li>
+                          <div class="dropdown">
+                            <a href="#" class="btn btn-icon btn-sm btn-trigger dropdown-toggle" data-bs-toggle="dropdown">
+                              <em class="icon ni ni-more-h"></em>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-sm" [ngClass]="{'dropdown-menu-end': !msg.sent}">
+                              <ul class="link-list-opt no-bdr">
+                                <li class="d-sm-none">
+                                  <a href="#"><em class="icon ni ni-reply-fill"></em> Reply</a>
+                                </li>
+                                <li>
+                                  <a href="#"><em class="icon ni ni-pen-alt-fill"></em> Edit</a>
+                                </li>
+                                <li>
+                                  <a href="#"><em class="icon ni ni-trash-fill"></em> Remove</a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <ul class="chat-meta">
+                    <li *ngIf="msg.sent">You</li>
+                    <li *ngIf="!msg.sent">{{ selectedUser?.firstName }} {{ selectedUser?.lastName }}</li>
+                    <li>{{ msg.timestamp | date:'shortTime' }}</li>
+                  </ul>
+                </div>
               </div>
-            </div>
+            </ng-container>
           </div>
 
-          <!-- Chat editor integration -->
+          <ng-template #noUserSelected>
+            <div class="nk-chat-no-user" style="text-align: center; margin-top: 50px;">
+              <p>Vos messages</p>
+              <p>Envoyez des messages privés à un(e) ami(e)</p>
+            </div>
+          </ng-template>
+
           <div class="nk-chat-editor">
             <div class="nk-chat-editor-upload ms-n1">
               <a href="#" class="btn btn-sm btn-icon btn-trigger text-primary toggle-opt" data-target="chat-upload"><em class="icon ni ni-plus-circle-fill"></em></a>
@@ -231,8 +235,8 @@
             </div>
             <div class="nk-chat-editor-form">
               <div class="form-control-wrap">
-                <textarea class="form-control form-control-simple no-resize" rows="1"
-                          [(ngModel)]="newMessage" placeholder="Type your message..."></textarea>
+        <textarea class="form-control form-control-simple no-resize" rows="1"
+                  [(ngModel)]="newMessage" placeholder="Type your message..."></textarea>
               </div>
             </div>
             <ul class="nk-chat-editor-tools g-2">
