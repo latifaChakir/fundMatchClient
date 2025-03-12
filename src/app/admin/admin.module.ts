@@ -16,6 +16,7 @@ import {NgxPaginationModule} from "ngx-pagination";
 import {EventComponent} from "./event-management/event/event.component";
 import {AddEventComponent} from "./event-management/add-event/add-event.component";
 import {QuillEditorComponent} from "ngx-quill";
+import {PublishedEventComponent} from "./event-management/published-event/published-event.component";
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {QuillEditorComponent} from "ngx-quill";
     StageComponent,
     AddStageComponent,
     EventComponent,
-    AddEventComponent
+    AddEventComponent,
+    PublishedEventComponent
   ],
   imports: [
     CommonModule,

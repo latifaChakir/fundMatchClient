@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
+import {map, Observable} from "rxjs";
 import {Sector} from "../../core/models/sector/sector.model";
 import {Store} from "@ngrx/store";
 import {selectSectors} from "../../core/stores/sector/sector.reducer";
@@ -21,7 +21,9 @@ export class EventComponent implements OnInit{
 
   constructor(private store: Store) {
     this.sectors$ = this.store.select(selectSectors);
-    this.events$ = this.store.select(selectFilteredEvents);
+    this.events$ = this.store.select(selectFilteredEvents).pipe(
+      map(events => events.filter(event => event.isPublished))
+    );
   }
 
   ngOnInit() {

@@ -100,6 +100,25 @@ export const EventsFeature = createFeature({
       filteredEvents: state.events.filter(event =>
         event.title.toLowerCase().includes(searchTerm.toLowerCase())
       ),
+
+    })),
+    on(EventActions.updateEventStatus, (state) => ({
+      ...state,
+      error: null
+    })),
+    on(EventActions.updateEventStatusSuccess, (state, { event }) => ({
+      ...state,
+      events: state.events.map(p =>
+        p.id === event.id ? { ...p, isPublished: event.isPublished } : p
+      ),
+      filteredEvents: state.filteredEvents.map(p =>
+        p.id === event.id ? { ...p, isPublished: event.isPublished } : p
+      ),
+      error: null
+    })),
+    on(EventActions.updateEventStatusFailure, (state, { error }) => ({
+      ...state,
+      error
     })),
   )
 });

@@ -20,7 +20,7 @@ export class SectorComponent implements OnInit, OnDestroy {
   visible: boolean = false;
   sectorIdToDelete: number | null = null;
 
-  itemsPerPage: number = 3;
+  itemsPerPage: number = 4;
   currentPage: number = 1;
 
   private unsubscribe$ = new Subject<void>();

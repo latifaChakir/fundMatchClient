@@ -81,4 +81,22 @@ export class EventEffects {
     )
   );
 
+  updateEventStatus$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(EventActions.updateEventStatus),
+      mergeMap((action) =>
+        this.eventService.updateEventStatus(action.eventId).pipe(
+          map((event: Event) => {
+            if (event) {
+              return EventActions.updateEventStatusSuccess({ event });
+            } else {
+              return EventActions.updateEventStatusFailure({ error: 'Status update failed' });
+            }
+          }),
+          catchError((error) => of(EventActions.updateEventStatusFailure({ error: error.message })))
+        )
+      )
+    )
+  );
+
 }

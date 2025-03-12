@@ -16,4 +16,5 @@ export interface Event {
   maxParticipants: number;
   sector?: Sector;
   imagePath?: string;
+  isPublished : boolean;
 }

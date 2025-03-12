@@ -35,4 +35,10 @@ export class EventService {
       map(response => response.data)
     );
   }
+
+  updateEventStatus(eventId: number): Observable<Event>{
+    return this.http.get<{ data: Event }>(`${this.api}/updateStatus/${eventId}`, {}).pipe(
+      map(response => response.data)
+    );
+  }
 }

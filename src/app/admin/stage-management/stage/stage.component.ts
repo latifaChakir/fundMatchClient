@@ -47,7 +47,7 @@ export class StageComponent implements OnInit{
     this.visible = true;
   }
 
-  confirmDeleteSector() {
+  confirmDeleteStage() {
     if (this.stageIdToDelete !== null) {
       this.store.dispatch(StageActions.deleteStage({ id: this.stageIdToDelete }));
     }

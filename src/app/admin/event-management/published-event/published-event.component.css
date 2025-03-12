@@ -1,0 +1,2 @@
+.title[data-status="true"] { color: green; }
+.title[data-status="false"] { color: red; }

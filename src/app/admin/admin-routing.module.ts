@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import {SectorComponent} from "./sector-management/sector/sector.component";
 import {StageComponent} from "./stage-management/stage/stage.component";
 import {EventComponent} from "./event-management/event/event.component";
+import {PublishedEventComponent} from "./event-management/published-event/published-event.component";
 
 const routes: Routes = [
   {path: 'sectors', component: SectorComponent},
   {path: 'stages', component: StageComponent},
   {path: 'events', component: EventComponent},
+  {path: 'published-events', component: PublishedEventComponent},
 ];
 
 @NgModule({

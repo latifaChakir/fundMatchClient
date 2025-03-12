@@ -38,7 +38,7 @@
                           </li>
                           <li class="nk-block-tools-opt">
                             <a (click)="showModal = true" class="toggle btn btn-icon btn-primary d-md-none"><em class="icon ni ni-plus"></em></a>
-                            <a (click)="showModal = true" class="toggle btn btn-primary d-none d-md-inline-flex"><em class="icon ni ni-plus"></em><span>Add Event</span></a>
+                            <a (click)="showModal = true" style="color: #fff" class="toggle btn btn-primary d-none d-md-inline-flex"><em class="icon ni ni-plus"></em><span>Add Event</span></a>
                           </li>
                         </ul>
                       </div>
@@ -72,7 +72,7 @@
                           </div>
                         </div>
 
-                        <div *ngFor="let event of (events$ | async) ?? [] | paginate: { itemsPerPage: 3, currentPage: p }" class="nk-tb-item">
+                        <div *ngFor="let event of (events$ | async) ?? [] | paginate: { itemsPerPage: 4, currentPage: p }" class="nk-tb-item">
                           <div class="nk-tb-col nk-tb-col-check">
                             <div class="custom-control custom-control-sm custom-checkbox notext">
                               <input type="checkbox" class="custom-control-input" id="pid1">
@@ -117,12 +117,12 @@
                                     <ul class="link-list-opt no-bdr">
                                       <li>
                                         <a (click)="event.id ? editEvent(event.id) : null" style="cursor:pointer">
-                                          <em class="icon ni ni-edit"></em><span>Edit Sector</span>
+                                          <em class="icon ni ni-edit"></em><span>Edit Event</span>
                                         </a>
                                       </li>
                                       <li>
                                         <a (click)="event.id ? showDeleteConfirmation(event.id) : null" style="cursor:pointer">
-                                          <em class="icon ni ni-trash"></em><span>Remove Sector</span>
+                                          <em class="icon ni ni-trash"></em><span>Remove event</span>
                                         </a>
                                       </li>
                                     </ul>
@@ -173,7 +173,7 @@
   <div class="text-center" >
     <em class="icon ni ni-alert-circle warning-icon"></em>
     <h3 class="font-bold mt-3 fw-bold">Are you sure?</h3>
-    <p class="text-secondary">You really want deleting this sector</p>
+    <p class="text-secondary">You really want deleting this event</p>
   </div>
 
   <div class="d-flex justify-content-center gap-3 mt-4 mb-4">
