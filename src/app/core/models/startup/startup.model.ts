@@ -16,4 +16,6 @@ export interface Startup {
   sectors: Sector[];
   stages: Stage[];
   imagePath?: string;
+  likes: number;
+  comments: Comment[];
 }

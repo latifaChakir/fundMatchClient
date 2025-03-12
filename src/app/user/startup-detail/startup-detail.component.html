@@ -1,5 +1,5 @@
-<div class="modal fade show d-block" tabindex="-1">
-  <div class="modal-dialog modal-lg">
+<div class="modal fade show d-block" tabindex="-1" >
+  <div class="modal-dialog modal-lg" >
     <div class="modal-content">
       <div class="modal-header">
         <div>
@@ -11,9 +11,25 @@
         <button type="button" class="btn-close" (click)="cancel()"></button>
       </div>
 
-      <div class="modal-body d-flex">
-        <div>
+      <div class="modal-body " style="max-height: 300px !important; overflow-y: auto !important; ">
+        <div class="d-flex">
+          <div>
           <img src="{{ initialRequestData?.imagePath  }}" alt="Company Logo" class="company-image">
+          <div class="kanban-item-meta">
+            <ul class="kanban-item-meta-list">
+              <li><em class="icon ni ni-calendar"></em><span></span></li>
+              <li><span>{{ initialRequestData?.foundedYear }}</span></li>
+            </ul>
+            <ul class="kanban-item-meta-list">
+              <li>
+                <a style="cursor: pointer" (click)="likeStartup()">
+                  <em class="icon ni" [ngClass]="hasLiked ? 'ni-heart-fill' : 'ni-heart'"></em>
+                </a>
+                <span class="mx-1"> {{ likesCount? likesCount : 0 }} </span>
+              </li>
+              <li><a style="cursor: pointer" (click)="toggleCommentEditor()"><em class="icon ni ni-comments"></em></a><span>{{ commentsCount? commentsCount : 0 }} </span></li>
+            </ul>
+          </div>
         </div>
         <div class="ms-3">
           <p>{{ initialRequestData?.description }}</p>
@@ -37,12 +53,16 @@
             <strong>Contact : </strong>
             <span>{{ initialRequestData?.contactInfo }}</span>
           </div>
-          <div>
-            <strong>Created At : </strong>
-            <span>{{ initialRequestData?.foundedYear }}</span>
-          </div>
+        </div>
+        </div>
+        <div *ngIf="showCommentEditor" class="m-3">
+          <quill-editor [(ngModel)]="newComment" theme="snow"></quill-editor>
+          <button class="btn btn-round btn-primary btn-icon d-flex float-end" (click)="addComment()">
+            <em class="icon ni ni-send-alt"></em>
+          </button>
         </div>
       </div>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="cancel()">Fermer</button>
       </div>
