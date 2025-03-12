@@ -46,7 +46,9 @@
                               <div class="text-white d-flex flex-wrap">
                                 <span class="fs-2 me-1">{{ users }}</span>
                               </div>
-                              <h6 class="text-white">Total Users</h6>
+                              <h6 class="text-white" style="font-family: Nunito, sans-serif;
+                              font-size: 1rem;
+                              font-weight: 700; margin: 0;">Total Users</h6>
                             </div>
                           </div>
                         </div>
@@ -62,7 +64,9 @@
                               <div class="text-white d-flex flex-wrap">
                                 <span class="fs-2 me-1">{{ startups }}</span>
                               </div>
-                              <h6 class="text-white">Total Startups</h6>
+                              <h6 class="text-white" style="font-family: Nunito, sans-serif;
+                              font-size: 1rem;
+                              font-weight: 700; margin: 0;">Total Startups</h6>
                             </div>
                             <div class="card-tools me-n1"></div>
                           </div>
@@ -81,7 +85,9 @@
                               {{ investisseurs }}
                             </span>
                               </div>
-                              <h6 class="text-white">Total Investissors</h6>
+                              <h6 class="text-white" style="font-family: Nunito, sans-serif;
+                              font-size: 1rem;
+                              font-weight: 700; margin: 0;">Total Investissors</h6>
                             </div>
                             <div class="card-tools me-n1"></div>
                           </div>
@@ -101,7 +107,9 @@
                               {{ events }}
                             </span>
                               </div>
-                              <h6 class="text-white">Total Events</h6>
+                              <h6 class="text-white" style="font-family: Nunito, sans-serif;
+                              font-size: 1rem;
+                              font-weight: 700; margin: 0;">Total Events</h6>
                             </div>
                             <div class="card-tools me-n1"></div>
                           </div>
@@ -138,15 +146,56 @@
                           <div class="card-title">
                             <h6 class="title" style="font-family: Nunito, sans-serif;
                               font-size: 1rem;
-                              font-weight: 700; margin: 0; color: #364a63 ">Startups Per Sector </h6>
+                              font-weight: 700; margin: 0; color: #364a63 ">Investors Per Sector </h6>
                           </div>
                         </div>
                       </div>
                       <div class="card-inner pt-0">
                         <canvas baseChart
+                                [data]="doughnutChartInvestorsData"
+                                [type]="doughnutChartType">
+                        </canvas>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-xxl-6 col-lg-6">
+                    <div class="card card-full">
+                      <div class="card-inner">
+                        <div class="card-title-group">
+                          <div class="card-title">
+                            <h6 class="title"style="font-family: Nunito, sans-serif;
+                              font-size: 1rem;
+                              font-weight: 700; margin: 0; color: #364a63 ">Startups Per Sector </h6>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-inner pt-0">
+
+                        <canvas baseChart
                                 [data]="doughnutChartData"
                                 [type]="doughnutChartType">
                         </canvas>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xxl-6 col-lg-6">
+                    <div class="card card-full">
+                      <div class="card-inner">
+                        <div class="card-title-group">
+                          <div class="card-title">
+                            <h6 class="title" style="font-family: Nunito, sans-serif;
+                              font-size: 1rem;
+                              font-weight: 700; margin: 0; color: #364a63 ">Startups Per Stages </h6>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card-inner pt-0">
+                        <canvas baseChart
+                                [data]="doughnutChartStagesData"
+                                [type]="doughnutChartType">
+                        </canvas>
+
                       </div>
                     </div>
                   </div>
