@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {NotificationService} from "../../core/services/webSocket/notification.service";
 import {NgForOf} from "@angular/common";
+import {MessageNotifService} from "../../core/services/webSocket/message-notif.service";
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +15,10 @@ import {NgForOf} from "@angular/common";
 })
 export class NavbarComponent implements OnInit{
   notifications: string[] = [];
-  constructor(private router:Router, private notificationService: NotificationService) {
+  notificationsMessages: string[] = [];
+  constructor(private router:Router,
+              private messageNotif: MessageNotifService,
+              private notificationService: NotificationService) {
   }
   logout(): void {
     console.log('Logging out...');
@@ -24,6 +28,10 @@ export class NavbarComponent implements OnInit{
   ngOnInit() {
     this.notificationService.getNotifications().subscribe(notification => {
       this.notifications.push(notification);
+    });
+
+    this.messageNotif.getNotificationsMessages().subscribe(notificationMessages => {
+      this.notificationsMessages.push(notificationMessages);
     });
   }
 }
