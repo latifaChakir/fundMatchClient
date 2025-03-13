@@ -47,7 +47,7 @@
             </span>
             <span class="nk-menu-text">Basic Data</span>
           </a>
-          <div class="collapse show" id="data">
+          <div class="collapse" id="data" [ngClass]="{'show': isActiveRoute(['sectors', 'stages'])}">
             <ul class="nk-menu-sub">
               <li class="nk-menu-item" routerLinkActive="active" >
                 <a routerLink="/sectors" routerLinkActive="active" class="nk-menu-link">
@@ -78,7 +78,7 @@
             </span>
             <span class="nk-menu-text">Applications</span>
           </a>
-          <div class="collapse" id="applications">
+          <div class="collapse" id="applications" [ngClass]="{'show': isActiveRoute(['chat'])}">
             <ul class="nk-menu-sub">
               <li class="nk-menu-item" routerLinkActive="active">
                 <a routerLink="/chat" class="nk-menu-link" routerLinkActive="active">
@@ -108,7 +108,7 @@
           </span>
             <span class="nk-menu-text">Startup</span>
           </a>
-          <div class="collapse" id="startup">
+          <div class="collapse" id="startup" [ngClass]="{'show': isActiveRoute(['startup-overview', 'startup-project','project-card'])}">
             <ul class="nk-menu-sub">
               <li class="nk-menu-item" routerLinkActive="active">
                 <a routerLink="/startup-overview" routerLinkActive="active" class="nk-menu-link">
@@ -138,12 +138,12 @@
             aria-expanded="false"
             aria-controls="invertissor"
           >
-    <span class="nk-menu-icon">
-      <em class="icon ni ni-coin"></em>
-    </span>
+          <span class="nk-menu-icon">
+            <em class="icon ni ni-coin"></em>
+          </span>
             <span class="nk-menu-text">Invertissor</span>
           </a>
-          <div class="collapse" id="invertissor">
+          <div class="collapse" id="invertissor" [ngClass]="{'show': isActiveRoute(['invertissor-list', 'invertissor-details'])}">
             <ul class="nk-menu-sub">
               <li class="nk-menu-item" routerLinkActive="active">
                 <a routerLink="/invertissor-list" class="nk-menu-link" routerLinkActive="active">
@@ -173,7 +173,7 @@
           </span>
             <span class="nk-menu-text">Events</span>
           </a>
-          <div class="collapse" id="project">
+          <div class="collapse" id="project" [ngClass]="{'show': isActiveRoute(['events', 'published-events'])}">
             <ul class="nk-menu-sub">
               <li class="nk-menu-item" routerLinkActive="active">
                 <a routerLink="/events" class="nk-menu-link">

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {NotificationService} from "../../core/services/webSocket/notification.service";
 import {NgForOf} from "@angular/common";
 import {MessageNotifService} from "../../core/services/webSocket/message-notif.service";
@@ -8,7 +8,8 @@ import {MessageNotifService} from "../../core/services/webSocket/message-notif.s
   selector: 'app-navbar',
   standalone: true,
   imports: [
-    NgForOf
+    NgForOf,
+    RouterLink
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'

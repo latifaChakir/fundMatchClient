@@ -4,6 +4,8 @@ import { Store } from "@ngrx/store";
 import { CommentService } from "../../core/services/startup/comment.service";
 import { Observable, of, Subscription } from "rxjs";
 import { UserService } from "../../core/services/user/user.service";
+import { formatDistanceToNow } from 'date-fns';
+import { fr } from 'date-fns/locale';
 
 @Component({
   selector: 'app-startup-detail',
@@ -21,6 +23,7 @@ export class StartupDetailComponent implements OnInit, OnChanges, OnDestroy {
   likesCount = 0;
   commentsCount = 0;
   showCommentEditor = false;
+  showComments = false;
 
   private likesSubscription: Subscription | null = null;
   private commentsSubscription: Subscription | null = null;
@@ -136,5 +139,15 @@ export class StartupDetailComponent implements OnInit, OnChanges, OnDestroy {
 
   toggleCommentEditor() {
     this.showCommentEditor = !this.showCommentEditor;
+  }
+  toggleComments() {
+    this.showComments = !this.showComments;
+    if (this.showComments && this.initialRequestData?.id) {
+      this.loadComments(this.initialRequestData.id);
+    }
+  }
+  getTimeAgo(dateString: string): string {
+    const date = new Date(dateString);
+    return formatDistanceToNow(date, { addSuffix: true, locale: fr });
   }
 }

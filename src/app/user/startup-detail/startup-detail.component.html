@@ -27,7 +27,7 @@
                 </a>
                 <span class="mx-1"> {{ likesCount? likesCount : 0 }} </span>
               </li>
-              <li><a style="cursor: pointer" (click)="toggleCommentEditor()"><em class="icon ni ni-comments"></em></a><span>{{ commentsCount? commentsCount : 0 }} </span></li>
+              <li><a style="cursor: pointer" (click)="toggleCommentEditor()"><em class="icon ni ni-comments"></em></a><a (click)="toggleComments()" style="cursor:pointer"><span>{{ commentsCount? commentsCount : 0 }} </span></a></li>
             </ul>
           </div>
         </div>
@@ -60,6 +60,29 @@
           <button class="btn btn-round btn-primary btn-icon d-flex float-end" (click)="addComment()">
             <em class="icon ni ni-send-alt"></em>
           </button>
+        </div>
+        <div *ngIf="showComments" class="mt-4">
+            <div *ngFor="let comment of usersComments$ | async" class="chat is-you">
+              <div class="chat-avatar">
+                <div class="user-avatar bg-purple">
+                  <span>{{ comment.user.firstName.slice(0,1).toUpperCase() }}{{ comment.user.lastName.slice(0,1).toUpperCase() }}</span>
+                </div>
+              </div>
+              <div class="chat-content">
+                <div class="chat-bubbles">
+                  <div class="chat-bubble">
+                    <div class="chat-msg">
+                      <div>
+                        <span style="font-weight: 700;color: #38424D;"><strong>{{ comment.user.firstName }} {{ comment.user.lastName }}</strong></span>
+                        <p [innerHTML]="comment.content"></p></div>
+                      </div>
+                  </div>
+                </div>
+                <ul class="chat-meta">
+                  <li>{{ getTimeAgo(comment.createdAt) }}</li>
+                </ul>
+              </div>
+          </div>
         </div>
       </div>
 

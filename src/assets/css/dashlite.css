@@ -41213,7 +41213,6 @@ button.close {
 
 .chat {
   display: flex;
-  align-items: flex-end;
   margin: -4px;
 }
 .chat > div {

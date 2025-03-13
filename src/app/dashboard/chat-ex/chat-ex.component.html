@@ -164,10 +164,9 @@
               <div *ngFor="let msg of filteredMessages" [ngClass]="msg.sent ? 'chat is-me' : 'chat is-you'">
                 <div class="chat-avatar" *ngIf="!msg.sent">
                   <div class="user-avatar bg-purple">
-            <span>
-              {{ (selectedUser?.firstName?.[0] || '').toUpperCase() }}
-              {{ (selectedUser?.lastName?.[0] || '').toUpperCase() }}
-            </span>
+                  <span>
+                    {{ (selectedUser?.firstName?.[0] || '').toUpperCase() }}{{ (selectedUser?.lastName?.[0] || '').toUpperCase() }}
+                  </span>
                   </div>
                 </div>
 
