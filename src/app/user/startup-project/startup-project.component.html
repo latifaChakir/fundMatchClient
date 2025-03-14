@@ -20,7 +20,9 @@
       </div>
     </div>
     <div class="row mt-30 justify-content-center align-content-center">
-
+      <div *ngIf="projects.length === 0" class="col-lg-7 text-center">
+        <h3 >No projects yet.</h3>
+      </div>
       <div *ngFor="let project of projects | paginate: { itemsPerPage: 1, currentPage: p }" class="col-lg-7">
         <div class="block">
           <div class="blog-post">
@@ -40,7 +42,7 @@
               </div>
               <div *ngIf="showFeedbackEditor" class="m-3">
                 <quill-editor [(ngModel)]="newFeedback" theme="snow"></quill-editor>
-                <a style="cursor:pointer ; color:rgb(102, 45, 145); " class="d-flex float-end" >
+                <a style="cursor:pointer ; color:rgb(102, 45, 145); " class="d-flex float-end" (click)="addFeedback(project.id)">
                   <em class="icon ni ni-send-alt"></em>
                 </a>
               </div>
@@ -49,8 +51,7 @@
           </div>
         </div>
       </div>
-
-      <div class="col-lg-4">
+      <div class="col-lg-4" *ngIf="projects.length !== 0" >
         <div class="sidebar">
           <div class="widget search p-0">
             <div class="input-group">
@@ -86,6 +87,7 @@
   </div>
 </section>
 <pagination-controls
+  *ngIf="projects.length !== 0"
   class="myPagination"
   previousLabel=""
   nextLabel=""

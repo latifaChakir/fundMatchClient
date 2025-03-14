@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProjectService } from "../../core/services/project/project.service";
 import { ActivatedRoute } from "@angular/router";
 import { Project } from "../../core/models/project/project.model";
+import {FeedbackService} from "../../core/services/project/feedback.service";
+import {Feedback, FeedbackType} from "../../core/models/project/feedback.model";
 
 @Component({
   selector: 'app-startup-project',
@@ -14,8 +16,11 @@ export class StartupProjectComponent implements OnInit {
   showFullDescription: { [key: number]: boolean } = {};
   showFeedbackEditor = false;
   newFeedback = '';
+  feedbackType: FeedbackType = FeedbackType.NEUTRAL;
 
-  constructor(private projectService: ProjectService, private route: ActivatedRoute) {}
+  constructor(private projectService: ProjectService,
+              private feedbackService: FeedbackService,
+              private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -55,5 +60,32 @@ export class StartupProjectComponent implements OnInit {
 
   toggleFeedbackEditor() {
     this.showFeedbackEditor = !this.showFeedbackEditor;
+  }
+
+  addFeedback(projectId: number | undefined) {
+    if (projectId === undefined) {
+      console.warn("Project ID is undefined.");
+      return;
+    }
+    if (!this.newFeedback.trim()) {
+      console.warn("Feedback content cannot be empty");
+      return;
+    }
+    const feedback: Feedback = {
+      content: this.newFeedback,
+      isPrivate: true,
+      type: this.feedbackType
+    };
+
+    this.feedbackService.addFeedback(projectId, feedback).subscribe({
+      next: (response) => {
+        console.log("Feedback added successfully", response);
+        this.newFeedback = '';
+        this.toggleFeedbackEditor();
+      },
+      error: (error) => {
+        console.error("Error adding feedback:", error);
+      }
+    });
   }
 }
