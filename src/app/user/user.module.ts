@@ -11,6 +11,7 @@ import {EventComponent} from "./event/event.component";
 import {NgxPaginationModule} from "ngx-pagination";
 import {ReservationComponent} from "./reservation-event/reservation/reservation.component";
 import {PaymentComponent} from "./payment/payment.component";
+import {StartupProjectComponent} from "./startup-project/startup-project.component";
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {PaymentComponent} from "./payment/payment.component";
     StartupDetailComponent,
     EventComponent,
     ReservationComponent,
-    PaymentComponent
+    PaymentComponent,
+    StartupProjectComponent
   ],
   exports: [
     NavComponent,

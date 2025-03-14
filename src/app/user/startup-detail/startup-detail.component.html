@@ -87,7 +87,10 @@
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="cancel()">Fermer</button>
+        <div class="">
+          <a [routerLink]="'/startup-project/' + initialRequestData?.id" style="cursor:pointer" class="btn btn-secondary w-150px"><span>View More</span></a>
+        </div>
+        <button type="button" class="btn btn-secondary">Fermer</button>
       </div>
     </div>
   </div>

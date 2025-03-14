@@ -40,4 +40,8 @@ export class ProjectService {
       map(response => response.data)
     );
   }
+  getStartupProjects(startupId: number): Observable<Project[]> {
+    return this.http.get<Project[]>(`${this.api}/${startupId}/projects`);
+  }
+
 }
