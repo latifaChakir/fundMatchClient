@@ -27,7 +27,7 @@
         <div class="block">
           <div class="blog-post">
             <div class="post-thumb">
-              <img src="./../../../assets/landing/images/news/post-thumb-one.jpg" alt="Business meeting" class="img-fluid w-100">
+              <img src="{{project.imagePath}}" alt="Business meeting" class="img-fluid w-100" style="height: 100%">
             </div>
             <div class="post-content">
               <h1 class="mt-1 mb-2">{{project.title}}</h1>
@@ -63,21 +63,25 @@
           <div class="widget category mb-4">
             <h5 class="widget-title mb-3">Stages</h5>
             <ul class="list-unstyled">
-              <li><a href="#"><em class="icon ni ni-arrow-long-right"></em>Web Design</a></li>
-              <li><a href="#"><em class="icon ni ni-arrow-long-right"></em>Web Development</a></li>
-              <li><a href="#"><em class="icon ni ni-arrow-long-right"></em>Web Development</a></li>
-              <li><a href="#"><em class="icon ni ni-arrow-long-right"></em>Keyword Research</a></li>
-              <li><a href="#"><em class="icon ni ni-arrow-long-right"></em>Email Marketing</a></li>
-            </ul>
+              <li *ngFor="let stage of projectStages"><a href="#"><em class="icon ni ni-arrow-long-right"></em>{{stage}}</a></li>
+             </ul>
           </div>
 
           <div class="widget latest-post">
             <h5 class="widget-header">Recent Feedbacks</h5>
-            <div class="media">
-              <img src="./../../../assets/landing/images/news/post-thumb-sm-one.jpg" class="img-fluid" alt="post-thumb">
-              <div class="media-body">
-                <h6><a href="">Nam hendrerit eros in ligula suscipit suscipit</a></h6>
-                <p href="#"><span class="fa fa-calendar"></span>02 Feb, 2017</p>
+            <div class="col-12" *ngFor="let feedback of publicFeedbacks">
+              <div class="media">
+                <img src="http://localhost:9091/api/files/{{feedback.project?.imagePath}}" alt="post-thumb" style="width: 60px; height: 60px">
+                <div class="media-body">
+                  <h6>
+                    <p *ngIf="!showFullFeedBack[feedback.id!]" [innerHTML]="truncateText(feedback.content, 6)"></p>
+                    <p *ngIf="showFullFeedBack[feedback.id!]" [innerHTML]="feedback.content"></p>
+                    <a style="cursor:pointer; color:rgb(102, 45, 145);" (click)="toggleFeedback(feedback.id)">
+                      {{ showFullFeedBack[feedback.id!] ? 'Show less' : 'Show more' }}
+                    </a>
+                  </h6>
+                  <p href="#"><span class="fa fa-comment"></span>{{ feedback.project?.title }}</p>
+                </div>
               </div>
             </div>
           </div>

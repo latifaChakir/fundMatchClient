@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from "../../core/services/project/project.service";
 import { ActivatedRoute } from "@angular/router";
-import { Project } from "../../core/models/project/project.model";
+import {Project, ProjectStage} from "../../core/models/project/project.model";
 import {FeedbackService} from "../../core/services/project/feedback.service";
 import {Feedback, FeedbackType} from "../../core/models/project/feedback.model";
 
@@ -12,11 +12,14 @@ import {Feedback, FeedbackType} from "../../core/models/project/feedback.model";
 })
 export class StartupProjectComponent implements OnInit {
   projects: Project[] = [];
+  projectStages = Object.values(ProjectStage);
   p: number = 1;
   showFullDescription: { [key: number]: boolean } = {};
   showFeedbackEditor = false;
+  showFullFeedBack: { [key: number]: boolean } = {};
   newFeedback = '';
   feedbackType: FeedbackType = FeedbackType.NEUTRAL;
+  publicFeedbacks: Feedback[] = [];
 
   constructor(private projectService: ProjectService,
               private feedbackService: FeedbackService,
@@ -27,6 +30,7 @@ export class StartupProjectComponent implements OnInit {
       const startupId = Number(params.get('id'));
       if (!isNaN(startupId)) {
         this.loadStartupProjects(startupId);
+        this.loadPublicFeedback(startupId);
       }
     });
   }
@@ -88,4 +92,21 @@ export class StartupProjectComponent implements OnInit {
       }
     });
   }
+
+  loadPublicFeedback(startupId: number) {
+    this.feedbackService.getPublicFeedbacksByStartup(startupId).subscribe({
+      next: (publicFeedbacks) => {
+        this.publicFeedbacks = publicFeedbacks;
+      },
+      error: (error) => {
+        console.error("Error loading feedbacks:", error);
+      }
+    });
+  }
+  toggleFeedback(feedbackId: number | undefined) {
+    if (feedbackId !== undefined) {
+      this.showFullFeedBack[feedbackId] = !this.showFullFeedBack[feedbackId];
+    }
+  }
+
 }

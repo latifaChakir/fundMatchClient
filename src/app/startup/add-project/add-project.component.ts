@@ -4,7 +4,6 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {Store} from "@ngrx/store";
 import {createprojectValidator} from "../../core/validators/project/project-validators";
 import {ProjectActions} from "../../core/stores/project/project.actions";
-import {EventType} from "../../core/models/event/event.model";
 
 @Component({
   selector: 'app-add-project',
@@ -17,6 +16,8 @@ export class AddProjectComponent implements OnInit{
   @Input() initialRequestData: Project | null = null;
   projectForm!: FormGroup;
   projectStages = Object.values(ProjectStage);
+  imageFile: File | null = null;
+
 
 
   constructor(private fb: FormBuilder, private store: Store) { }
@@ -25,31 +26,51 @@ export class AddProjectComponent implements OnInit{
     if (this.initialRequestData) {
       this.projectForm.patchValue(this.initialRequestData);
     }
-  }
-  onSubmit() {
-    const formValues = this.projectForm.getRawValue();
-    const project : Project = {
-      id: this.initialRequestData ? this.initialRequestData.id : undefined,
-      title : formValues.title,
-      description : formValues.description,
-      fundingAmount : formValues.fundingAmount,
-      stage : formValues.stage,
-      createdAt : formValues.createdAt,
-      viewCount : formValues.viewCount,
-      status : ProjectStatus.PENDING
-    }
-    if (this.initialRequestData) {
-      this.store.dispatch(ProjectActions.updateProject({ project }));
-    }else {
-      this.store.dispatch(ProjectActions.addProject({ project }));
-    }
-    this.projectForm.reset();
-    this.cancel();
-    this.initialRequestData = null;
+    console.log("Stages disponibles :", this.projectStages);
+
   }
 
+  onFileChange(event: any) {
+    if (event.target.files.length > 0) {
+      this.imageFile = event.target.files[0];
+      console.log('Fichier image sélectionné :', this.imageFile);
+    }
+  }
+  onSubmit() {
+    if (this.projectForm.valid) {
+      const formValues = this.projectForm.getRawValue();
+      const formData = new FormData();
+
+      formData.append('title', formValues.title);
+      formData.append('description', formValues.description);
+      formData.append('fundingAmount', formValues.fundingAmount);
+      formData.append('stage', formValues.stage);
+      formData.append('createdAt', formValues.createdAt);
+      formData.append('viewCount', formValues.viewCount);
+      formData.append('status', ProjectStatus.PENDING);
+
+      if (this.imageFile) {
+        formData.append('file', this.imageFile);
+      } else {
+        console.error('Aucun fichier image sélectionné.');
+      }
+
+      if (this.initialRequestData) {
+        this.store.dispatch(ProjectActions.updateProject({ project: formData }));
+      } else {
+        this.store.dispatch(ProjectActions.addProject({ project: formData }));
+      }
+
+      this.projectForm.reset();
+      this.cancel();
+      this.initialRequestData = null;
+    } else {
+      console.log('Formulaire invalide', this.projectForm.errors);
+    }
+  }
   cancel(): void {
     this.closePopup.emit();
   }
+
 
 }

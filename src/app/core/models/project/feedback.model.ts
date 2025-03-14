@@ -8,7 +8,7 @@ export enum FeedbackType{
 }
 export interface Feedback {
   id?: number;
-  content?: string;
+  content: string;
   isPrivate : boolean;
   type: FeedbackType;
   investor?: Investor;

@@ -20,5 +20,8 @@ export class FeedbackService {
   markAsPublic(feedbackId: number): Observable<any> {
     return this.http.get<any>(`${this.api}/${feedbackId}/public`);
   }
+  getPublicFeedbacksByStartup(startupIs: number): Observable<any> {
+    return this.http.get<any>(`${this.api}/PublicFeedbacksStartup/${startupIs}`);
+  }
 
 }

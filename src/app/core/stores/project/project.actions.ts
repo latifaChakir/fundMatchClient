@@ -9,7 +9,7 @@ export const ProjectActions = createActionGroup({
     'Load Projects Success': props<{ projects: Project[] }>(),
     'Load Projects Failure': props<{ error: string }>(),
 
-    'Add Project': props<{ project: Project }>(),
+    'Add Project': props<{ project: any }>(),
     'Add Project Success': props<{ project: Project }>(),
     'Add Project Failure': props<{ error: string }>(),
 
@@ -17,7 +17,7 @@ export const ProjectActions = createActionGroup({
     'Get Project By Id Success': props<{ project: Project }>(),
     'Get Project By Id Failure': props<{ error: string }>(),
 
-    'Update Project': props<{ project: Project }>(),
+    'Update Project': props<{ project: any }>(),
     'Update Project Success': props<{ project: Project }>(),
     'Update Project Failure': props<{ error: string }>(),
 

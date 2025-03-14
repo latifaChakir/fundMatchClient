@@ -20,4 +20,5 @@ export interface Project {
   createdAt: string;
   viewCount: number;
   status: ProjectStatus;
+  imagePath?: string;
 }

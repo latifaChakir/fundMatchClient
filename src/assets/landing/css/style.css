@@ -3208,7 +3208,7 @@ ul.pagination .active a {
   color: #fff !important;
 }
 
-.testimonial .testimonial-item .comment:hover:before {
+.testimonial .testimonial-item .comimg-fluidment:hover:before {
   border-color: transparent rgb(102, 45, 145) transparent transparent;
 }
 
@@ -3221,8 +3221,8 @@ ul.pagination .active a {
 }
 
 .testimonial .testimonial-item .media img {
-  height: 65px;
-  width: 65px;
+  height: 30px;
+  width: 30px;
   border-radius: 100%;
 }
 
