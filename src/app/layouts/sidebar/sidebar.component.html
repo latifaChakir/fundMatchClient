@@ -108,7 +108,7 @@
           </span>
             <span class="nk-menu-text">Startup</span>
           </a>
-          <div class="collapse" id="startup" [ngClass]="{'show': isActiveRoute(['startup-overview', 'startup-project','project-card'])}">
+          <div class="collapse" id="startup" [ngClass]="{'show': isActiveRoute(['startup-overview', 'startup-project','project-card','manage-feedback'])}">
             <ul class="nk-menu-sub">
               <li class="nk-menu-item" routerLinkActive="active">
                 <a routerLink="/startup-overview" routerLinkActive="active" class="nk-menu-link">
@@ -123,6 +123,11 @@
               <li class="nk-menu-item"  routerLinkActive="active">
                 <a routerLink="/project-card" class="nk-menu-link"  routerLinkActive="active">
                   <span class="nk-menu-text">Projects Card</span>
+                </a>
+              </li>
+              <li class="nk-menu-item"  routerLinkActive="active">
+                <a routerLink="/manage-feedback" class="nk-menu-link"  routerLinkActive="active">
+                  <span class="nk-menu-text">Projects Feedbacks</span>
                 </a>
               </li>
             </ul>

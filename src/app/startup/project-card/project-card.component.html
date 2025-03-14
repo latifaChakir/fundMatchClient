@@ -87,7 +87,11 @@
                             </div>
                           </div>
                           <div class="project-details">
-                            <p [innerHTML]="project.description"></p>
+                            <p *ngIf="!showFullDescription[project.id!]" [innerHTML]="truncateText(project.description, 10)"></p>
+                            <p *ngIf="showFullDescription[project.id!]" [innerHTML]="project.description"></p>
+                            <a style="cursor:pointer; color:rgb(102, 45, 145); font-size: 16px" (click)="toggleDescription(project.id)">
+                              <em [class]="showFullDescription[project.id!] ? 'icon ni ni-chevron-up' : 'icon ni ni-chevron-down'"></em>
+                            </a>
                           </div>
                           <div class="project-progress">
                             <div class="project-progress-details">

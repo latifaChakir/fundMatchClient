@@ -18,13 +18,15 @@ import {NgxPaginationModule} from "ngx-pagination";
 import {QuillEditorComponent} from "ngx-quill";
 import {ProjectCardComponent} from "./project-card/project-card.component";
 import {MatProgressBar} from "@angular/material/progress-bar";
+import {ManageFeedbackComponent} from "./manage-feedback/manage-feedback.component";
 
 @NgModule({
   declarations: [
     StartupComponent,
     ProjectComponent,
     AddProjectComponent,
-    ProjectCardComponent
+    ProjectCardComponent,
+    ManageFeedbackComponent
   ],
   imports: [
     CommonModule,

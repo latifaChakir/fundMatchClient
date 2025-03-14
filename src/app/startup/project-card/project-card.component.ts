@@ -13,6 +13,7 @@ import {ProjectActions} from "../../core/stores/project/project.actions";
 export class ProjectCardComponent implements OnInit{
   projects$: Observable<Project[]>;
   p: number = 1;
+  showFullDescription: { [key: number]: boolean } = {};
 
   constructor(private store: Store) {
     this.projects$ = this.store.select(selectFilteredProjects);
@@ -28,4 +29,15 @@ export class ProjectCardComponent implements OnInit{
   updateStatus(projectId: number) {
     this.store.dispatch(ProjectActions.updateProjectStatus({ projectId }));
   }
+
+  toggleDescription(projectId: number | undefined) {
+    if (projectId !== undefined) {
+      this.showFullDescription[projectId] = !this.showFullDescription[projectId];
+    }
+  }
+  truncateText(text: string, wordLimit: number): string {
+    const words = text.split(/\s+/);
+    return words.length > wordLimit ? words.slice(0, wordLimit).join(' ') + '...' : text;
+  }
+
 }

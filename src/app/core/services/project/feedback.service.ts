@@ -14,5 +14,11 @@ export class FeedbackService {
   addFeedback(projectId: number, feedback : Feedback): Observable<any> {
     return this.http.post<any>(`${this.api}/project/${projectId}`, feedback);
   }
+  loadFeedbacks(): Observable<any> {
+    return this.http.get<any>(`${this.api}/myFeedbacks`);
+  }
+  markAsPublic(feedbackId: number): Observable<any> {
+    return this.http.get<any>(`${this.api}/${feedbackId}/public`);
+  }
 
 }

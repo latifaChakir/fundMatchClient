@@ -1,3 +1,6 @@
+import {Investor} from "../investor/investor.model";
+import {Project} from "./project.model";
+
 export enum FeedbackType{
   POSITIVE = "POSITIVE",
   NEGATIVE = "NEGATIVE",
@@ -8,4 +11,6 @@ export interface Feedback {
   content?: string;
   isPrivate : boolean;
   type: FeedbackType;
+  investor?: Investor;
+  project?: Project;
 }

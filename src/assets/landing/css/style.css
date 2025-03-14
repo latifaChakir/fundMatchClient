@@ -3195,17 +3195,17 @@ ul.pagination .active a {
   height: 0;
   border-style: solid;
   border-width: 0 28px 27px 0;
-  border-color: transparent #fff transparent transparent;
+  border-color: transparent transparent transparent;
   transition: .3s ease;
 }
 
 .testimonial .testimonial-item .comment:hover {
-  background: rgb(102, 45, 145);
+  background: #fff !important;
   border: 1px solid rgb(102, 45, 145);
 }
 
 .testimonial .testimonial-item .comment:hover p {
-  color: #fff;
+  color: #fff !important;
 }
 
 .testimonial .testimonial-item .comment:hover:before {
