@@ -77,11 +77,16 @@
           </span>
             <span class="nk-menu-text">User Manage</span>
           </a>
-          <div class="collapse" id="users" [ngClass]="{'show': isActiveRoute(['users'])}">
+          <div class="collapse" id="users" [ngClass]="{'show': isActiveRoute(['users','roles'])}">
             <ul class="nk-menu-sub">
               <li class="nk-menu-item" routerLinkActive="active">
                 <a routerLink="/users" class="nk-menu-link">
                   <span class="nk-menu-text">Users</span>
+                </a>
+              </li>
+              <li class="nk-menu-item" routerLinkActive="active">
+                <a routerLink="/roles" class="nk-menu-link">
+                  <span class="nk-menu-text">Roles</span>
                 </a>
               </li>
             </ul>
