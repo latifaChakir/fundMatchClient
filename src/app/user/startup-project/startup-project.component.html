@@ -30,7 +30,12 @@
               <img src="{{project.imagePath}}" alt="Business meeting" class="img-fluid w-100" style="height: 100%">
             </div>
             <div class="post-content">
-              <h1 class="mt-1 mb-2">{{project.title}}</h1>
+              <div class="d-flex justify-content-between">
+                <h1 class="mt-1 mb-2">{{project.title}}</h1>
+                <a style="cursor:pointer" (click)=" project.id ? bookProject(project.id) : null" class="btn btn-auto btn-icon"><em *ngIf=" project.id ? isProjectSaved(project.id) : null" class="icon ni ni-bookmark-fill"></em>
+                  <em *ngIf="project.id ? !isProjectSaved(project.id) : null" class="icon ni ni-bookmark"></em>
+                </a>
+              </div>
               <p *ngIf="!showFullDescription[project.id!]" [innerHTML]="truncateText(project.description, 20)"></p>
               <p *ngIf="showFullDescription[project.id!]" [innerHTML]="project.description"></p>
               <a style="cursor:pointer; color:rgb(102, 45, 145);" (click)="toggleDescription(project.id)">

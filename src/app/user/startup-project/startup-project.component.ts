@@ -4,6 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 import {Project, ProjectStage} from "../../core/models/project/project.model";
 import {FeedbackService} from "../../core/services/project/feedback.service";
 import {Feedback, FeedbackType} from "../../core/models/project/feedback.model";
+import {InvestorService} from "../../core/services/investor/investor.service";
 
 @Component({
   selector: 'app-startup-project',
@@ -13,6 +14,7 @@ import {Feedback, FeedbackType} from "../../core/models/project/feedback.model";
 export class StartupProjectComponent implements OnInit {
   projects: Project[] = [];
   projectStages = Object.values(ProjectStage);
+  investorSavedProjects: number[] = [];
   p: number = 1;
   showFullDescription: { [key: number]: boolean } = {};
   showFeedbackEditor = false;
@@ -20,9 +22,12 @@ export class StartupProjectComponent implements OnInit {
   newFeedback = '';
   feedbackType: FeedbackType = FeedbackType.NEUTRAL;
   publicFeedbacks: Feedback[] = [];
+  error: string | null = null;
+  success: string | null = null;
 
   constructor(private projectService: ProjectService,
               private feedbackService: FeedbackService,
+              private investorService: InvestorService,
               private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -32,6 +37,9 @@ export class StartupProjectComponent implements OnInit {
         this.loadStartupProjects(startupId);
         this.loadPublicFeedback(startupId);
       }
+    });
+    this.investorService.loadBookedProjects().subscribe(response => {
+      this.investorSavedProjects = response.savedProjects.map((p: { id: number }) => p.id);
     });
   }
 
@@ -107,6 +115,25 @@ export class StartupProjectComponent implements OnInit {
     if (feedbackId !== undefined) {
       this.showFullFeedBack[feedbackId] = !this.showFullFeedBack[feedbackId];
     }
+  }
+  bookProject(projectId : number | undefined) {
+      if (projectId === undefined) {
+        console.warn("Project ID is undefined.");
+        return;
+      }
+      this.investorService.bookProject(projectId).subscribe({
+        next: (response) => {
+          this.success="Project a été sauvegardé avec succès";
+          console.log("Project booked successfully", response);
+        },
+        error: (error) => {
+          this.error = "Erreur lors de sauvegarde de projet.";
+        }
+      });
+
+  }
+  isProjectSaved(projectId: number): boolean {
+    return this.investorSavedProjects.includes(projectId);
   }
 
 }

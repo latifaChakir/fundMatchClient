@@ -35,4 +35,10 @@ export class InvestorService {
       map(response => response.data)
     );
   }
+  bookProject(projectId : number) : Observable<any> {
+    return this.http.get(`${this.api}/bookProject/${projectId}`);
+  }
+  loadBookedProjects(): Observable<any> {
+    return this.http.get(`${this.api}/getBookProjectSaved`);
+  }
 }
