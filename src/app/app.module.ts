@@ -39,6 +39,8 @@ import {DashboardModule} from "./dashboard/dashboard.module";
 import {userReducer, usersFeatureKey} from "./core/stores/user/user.reducer";
 import {UserEffects} from "./core/stores/user/user.effects";
 import {provideCharts, withDefaultRegisterables} from "ng2-charts";
+import {RoleEffects} from "./core/stores/role/role.effects";
+import {roleReducer, rolesFeatureKey} from "./core/stores/role/role.reducer";
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -60,10 +62,11 @@ import {provideCharts, withDefaultRegisterables} from "ng2-charts";
       [eventsFeatureKey]: eventReducer,
       [reservationsFeatureKey]: reservationReducer,
       [usersFeatureKey]: userReducer,
+      [rolesFeatureKey]: roleReducer,
     }),
     EffectsModule.forRoot([AuthEffects, SectorEffects,
       StageEffects, InvestorEffects, StartupEffects,
-      UserEffects,
+      UserEffects,RoleEffects,
       ProjectEffects, EventEffects, ReservationEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

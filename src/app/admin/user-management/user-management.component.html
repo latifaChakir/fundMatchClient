@@ -58,28 +58,7 @@
                           <div class="nk-tb-col nk-tb-col-tools text-end">
                             <div class="dropdown">
                               <a href="#" class="btn btn-xs btn-outline-light btn-icon dropdown-toggle" data-bs-toggle="dropdown" data-offset="0,5"><em class="icon ni ni-plus"></em></a>
-                              <div class="dropdown-menu dropdown-menu-xs dropdown-menu-end">
-                                <ul class="link-tidy sm no-bdr">
-                                  <li>
-                                    <div class="custom-control custom-control-sm custom-checkbox">
-                                      <input type="checkbox" class="custom-control-input" checked="" id="bl">
-                                      <label class="custom-control-label" for="bl">Balance</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="custom-control custom-control-sm custom-checkbox">
-                                      <input type="checkbox" class="custom-control-input" checked="" id="ph">
-                                      <label class="custom-control-label" for="ph">Phone</label>
-                                    </div>
-                                  </li>
-                                  <li>
-                                    <div class="custom-control custom-control-sm custom-checkbox">
-                                      <input type="checkbox" class="custom-control-input" id="st">
-                                      <label class="custom-control-label" for="st">Status</label>
-                                    </div>
-                                  </li>
-                                </ul>
-                              </div>
+
                             </div>
                           </div>
                         </div>
@@ -126,7 +105,7 @@
                                   <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                   <div class="dropdown-menu dropdown-menu-end">
                                     <ul class="link-list-opt no-bdr">
-                                      <li><a href="#"><em class="icon ni ni-na"></em><span>Suspend User</span></a></li>
+                                      <li><a style="cursor:pointer"  (click)="user.id ? blockUser(user.id) : null"><em class="icon ni ni-na"></em><span>Suspend User</span></a></li>
                                     </ul>
                                   </div>
                                 </div>

@@ -18,6 +18,8 @@ import {AddEventComponent} from "./event-management/add-event/add-event.componen
 import {QuillEditorComponent} from "ngx-quill";
 import {PublishedEventComponent} from "./event-management/published-event/published-event.component";
 import {UserManagementComponent} from "./user-management/user-management.component";
+import {RoleComponent} from "./role-management/role/role.component";
+import {AddRoleComponent} from "./role-management/add-role/add-role.component";
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import {UserManagementComponent} from "./user-management/user-management.compone
     EventComponent,
     AddEventComponent,
     PublishedEventComponent,
-    UserManagementComponent
+    UserManagementComponent,
+    RoleComponent,
+    AddRoleComponent
   ],
   imports: [
     CommonModule,
