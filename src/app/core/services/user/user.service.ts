@@ -20,6 +20,13 @@ export class UserService {
   getCurrentUser(): Observable<User> {
     return this.http.get<User>(`${this.api}/me`).pipe()
   }
+  blockUser(userId: number): Observable<User> {
+    return this.http.get<User>(`${this.api}/block/${userId}`);
+  }
+  unBlockUser(userId: number): Observable<User> {
+    return this.http.get<User>(`${this.api}/unBlock/${userId}`);
+  }
+
 
 
 }

@@ -41,7 +41,45 @@ export const UsersFeature = createFeature({
       filteredUsers: state.users.filter(user =>
         user.firstName.toLowerCase().includes(searchTerm.toLowerCase())
       ),
-    }))
+    })),
+    on(UserActions.updateUserStatus, (state) => ({
+      ...state,
+      error: null
+    })),
+    on(UserActions.updateUserStatusSuccess, (state, { user }) => ({
+      ...state,
+      users: state.users.map(p =>
+        p.id === user.id ? { ...p, isActive: user.isActive } : p
+      ),
+      filteredUsers: state.filteredUsers.map(p =>
+        p.id === user.id ? { ...p, isActive: user.isActive } : p
+      ),
+      error: null
+    })),
+    on(UserActions.updateUserStatusFailure, (state, { error }) => ({
+      ...state,
+      error
+    })),
+
+    on(UserActions.unBlockUser, (state) => ({
+      ...state,
+      error: null
+    })),
+    on(UserActions.unBlockUserSuccess, (state, { user }) => ({
+      ...state,
+      users: state.users.map(p =>
+        p.id === user.id ? { ...p, isActive: user.isActive } : p
+      ),
+      filteredUsers: state.filteredUsers.map(p =>
+        p.id === user.id ? { ...p, isActive: user.isActive } : p
+      ),
+      error: null
+    })),
+    on(UserActions.unBlockUserFailure, (state, { error }) => ({
+      ...state,
+      error
+    })),
+
   )
 });
 

@@ -1,3 +1,5 @@
+import {Role} from "../auth/Register-request.model";
+
 export interface User {
   id: number;
   firstName: string;
@@ -7,4 +9,5 @@ export interface User {
   phoneNumber: string;
   token: string;
   isActive : boolean;
+  roles : Role[];
 }
