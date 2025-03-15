@@ -41,4 +41,7 @@ export class InvestorService {
   loadBookedProjects(): Observable<any> {
     return this.http.get(`${this.api}/getBookProjectSaved`);
   }
+  unSaveProject(projectId : number) : Observable<any> {
+    return this.http.get(`${this.api}/unSaveProject/${projectId}`);
+  }
 }

@@ -9,12 +9,14 @@ import {AddInvestorComponent} from "./investor-management/add-investor/add-inves
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DialogModule} from "primeng/dialog";
 import {NgxPaginationModule} from "ngx-pagination";
+import {ProjectSavedComponent} from "./project-saved/project-saved.component";
 
 
 @NgModule({
   declarations: [
     InvestorComponent,
-    AddInvestorComponent
+    AddInvestorComponent,
+    ProjectSavedComponent
   ],
   imports: [
     CommonModule,

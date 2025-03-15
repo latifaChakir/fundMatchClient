@@ -1,0 +1,119 @@
+<div class="nk-body ui-rounder has-sidebar ">
+  <div class="nk-app-root">
+    <div class="nk-main ">
+      <div class="nk-sidebar is-light nk-sidebar-fixed is-light " data-content="sidebarMenu">
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class="nk-wrap ">
+        <div class="nk-header is-light nk-header-fixed is-light">
+          <app-navbar></app-navbar>
+        </div>
+        <div class="nk-content nk-content-fluid">
+          <div class="container-xl wide-xl">
+            <div class="nk-content-body">
+              <div class="nk-block-head nk-block-head-sm">
+                <div class="nk-block-between">
+                  <div class="nk-block-head-content">
+                    <h3 class="nk-block-title page-title" style="font-family: Nunito, sans-serif;
+                font-size: 1.5rem;
+                font-weight: 700; margin: 0;">Saved Projects</h3>
+                  </div>
+                  <div class="nk-block-head-content">
+                    <div class="toggle-wrap nk-block-tools-toggle">
+                      <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
+                      <div class="toggle-expand-content" data-content="pageMenu">
+                        <ul class="nk-block-tools g-3">
+                          <li>
+                            <div class="form-control-wrap">
+                              <div class="form-icon form-icon-right">
+                                <em class="icon ni ni-search"></em>
+                              </div>
+                              <input
+                                type="text" class="form-control"
+                                id="default-04" placeholder="Quick search by name"
+                                (input)="onSearchChange($event)"
+                               >
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="success" class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ success }}
+                <button type="button" class="btn-close" (click)="success = null"></button>
+              </div>
+
+              <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ error }}
+                <button type="button" class="btn-close" (click)="error = null"></button>
+              </div>
+              <div class="nk-block">
+                <div class="card card-stretch">
+                  <div class="card-inner-group">
+                    <div class="card-inner p-0">
+                      <table class="nk-tb-list nk-tb-ulist">
+                        <thead>
+                        <tr class="nk-tb-item nk-tb-head">
+                          <th class="nk-tb-col"><span class="sub-text">Project Name</span></th>
+                          <th class="nk-tb-col "><span class="sub-text">Company Name</span></th>
+                          <th class="nk-tb-col "><span class="sub-text">Contact </span></th>
+                          <th class="nk-tb-col "><span class="sub-text">Stage</span></th>
+                          <th class="nk-tb-col "><span class="sub-text">Actions</span></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="nk-tb-item" *ngFor="let project of filteredProjects">
+                          <td class="nk-tb-col">
+                            <a href="html/apps-kanban.html" class="project-title">
+                              <div class="user-avatar sq bg-purple"><span>DD</span></div>
+                              <div class="project-info">
+                                <h6 class="title">{{project.title}}</h6>
+                              </div>
+                            </a>
+                          </td>
+                            <td class="nk-tb-col tb-col-mb">
+                              <span>{{ project.startup.companyName }}</span>
+                          </td>
+                          <td class="nk-tb-col tb-col-mb">
+                            <span>{{ project.startup.contactInfo }}</span>
+                          </td>
+                          <td class="nk-tb-col tb-col-mb">
+                            <span>{{ project.stage }}</span>
+                          </td>
+                          <td class="nk-tb-col nk-tb-col-tools">
+                            <ul class="nk-tb-actions gx-1">
+                              <li>
+                                <div class="drodown">
+                                  <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                  <div class="dropdown-menu dropdown-menu-end">
+                                    <ul class="link-list-opt no-bdr">
+                                      <li><a routerLink="/startup-project/{{project.startup.id}}"><em class="icon ni ni-external"></em>
+                                        <span>Redirect Project</span></a></li>
+                                      <li><a style="cursor:pointer" (click)="unSaveProject(project.id)"><em class="icon ni ni-eye-off"></em>
+                                        <span>UnSaved</span></a></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </li>
+                            </ul>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+

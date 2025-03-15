@@ -38,6 +38,9 @@ export class StartupProjectComponent implements OnInit {
         this.loadPublicFeedback(startupId);
       }
     });
+    this.loadBookedProjects();
+  }
+  loadBookedProjects(){
     this.investorService.loadBookedProjects().subscribe(response => {
       this.investorSavedProjects = response.savedProjects.map((p: { id: number }) => p.id);
     });
@@ -125,6 +128,7 @@ export class StartupProjectComponent implements OnInit {
         next: (response) => {
           this.success="Project a été sauvegardé avec succès";
           console.log("Project booked successfully", response);
+          this.loadBookedProjects();
         },
         error: (error) => {
           this.error = "Erreur lors de sauvegarde de projet.";

@@ -177,7 +177,7 @@
           </span>
             <span class="nk-menu-text">Invertissor</span>
           </a>
-          <div class="collapse" id="invertissor" [ngClass]="{'show': isActiveRoute(['invertissor-list', 'invertissor-details'])}">
+          <div class="collapse" id="invertissor" [ngClass]="{'show': isActiveRoute(['invertissor-list', 'invertissor-details','project-saved'])}">
             <ul class="nk-menu-sub">
               <li class="nk-menu-item" routerLinkActive="active">
                 <a routerLink="/invertissor-list" class="nk-menu-link" routerLinkActive="active">
@@ -187,6 +187,11 @@
               <li class="nk-menu-item">
                 <a routerLink="/invertissor-details" class="nk-menu-link">
                   <span class="nk-menu-text">Investor Details</span>
+                </a>
+              </li>
+              <li class="nk-menu-item" routerLinkActive="active">
+                <a routerLink="/project-saved" class="nk-menu-link">
+                  <span class="nk-menu-text">Saved Project</span>
                 </a>
               </li>
             </ul>
