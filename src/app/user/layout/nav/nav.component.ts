@@ -1,4 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-nav',
@@ -7,6 +8,7 @@ import { Component, AfterViewInit } from '@angular/core';
 })
 export class NavComponent implements AfterViewInit {
   currentSection: string = '';
+  constructor(private router: Router) {}
 
   ngAfterViewInit() {
     const sections = document.querySelectorAll('section');
@@ -32,5 +34,17 @@ export class NavComponent implements AfterViewInit {
 
   isActive(section: string): boolean {
     return this.currentSection === section;
+  }
+
+  navigateToSection(section: string) {
+    if (this.router.url === '/' || this.router.url === '/home') {
+      const element = document.getElementById(section);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      this.router.navigate(['/'], { fragment: section });
+    }
+    return false;
   }
 }

@@ -3,7 +3,7 @@
       <div class="row">
         <div class="col-lg-12">
           <nav class="navbar navbar-expand-lg" style="height: 90px; font-family:Josefin Sans, sans-serif ">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" routerLink="/">
               <svg width="300" height="70" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
                 <g fill="#662D91">
                   <rect x="10" y="50" width="10" height="20" />
@@ -25,26 +25,25 @@
             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
               <ul id="nav" class="navbar-nav ml-auto">
                 <li class="nav-item" [class.active]="isActive('home')">
-                  <a class="page-scroll" href="#home">Home</a>
+                  <a style="cursor:pointer" class="page-scroll" (click)="navigateToSection('home'); $event.preventDefault()">Home</a>
                 </li>
                 <li class="nav-item" [class.active]="isActive('about')">
-                  <a class="page-scroll" href="#about">About</a>
+                  <a style="cursor:pointer" class="page-scroll" (click)="navigateToSection('about'); $event.preventDefault()">About</a>
                 </li>
                 <li class="nav-item" [class.active]="isActive('services')">
-                  <a class="page-scroll" href="#services">Services</a>
+                  <a style="cursor:pointer"  class="page-scroll" (click)="navigateToSection('services'); $event.preventDefault()">Services</a>
                 </li>
                 <li class="nav-item" routerLinkActive="active">
-                  <a class="page-scroll" routerLink="/event-page"  routerLinkActive="active">Events</a>
+                  <a class="page-scroll" routerLink="/event-page" routerLinkActive="active">Events</a>
                 </li>
                 <li class="nav-item" [class.active]="isActive('startups')">
-                  <a class="page-scroll" href="#startups">Startups</a>
+                  <a style="cursor:pointer" class="page-scroll" (click)="navigateToSection('startups');">Startups</a>
                 </li>
                 <li class="nav-item" routerLinkActive="active">
                   <a class="page-scroll" routerLink="/investors-page" routerLinkActive="active">Investors</a>
                 </li>
               </ul>
             </div>
-
             <div class="navbar-btn d-none d-sm-inline-block">
               <a class="main-btn" data-scroll-nav="0" routerLink="/login">Connexion</a>
             </div>
