@@ -67,8 +67,8 @@
                         <tbody>
                         <tr class="nk-tb-item" *ngFor="let project of filteredProjects">
                           <td class="nk-tb-col">
-                            <a href="html/apps-kanban.html" class="project-title">
-                              <div class="user-avatar sq bg-purple"><span>DD</span></div>
+                            <a href="" class="project-title">
+                              <div class="user-avatar sq bg-purple"><span>{{ (project.title?.[0] || '').toUpperCase() }}{{ (project.title?.[1] || '').toUpperCase() }}</span></div>
                               <div class="project-info">
                                 <h6 class="title">{{project.title}}</h6>
                               </div>

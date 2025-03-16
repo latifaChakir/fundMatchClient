@@ -1,7 +1,7 @@
 <div class="nk-sidebar-element nk-sidebar-head">
   <div class="nk-sidebar-brand">
-    <a href="html/index.html" class="logo-link nk-sidebar-logo">
-      <svg width="300" height="70" viewBox="70 0 300 100" xmlns="http://www.w3.org/2000/svg">
+    <a routerLink="/" class="logo-link nk-sidebar-logo">
+      <svg width="300" height="70" viewBox="70 -5 300 100" xmlns="http://www.w3.org/2000/svg">
         <g fill="#662D91">
           <rect x="10" y="50" width="10" height="20" />
           <rect x="25" y="40" width="10" height="30" />
@@ -177,16 +177,16 @@
           </span>
             <span class="nk-menu-text">Invertissor</span>
           </a>
-          <div class="collapse" id="invertissor" [ngClass]="{'show': isActiveRoute(['invertissor-list', 'invertissor-details','project-saved'])}">
+          <div class="collapse" id="invertissor" [ngClass]="{'show': isActiveRoute(['invertissor-list', 'investor-profile','project-saved'])}">
             <ul class="nk-menu-sub">
               <li class="nk-menu-item" routerLinkActive="active">
                 <a routerLink="/invertissor-list" class="nk-menu-link" routerLinkActive="active">
                   <span class="nk-menu-text">Investor List</span>
                 </a>
               </li>
-              <li class="nk-menu-item">
-                <a routerLink="/invertissor-details" class="nk-menu-link">
-                  <span class="nk-menu-text">Investor Details</span>
+              <li class="nk-menu-item" routerLinkActive="active">
+                <a routerLink="/investor-profile" class="nk-menu-link">
+                  <span class="nk-menu-text">Investor Profil</span>
                 </a>
               </li>
               <li class="nk-menu-item" routerLinkActive="active">

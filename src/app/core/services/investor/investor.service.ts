@@ -44,4 +44,7 @@ export class InvestorService {
   unSaveProject(projectId : number) : Observable<any> {
     return this.http.get(`${this.api}/unSaveProject/${projectId}`);
   }
+  getInvestorByUser(): Observable<Investor> {
+    return this.http.get<Investor>(`${this.api}/getInvestor`);
+  }
 }

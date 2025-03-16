@@ -1,4 +1,5 @@
 import {Sector} from "../sector/sector.model";
+import {User} from "../user/user.model";
 
 export interface Investor {
   id?: number;
@@ -13,4 +14,5 @@ export interface Investor {
   investmentStrategy: string;
   preferredGeographies: string[];
   contactInfo: string;
+  user?: User;
 }

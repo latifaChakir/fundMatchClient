@@ -10,13 +10,15 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DialogModule} from "primeng/dialog";
 import {NgxPaginationModule} from "ngx-pagination";
 import {ProjectSavedComponent} from "./project-saved/project-saved.component";
+import {ProfileComponent} from "./profile/profile.component";
 
 
 @NgModule({
   declarations: [
     InvestorComponent,
     AddInvestorComponent,
-    ProjectSavedComponent
+    ProjectSavedComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
