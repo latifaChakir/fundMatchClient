@@ -23,6 +23,15 @@
                       </div>
                     </div>
                   </div>
+                  <div *ngIf="success" class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ success }}
+                    <button type="button" class="btn-close" (click)="success = null"></button>
+                  </div>
+
+                  <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ error }}
+                    <button type="button" class="btn-close" (click)="error = null"></button>
+                  </div>
                   <div class="card">
                     <div class="card-inner">
                       <mat-horizontal-stepper [linear]="true" #stepper>
