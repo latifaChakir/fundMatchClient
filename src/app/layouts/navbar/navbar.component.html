@@ -45,7 +45,9 @@
       <ul class="nk-quick-nav">
         <li class="dropdown chats-dropdown hide-mb-sm">
           <a href="#" class="dropdown-toggle nk-quick-nav-icon" data-bs-toggle="dropdown">
-            <div class="icon-status icon-status-na"><em class="icon ni ni-comments"></em></div>
+            <div [ngClass]="{'icon-status icon-status-info': notificationsMessages.length > 0}">
+              <em class="icon ni ni-comments"></em>
+            </div>
           </a>
           <div class="dropdown-menu dropdown-menu-xl dropdown-menu-end">
             <div class="dropdown-head">
@@ -75,7 +77,9 @@
         </li>
         <li class="dropdown notification-dropdown">
           <a href="#" class="dropdown-toggle nk-quick-nav-icon" data-bs-toggle="dropdown">
-            <div class="icon-status icon-status-info"><em class="icon ni ni-bell"></em></div>
+            <div [ngClass]="{'icon-status icon-status-info': notifications.length > 0}">
+              <em class="icon ni ni-bell"></em>
+            </div>
           </a>
           <div class="dropdown-menu dropdown-menu-xl dropdown-menu-end">
             <div class="dropdown-head">

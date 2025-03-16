@@ -12,6 +12,7 @@ import {NgxPaginationModule} from "ngx-pagination";
 import {ReservationComponent} from "./reservation-event/reservation/reservation.component";
 import {PaymentComponent} from "./payment/payment.component";
 import {StartupProjectComponent} from "./startup-project/startup-project.component";
+import {InvestorsComponent} from "./investors/investors.component";
 
 
 @NgModule({
@@ -22,12 +23,13 @@ import {StartupProjectComponent} from "./startup-project/startup-project.compone
     EventComponent,
     ReservationComponent,
     PaymentComponent,
-    StartupProjectComponent
+    StartupProjectComponent,
+    InvestorsComponent
   ],
   exports: [
     NavComponent,
     FooterComponent,
-    StartupDetailComponent
+    StartupDetailComponent,
   ],
   imports: [
     CommonModule,

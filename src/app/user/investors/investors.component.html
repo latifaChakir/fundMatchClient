@@ -1,0 +1,102 @@
+
+
+<link href="./../../../assets/landing/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="./../../../assets/landing/plugins/font-awsome/css/font-awesome.min.css" rel="stylesheet">
+<link href="./../../../assets/landing/plugins/magnific-popup/magnific-popup.css" rel="stylesheet">
+<link href="./../../../assets/landing/plugins/slick/slick.css" rel="stylesheet">
+<link href="./../../../assets/landing/plugins/slick/slick-theme.css" rel="stylesheet">
+<link href="./../../../assets/landing/css/style.css" rel="stylesheet">
+
+<link href="./../../../assets/landing/images/favicon.png" rel="shortcut icon">
+
+
+
+<body class="body-wrapper" style="background: none !important;">
+<app-nav></app-nav>
+<section class="section single-speaker mt-5">
+  <div class="container">
+
+    <div class="block">
+        <div class="col-lg-4 col-md-4 p-0">
+          <div class="widget search p-0">
+            <div class="input-group p-0">
+              <input type="text" class="form-control main m-0 " id="expire" placeholder="Search..." (input)="onSearchChange($event)"  >
+              <span class="input-group-addon"><i class="fa fa-search"></i></span>
+            </div>
+          </div>
+          </div>
+      <div class="row" *ngFor="let investor of (investors$ | async) ?? [] | paginate: { itemsPerPage: 1, currentPage: p }">
+      <div class="col-lg-4 col-md-4 ">
+        <div class="block-2">
+          <div >
+            <h5>Personal Information</h5>
+            <ul class="m-0 p-0">
+              <li><em class="icon ni ni-mail-fill"></em> {{investor.user?.email}}.</li>
+              <li><em class="icon ni ni-call-alt-fill"></em> {{investor.user?.phoneNumber}}.</li>
+              <li><em class="icon ni ni-contact-fill"></em> {{investor.contactInfo}}</li>
+              <li><em class="icon ni ni-user-alt-fill"></em> {{investor.user?.firstName}} {{investor.user?.lastName}}.</li>
+              <li><em class="icon ni ni-map-pin"></em> {{investor.location}} {{investor.user?.lastName}}.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="block-2">
+            <div class="personal-info">
+              <h5 class="mt-2">Sectors</h5>
+              <ul class="m-0 p-0">
+                <li *ngFor="let sector of investor?.sectors">{{ sector.name }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-8 col-md-8 align-self-center">
+          <div class="content-block">
+            <div class="name">
+              <h3>{{investor.organization}}</h3>
+            </div>
+            <div class="profession">
+              <p>{{investor.experienceYears}} Years of Experiance</p>
+            </div>
+            <div class="details">
+              <h5>Détails d'investissement</h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm tempor incididunt ut labore dolore magna aliqua enim ad minim veniam quis nostrud.laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.
+                Duis aute irure dolor in reprehenderit in voluptate velit esse.
+              </p>
+              <div class="d-flex" style="gap: 80px; flex-wrap: wrap">
+                <div class="block-2">
+                  <div >
+                    <h5>Investissement Information</h5>
+                    <ul class="m-0 p-0">
+                      <li><strong>Type :</strong>  {{investor.investmentType}}.</li>
+                      <li><strong>Min:  </strong>{{investor.minInvestment}}.</li>
+                      <li><strong>Max: </strong>{{investor.maxInvestment}}</li>
+                      <li><strong>Preferred Geographies: </strong>{{investor.preferredGeographies}}.</li>
+                      <li><strong>Average Investments Per Year: </strong>{{investor.averageInvestmentsPerYear}}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <pagination-controls
+    class="myPagination"
+    previousLabel=""
+    nextLabel=""
+    (pageChange)="p = $event"
+  >
+  </pagination-controls>
+</section><app-footer></app-footer>
+</body>
+
+<style>
+  body[_ngcontent-ng-c3489705984] {
+    background: none !important;
+  }
+</style>
+
+
+

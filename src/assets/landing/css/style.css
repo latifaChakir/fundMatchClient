@@ -2204,7 +2204,6 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .single-speaker .block {
-  padding-bottom: 70px;
   border-bottom: 1px solid #e5e5e5;
 }
 
@@ -2270,8 +2269,6 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .single-speaker .block-2 {
-  padding-top: 70px;
-  padding-bottom: 10px;
 }
 
 .single-speaker .block-2 h3, .single-speaker .block-2 p, .single-speaker .block-2 li {
@@ -2280,7 +2277,6 @@ select.form-control:not([size]):not([multiple]) {
 
 .single-speaker .block-2 .personal-info h5, .single-speaker .block-2 .skills h5 {
   font-weight: 400;
-  margin-bottom: 15px;
 }
 
 .single-speaker .block-2 .personal-info p, .single-speaker .block-2 .skills p {
