@@ -1,1 +1,155 @@
-<p>create-account works!</p>
+<div class="nk-body ui-rounder has-sidebar">
+  <div class="nk-app-root">
+    <div class="nk-main">
+      <div class="nk-sidebar is-light nk-sidebar-fixed is-light" data-content="sidebarMenu">
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class="nk-wrap">
+        <div class="nk-header is-light nk-header-fixed is-light">
+          <app-navbar></app-navbar>
+        </div>
+
+        <!-------------content------------------>
+        <div class="nk-content nk-content-fluid">
+          <div class="container-xl wide-xl">
+            <div class="nk-content-body">
+              <div class="components-preview wide-xl mx-auto">
+                <div class="nk-block nk-block-lg">
+                  <div class="nk-block-head">
+                    <div class="nk-block-head-content">
+                      <h4 class="title nk-block-title">Create Account </h4>
+                      <div class="nk-block-des">
+                        <p>A basic form to create your profie.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-inner">
+                      <mat-horizontal-stepper [linear]="true" #stepper>
+                        <!-- Étape 1 : Informations de base -->
+                        <mat-step [stepControl]="investorForm.controls['basic']">
+                          <ng-template matStepLabel>Informations de Base</ng-template>
+                          <form [formGroup]="investorForm">
+                            <div formGroupName="basic" class="step-content two-columns">
+                              <!-- Organization -->
+                              <mat-form-field appearance="fill" class="full-width">
+                                <mat-label>Organization <span class="required-indicator">*</span></mat-label>
+                                <input matInput formControlName="organization" required>
+                                <mat-error *ngIf="investorForm.get('basic.organization')?.hasError('required')">
+                                  Organization is required
+                                </mat-error>
+                              </mat-form-field>
+
+                              <!-- Contact Info -->
+                              <mat-form-field appearance="fill" class="full-width">
+                                <mat-label>Contact Info <span class="required-indicator">*</span></mat-label>
+                                <input matInput type="email" formControlName="contactInfo" required>
+                                <mat-error *ngIf="investorForm.get('basic.contactInfo')?.hasError('required')">
+                                  Contact Info is required
+                                </mat-error>
+                                <mat-error *ngIf="investorForm.get('basic.contactInfo')?.hasError('email')">
+                                  Please enter a valid email address
+                                </mat-error>
+                              </mat-form-field>
+
+                              <!-- Location -->
+                              <mat-form-field appearance="fill" class="full-width">
+                                <mat-label>Location <span class="required-indicator">*</span></mat-label>
+                                <input matInput formControlName="location" required>
+                                <mat-error *ngIf="investorForm.get('basic.location')?.hasError('required')">
+                                  Location is required
+                                </mat-error>
+                              </mat-form-field>
+                            </div>
+                            <div class="button-row">
+                              <button mat-button matStepperNext [disabled]="investorForm.get('basic')?.invalid">
+                                Next
+                              </button>
+                            </div>
+                          </form>
+                        </mat-step>
+
+                        <!-- Étape 2 : Détails d'investissement -->
+                        <mat-step [stepControl]="investorForm.controls['investment']">
+                          <ng-template matStepLabel>Détails d'Investissement</ng-template>
+                          <form [formGroup]="investorForm">
+                            <div formGroupName="investment" class="step-content two-columns">
+                              <!-- Sectors -->
+                              <mat-form-field appearance="fill" class="full-width">
+                                <mat-label>Sectors <span class="required-indicator">*</span></mat-label>
+                                <mat-select formControlName="sectors" multiple>
+                                  <mat-option *ngFor="let sector of  sectors$ | async" [value]="sector.id">
+                                    {{ sector.name }}
+                                  </mat-option>
+                                </mat-select>
+                                <!-- Ici, tu peux ajouter des messages d'erreur si besoin -->
+                              </mat-form-field>
+
+                              <!-- Minimum Investment -->
+                              <mat-form-field appearance="fill" class="full-width">
+                                <mat-label>Minimum Investment</mat-label>
+                                <input matInput type="number" formControlName="minInvestment">
+                              </mat-form-field>
+
+                              <!-- Maximum Investment -->
+                              <mat-form-field appearance="fill" class="full-width">
+                                <mat-label>Maximum Investment</mat-label>
+                                <input matInput type="number" formControlName="maxInvestment">
+                              </mat-form-field>
+
+                              <!-- Investment Type -->
+                              <mat-form-field appearance="fill" class="full-width">
+                                <mat-label>Investment Type</mat-label>
+                                <input matInput formControlName="investmentType">
+                              </mat-form-field>
+
+                              <!-- Experience (Years) -->
+                              <mat-form-field appearance="fill" class="full-width">
+                                <mat-label>Experience (Years)</mat-label>
+                                <input matInput type="number" formControlName="experienceYears">
+                              </mat-form-field>
+
+                              <!-- Average Investments Per Year -->
+                              <mat-form-field appearance="fill" class="full-width">
+                                <mat-label>Average Investments Per Year</mat-label>
+                                <input matInput type="number" formControlName="averageInvestmentsPerYear">
+                              </mat-form-field>
+
+                              <!-- Investment Strategy -->
+                              <mat-form-field appearance="fill" class="full-width">
+                                <mat-label>Investment Strategy</mat-label>
+                                <textarea matInput formControlName="investmentStrategy"></textarea>
+                              </mat-form-field>
+
+                              <!-- Preferred Geographies -->
+                              <mat-form-field appearance="fill" class="full-width">
+                                <mat-label>Preferred Geographies</mat-label>
+                                <mat-select formControlName="preferredGeographies" multiple>
+                                  <mat-option *ngFor="let geo of preferredGeographies" [value]="geo">
+                                    {{ geo }}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            </div>
+                            <div style="display:flex; gap: 15px">
+                              <button mat-button matStepperPrevious>Back</button>
+                              <button mat-button (click)="submit()" [disabled]="investorForm.get('investment')?.invalid">
+                                Submit
+                              </button>
+                            </div>
+                          </form>
+                        </mat-step>
+                      </mat-horizontal-stepper>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
