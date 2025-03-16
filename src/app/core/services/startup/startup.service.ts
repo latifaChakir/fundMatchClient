@@ -25,14 +25,18 @@ export class StartupService {
     return this.http.delete(`${this.api}/${StartupId}`);
   }
 
-  updateStartup(Startup: Startup, StartupId: number): Observable<Startup> {
-    return this.http.put<{ data: Startup }>(`${this.api}/${StartupId}`, Startup).pipe(
+  updateStartup(startup: FormData, startupId: number): Observable<Startup> {
+    return this.http.put<{ data: Startup }>(`${this.api}/update/${startupId}`, startup).pipe(
       map(response => response.data)
     );
   }
+
   getStartupById(StartupId: number): Observable<Startup> {
     return this.http.get<{ data: Startup }>(`${this.api}/detail/${StartupId}`).pipe(
       map(response => response.data)
     );
+  }
+  getStartupByUser(): Observable<Startup> {
+    return this.http.get<Startup>(`${this.api}/getStartup`);
   }
 }

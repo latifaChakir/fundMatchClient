@@ -19,6 +19,7 @@ import {QuillEditorComponent} from "ngx-quill";
 import {ProjectCardComponent} from "./project-card/project-card.component";
 import {MatProgressBar} from "@angular/material/progress-bar";
 import {ManageFeedbackComponent} from "./manage-feedback/manage-feedback.component";
+import {ProfileComponent} from "./profile/profile.component";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {ManageFeedbackComponent} from "./manage-feedback/manage-feedback.compone
     ProjectComponent,
     AddProjectComponent,
     ProjectCardComponent,
-    ManageFeedbackComponent
+    ManageFeedbackComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,

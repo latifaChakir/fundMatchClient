@@ -1,0 +1,195 @@
+<div class="nk-body ui-rounder has-sidebar ">
+  <div class="nk-app-root">
+    <div class="nk-main ">
+      <div class="nk-sidebar is-light nk-sidebar-fixed is-light " data-content="sidebarMenu">
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class="nk-wrap ">
+        <div class="nk-header is-light nk-header-fixed is-light">
+          <app-navbar></app-navbar>
+        </div>
+
+        <div class="nk-content nk-content-fluid">
+          <div class="container-xl wide-xl">
+            <div class="nk-content-body">
+              <div class="nk-block">
+                <div class="card" >
+                  <div class="card-aside-wrap">
+                    <div class="card-inner card-inner-lg" >
+                      <div class="nk-block-head nk-block-head-lg">
+                        <div class="nk-block-between">
+                          <div class="nk-block-head-content">
+                            <h4 class="nk-block-title" style="font-family: Nunito, sans-serif;
+                            font-size: 1.5rem;
+                            font-weight: 700; margin: 0;">Startup Informations</h4>
+                          </div>
+                          <div class="nk-block-head-content align-self-start d-lg-none">
+                            <a href="#" class="toggle btn btn-icon btn-trigger mt-n1" data-target="userAside"><em class="icon ni ni-menu-alt-r"></em></a>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Personnel infos -->
+                      <div class="nk-block"  >
+                        <div class="nk-data data-list" *ngIf="activeSection === 'personal'">
+                          <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
+                            <div class="data-col">
+                              <span class="data-label">First Name</span>
+                              <span class="data-value">{{ currentStartup?.user?.firstName}}</span>
+                            </div>
+                            <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
+                          </div>
+                          <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
+                            <div class="data-col">
+                              <span class="data-label">Last Name</span>
+                              <span class="data-value">{{ currentStartup?.user?.lastName}}</span>
+                            </div>
+                            <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
+                          </div>
+                          <div class="data-item">
+                            <div class="data-col">
+                              <span class="data-label">Email</span>
+                              <span class="data-value">{{ currentStartup?.user?.email}}</span>
+                            </div>
+                          </div>
+                          <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
+                            <div class="data-col">
+                              <span class="data-label">Phone Number</span>
+                              <span class="data-value text-soft">{{ currentStartup?.user?.phoneNumber}}</span>
+                            </div>
+                            <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- .comapny infos -->
+                      <div class="nk-block" *ngIf="activeSection === 'financials'"  >
+                        <div class="nk-data data-list" >
+                          <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
+                            <div class="data-col">
+                              <span class="data-label">funding Needed</span>
+                              <span class="data-value">{{ currentStartup?.fundingNeeded}}</span>
+                            </div>
+                            <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
+                          </div>
+                          <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
+                            <div class="data-col">
+                              <span class="data-label">Revenue </span>
+                              <span class="data-value">{{ currentStartup?.revenue}}</span>
+                            </div>
+                            <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
+                          </div>
+                          <div class="data-item">
+                            <div class="data-col">
+                              <span class="data-label">Team size </span>
+                              <span class="data-value">{{currentStartup?.teamSize}}</span>
+                            </div>
+                          </div>
+                          <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
+                            <div class="data-col">
+                              <span class="data-label">Growth Rate</span>
+                              <span class="data-value text-soft">{{currentStartup?.growthRate}}</span>
+                            </div>
+                            <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="nk-block" *ngIf="activeSection === 'general'" >
+                        <div class="nk-data data-list" >
+                          <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
+                            <div class="data-col">
+                              <span class="data-label">Company Name</span>
+                              <span class="data-value">{{currentStartup?.companyName}}</span>
+                            </div>
+                            <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
+                          </div>
+                          <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
+                            <div class="data-col">
+                              <span class="data-label">Head Quarters </span>
+                              <span class="data-value">{{currentStartup?.headquarters}}</span>
+                            </div>
+                            <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
+                          </div>
+                          <div class="data-item">
+                            <div class="data-col">
+                              <span class="data-label"> Founded Year</span>
+                              <span class="data-value">{{currentStartup?.foundedYear}}</span>
+                            </div>
+                          </div>
+                          <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
+                            <div class="data-col">
+                              <span class="data-label">Description</span>
+                              <span class="data-value text-soft">{{currentStartup?.description}}</span>
+                            </div>
+                            <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
+                          </div>
+                          <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
+                            <div class="data-col">
+                              <span class="data-label">Contact</span>
+                              <span class="data-value text-soft">{{currentStartup?.contactInfo}}</span>
+                            </div>
+                            <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- .financials sectorsAndStages -->
+                      <div class="nk-block" *ngIf="activeSection === 'sectorsAndStages'" >
+                        <div class="nk-data data-list" >
+                          <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
+                            <div class="data-col">
+                              <span class="data-label"> Sectors</span>
+                              <span class="data-value" *ngFor="let sector of currentStartup?.sectors">{{ sector.name }}</span>
+                            </div>
+                            <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
+                          </div>
+                          <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
+                            <div class="data-col">
+                              <span class="data-label"> Stages</span>
+                              <span class="data-value" *ngFor="let stage of currentStartup?.stages">{{ stage.name }}</span>
+                            </div>
+                            <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="card-aside card-aside-left user-aside toggle-slide toggle-slide-left toggle-break-lg" data-toggle-body="true" data-content="userAside" data-toggle-screen="lg" data-toggle-overlay="true">
+                      <div class="card-inner-group" data-simplebar>
+                        <div class="card-inner">
+                          <div class="user-card">
+                            <div class="user-avatar bg-primary">
+                              <span>{{ (currentStartup?.user?.firstName?.[0] || '').toUpperCase() }}{{ (currentStartup?.user?.lastName?.[0] || '').toUpperCase() }}</span>
+                            </div>
+                            <div class="user-info">
+                              <span class="lead-text">{{ currentStartup?.user?.firstName}} {{ currentStartup?.user?.lastName}}</span>
+                              <span class="sub-text">{{ currentStartup?.user?.email}}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-inner">
+                          <div class="user-account-info py-0">
+                            <div class="user-balance">My Startup <small class="currency currency-btc"></small></div>
+                            <div class="user-balance-sub">Profile <span> <span class="currency currency-btc"></span></span></div>
+                          </div>
+                        </div>
+                        <div class="card-inner p-0">
+                          <ul class="link-list-menu">
+                            <li><a style="cursor:pointer" [class.active]="activeSection === 'personal'" (click)="setActiveSection('personal')"><em class="icon ni ni-user-fill-c"></em><span>personal Information</span></a></li>
+                            <li><a style="cursor:pointer" [class.active]="activeSection === 'general'" (click)="setActiveSection('general')"><em class="icon ni ni-invest"></em><span>general Info</span></a></li>
+                            <li><a style="cursor:pointer"[class.active]="activeSection === 'financials'" (click)="setActiveSection('financials')"><em class="icon ni ni-building"></em><span>financials Info</span></a></li>
+                            <li><a style="cursor:pointer" [class.active]="activeSection === 'sectorsAndStagessAndStages'" (click)="setActiveSection('sectorsAndStages')"><em class="icon ni ni-activity-round-fill"></em><span> sectors And Stages</span></a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

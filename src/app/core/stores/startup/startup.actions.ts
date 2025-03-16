@@ -17,7 +17,7 @@ export const StartupActions = createActionGroup({
     'Get Startup By Id Success': props<{ startup: Startup }>(),
     'Get Startup By Id Failure': props<{ error: string }>(),
 
-    'Update Startup': props<{ startup: Startup }>(),
+    'Update Startup': props<{ startup: any }>(),
     'Update Startup Success': props<{ startup: Startup }>(),
     'Update Startup Failure': props<{ error: string }>(),
 

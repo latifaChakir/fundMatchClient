@@ -49,25 +49,30 @@ export class StartupEffects {
   );
 
 
-
   updateStartup$ = createEffect(() =>
     this.actions$.pipe(
       ofType(StartupActions.updateStartup),
       mergeMap((action) => {
-        const startupId = action.startup.id;
+        const formData = action.startup as FormData;
+        const startupId = formData.get('id');
+
+        console.log("ID from FormData:", startupId);
+
         if (!startupId) {
-          console.error("Startup ID is not valid:", action.startup);
+          console.error("Startup ID is not valid:", formData);
           return of(StartupActions.updateStartupFailure({ error: "Invalid Startup ID" }));
         }
 
-        return this.startupService.updateStartup(action.startup, startupId).pipe(
+        return this.startupService.updateStartup(formData, Number(startupId)).pipe(
           map((startup) => StartupActions.updateStartupSuccess({ startup })),
-          catchError((error) => of(StartupActions.updateStartupFailure({ error: error.message })))
+          catchError((error) => {
+            console.error("Update failed:", error);
+            return of(StartupActions.updateStartupFailure({ error: error.message || "Update failed" }));
+          })
         );
       })
     )
   );
-
   deleteStartup$ = createEffect(() =>
     this.actions$.pipe(
       ofType(StartupActions.deleteStartup),
