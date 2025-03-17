@@ -1,2 +1,143 @@
-<p>meeting works!</p>
-<button (click)="startMeeting()">Démarrer une réunion</button>
+<div class="nk-body ui-rounder has-sidebar ">
+  <div class="nk-app-root">
+    <div class="nk-main ">
+      <div class="nk-sidebar is-light nk-sidebar-fixed is-light " data-content="sidebarMenu">
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class="nk-wrap ">
+        <div class="nk-header is-light nk-header-fixed is-light">
+          <app-navbar></app-navbar>
+        </div>
+        <div class="nk-content nk-content-fluid">
+          <div class="container-xl wide-xl">
+            <div class="nk-content-body">
+              <div class="nk-block-head nk-block-head-sm">
+                <div class="nk-block-between">
+                  <div class="nk-block-head-content">
+                    <h3 class="nk-block-title page-title" style="font-family: Nunito, sans-serif;
+                    font-size: 1.5rem;
+                    font-weight: 700; margin: 0; color: #364a63 ">My Meetings</h3>
+                  </div>
+                  <div class="nk-block-head-content">
+                    <div class="toggle-wrap nk-block-tools-toggle">
+                      <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
+                      <div class="toggle-expand-content" data-content="pageMenu">
+                        <ul class="nk-block-tools g-3">
+                          <li class="nk-block-tools-opt">
+                            <a class="toggle btn btn-icon btn-primary d-md-none"   (click)="openModal()">
+                              <em class="icon ni ni-plus"></em>
+                            </a>
+                            <a class="toggle btn btn-primary d-none d-md-inline-flex"  (click)="openModal()" style="color: #fff">
+                              <em class="icon ni ni-plus"></em><span>Créer une réunion</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="nk-block">
+                <div class="card">
+                  <div class="card-inner-group">
+                    <div class="card-inner p-0">
+                      <div class="nk-tb-list">
+                        <div class="nk-tb-item nk-tb-head">
+                          <div class="nk-tb-col nk-tb-col-check">
+                            <div class="custom-control custom-control-sm custom-checkbox notext">
+                              <input type="checkbox" class="custom-control-input" id="pid">
+                              <label class="custom-control-label" for="pid"></label>
+                            </div>
+                          </div>
+                          <div class="nk-tb-col tb-col-sm"><span>topic</span></div>
+                          <div class="nk-tb-col tb-col-sm"><span>startTime</span></div>
+                          <div class="nk-tb-col tb-col-sm"><span>duration</span></div>
+                          <div class="nk-tb-col tb-col-sm"><span>joinUrl</span></div>
+                        </div>
+
+                        <div *ngFor="let meet of (meetingDetails) ?? [] | paginate: { itemsPerPage: 3, currentPage: p }" class="nk-tb-item">
+                          <div class="nk-tb-col nk-tb-col-check">
+                            <div class="custom-control custom-control-sm custom-checkbox notext">
+                              <input type="checkbox" class="custom-control-input" id="pid1">
+                              <label class="custom-control-label" for="pid1"></label>
+                            </div>
+                          </div>
+                          <div class="nk-tb-col tb-col-sm">
+                              <span class="tb-product">
+                                <span class="title">{{ meet.topic }}</span>
+                              </span>
+                          </div>
+                          <div class="nk-tb-col tb-col-sm">
+                              <span class="tb-product">
+                                <span class="title">{{ meet.startTime }}</span>
+                              </span>
+                          </div>
+                          <div class="nk-tb-col tb-col-sm">
+                              <span class="tb-product">
+                                <span class="title">{{ meet.duration }}</span>
+                              </span>
+                          </div>
+
+                          <div class="nk-tb-col tb-col-sm">
+                              <span class="tb-product">
+                                <span class="title"><a [href]="meet.joinUrl" target="_blank">{{ meet.joinUrl }}</a></span>
+                              </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <pagination-controls
+                      class="myPagination"
+                      previousLabel=""
+                      nextLabel=""
+                      (pageChange)="p = $event"
+                    >
+                    </pagination-controls>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+<div *ngIf="showModal" class="modal fade show d-block" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create Meet</h5>
+        <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="max-height: 400px; overflow-y: auto; ">
+
+        <div class="form-group">
+          <label >startTime:</label> <span class="required-indicator">*</span>
+          <input type="datetime-local"class="form-control"  [(ngModel)]="startTime" id="meeting-time">
+        </div>
+
+        <div class="form-group">
+          <label >duration:</label><span class="required-indicator">*</span>
+          <input type="number" class="form-control"  [(ngModel)]="duration" id="meeting-duration">
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+          <button (click)="startMeeting()" class="btn btn-primary" >Démarrer la réunion</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

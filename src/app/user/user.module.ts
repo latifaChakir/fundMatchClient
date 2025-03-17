@@ -14,6 +14,8 @@ import {PaymentComponent} from "./payment/payment.component";
 import {StartupProjectComponent} from "./startup-project/startup-project.component";
 import {InvestorsComponent} from "./investors/investors.component";
 import {MeetingComponent} from "./meeting/meeting.component";
+import {NavbarComponent} from "../layouts/navbar/navbar.component";
+import {SidebarComponent} from "../layouts/sidebar/sidebar.component";
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import {MeetingComponent} from "./meeting/meeting.component";
     PaginatorModule,
     QuillEditorComponent,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NavbarComponent,
+    SidebarComponent
   ]
 })
 export class UserModule { }

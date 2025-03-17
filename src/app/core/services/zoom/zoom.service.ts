@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {Meeting} from "../../models/meeting/meet.model";
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +12,11 @@ export class ZoomService {
 
   constructor(private http: HttpClient) {
   }
-  createMeeting(topic: string) {
-    return this.http.post(`${this.api}/create-meeting`, { topic });
+  createMeeting(topic: string, startTime: string, duration: number) {
+    return this.http.post(`${this.api}/create-meeting`, { topic, startTime, duration });
   }
-
+  getMyMeetings():Observable<Meeting[]>{
+    return this.http.get<Meeting[]>(`${this.api}/myMeetings`, {})
+  }
 
 }
