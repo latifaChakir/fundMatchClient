@@ -1,0 +1,30 @@
+.user-avatar {
+  width: 80px; /* Ajustez selon votre design */
+  height: 80px;
+  overflow: hidden;
+}
+
+.user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.team-info li span:last-child {
+  word-wrap: break-word; /* Force la coupure des mots trop longs */
+  overflow-wrap: break-word;
+  white-space: normal; /* Permet le retour à la ligne */
+  display: block; /* Force un retour à la ligne automatique */
+}
+.team-info li span:last-child{
+  max-width: 100%;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+.text-wrap {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  display: block;
+}

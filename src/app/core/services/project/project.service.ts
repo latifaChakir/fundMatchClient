@@ -21,6 +21,9 @@ export class ProjectService {
       map(response => response.data)
     );
   }
+  getUserProjects(): Observable<Project[]> {
+    return this.http.get<Project[]>(`${this.api}/userProjects`);
+  }
   deleteProject(projectId: number) {
     return this.http.delete(`${this.api}/${projectId}`);
   }

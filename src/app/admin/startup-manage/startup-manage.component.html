@@ -1,0 +1,100 @@
+<div class="nk-body ui-rounder has-sidebar ">
+  <div class="nk-app-root">
+    <div class="nk-main ">
+      <div class="nk-sidebar is-light nk-sidebar-fixed is-light " data-content="sidebarMenu">
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class="nk-wrap ">
+        <div class="nk-header is-light nk-header-fixed is-light">
+          <app-navbar></app-navbar>
+        </div>
+
+        <!-------------content------------------>
+        <div class="nk-content nk-content-fluid">
+          <div class="container-xl wide-xl">
+            <div class="nk-content-body">
+              <div class="nk-block-head nk-block-head-sm">
+                <div class="nk-block-between">
+                  <div class="nk-block-head-content">
+                    <h3 class="nk-block-title page-title"style="font-family: Nunito, sans-serif;
+                    font-size: 1.5rem;
+                    font-weight: 700; margin: 0; color: #364a63 ">Startups Card</h3>
+                  </div>
+                  <div class="nk-block-head-content">
+                    <div class="toggle-wrap nk-block-tools-toggle">
+                      <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-menu-alt-r"></em></a>
+                      <div class="toggle-expand-content" data-content="pageMenu">
+                        <ul class="nk-block-tools g-3">
+                          <li>
+                            <div class="form-control-wrap">
+                              <div class="form-icon form-icon-right">
+                                <em class="icon ni ni-search"></em>
+                              </div>
+                              <input type="text"
+                                     class="form-control"
+                                     id="default-04" placeholder="Quick search by title"
+                                     (input)="onSearchChange($event)" >
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="nk-block">
+                <div class="row g-gs" >
+                  <div *ngFor="let startup of (startups$ | async) ?? [] | paginate: { itemsPerPage: 3, currentPage: p }" class="col-sm-6 col-lg-4">
+                    <div class="card">
+                      <div class="card-inner">
+                        <div class="team">
+                          <div class="team-status bg-success text-white"><em class="icon ni ni-check-thick"></em></div>
+                          <div class="team-options">
+                            <div class="drodown">
+                              <a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                              <div class="dropdown-menu dropdown-menu-end">
+                                <ul class="link-list-opt no-bdr">
+                                  <li><a routerLink="/startup-project/{{startup.id}}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="user-card user-card-s2">
+                            <div class="user-avatar lg bg-primary">
+                              <img src="{{startup.imagePath}}" alt="">
+                              <div class="status dot dot-lg dot-success"></div>
+                            </div>
+                            <div class="user-info">
+                              <span class="sub-text">{{startup.companyName}}</span>
+                            </div>
+                          </div>
+                          <ul class="team-info">
+                            <li><span>Created Date</span><span>{{startup.foundedYear}}</span></li>
+                            <li><span>Contact</span><span  class="text-wrap">{{startup.contactInfo}}</span></li>
+                            <li><span>Email</span><span>{{startup.user?.email}}</span></li>
+                          </ul>
+                          <div class="team-view">
+                            <a routerLink="/startup-project/{{startup.id}}" class="btn btn-block btn-dim btn-primary"><span>View Profile</span></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <pagination-controls
+                  class="myPagination"
+                  previousLabel=""
+                  nextLabel=""
+                  (pageChange)="p = $event"
+                >
+                </pagination-controls>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

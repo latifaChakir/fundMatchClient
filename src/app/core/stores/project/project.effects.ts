@@ -14,7 +14,7 @@ export class ProjectEffects {
     this.actions$.pipe(
       ofType(ProjectActions.loadProjects),
       mergeMap(() =>
-        this.projectService.getProjects().pipe(
+        this.projectService.getUserProjects().pipe(
           map((projects) => ProjectActions.loadProjectsSuccess({ projects })),
           catchError((error) => of(ProjectActions.loadProjectsFailure({ error: error.message })))
         )

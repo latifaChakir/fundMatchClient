@@ -20,6 +20,7 @@ import {PublishedEventComponent} from "./event-management/published-event/publis
 import {UserManagementComponent} from "./user-management/user-management.component";
 import {RoleComponent} from "./role-management/role/role.component";
 import {AddRoleComponent} from "./role-management/add-role/add-role.component";
+import {StartupManageComponent} from "./startup-manage/startup-manage.component";
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {AddRoleComponent} from "./role-management/add-role/add-role.component";
     PublishedEventComponent,
     UserManagementComponent,
     RoleComponent,
-    AddRoleComponent
+    AddRoleComponent,
+    StartupManageComponent
   ],
   imports: [
     CommonModule,
