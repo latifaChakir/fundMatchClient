@@ -13,6 +13,7 @@ import {ReservationComponent} from "./reservation-event/reservation/reservation.
 import {PaymentComponent} from "./payment/payment.component";
 import {StartupProjectComponent} from "./startup-project/startup-project.component";
 import {InvestorsComponent} from "./investors/investors.component";
+import {MeetingComponent} from "./meeting/meeting.component";
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {InvestorsComponent} from "./investors/investors.component";
     ReservationComponent,
     PaymentComponent,
     StartupProjectComponent,
-    InvestorsComponent
+    InvestorsComponent,
+    MeetingComponent
   ],
   exports: [
     NavComponent,
