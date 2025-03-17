@@ -107,7 +107,7 @@
             </span>
             <span class="nk-menu-text">Applications</span>
           </a>
-          <div class="collapse" id="applications" [ngClass]="{'show': isActiveRoute(['chat'])}">
+          <div class="collapse" id="applications" [ngClass]="{'show': isActiveRoute(['chat','meeting'])}">
             <ul class="nk-menu-sub">
               <li class="nk-menu-item" routerLinkActive="active">
                 <a routerLink="/chat" class="nk-menu-link" routerLinkActive="active">
@@ -115,8 +115,8 @@
                 </a>
               </li>
               <li class="nk-menu-item">
-                <a href="html/apps-calendar.html" class="nk-menu-link">
-                  <span class="nk-menu-text">Calendar</span>
+                <a routerLink="/meeting" class="nk-menu-link">
+                  <span class="nk-menu-text">Meetings</span>
                 </a>
               </li>
             </ul>

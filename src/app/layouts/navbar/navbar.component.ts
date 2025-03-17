@@ -13,7 +13,7 @@ import {MessageNotifService} from "../../core/services/webSocket/message-notif.s
     NgClass
   ],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit{
   notifications: string[] = [];

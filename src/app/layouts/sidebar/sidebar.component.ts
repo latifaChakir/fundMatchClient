@@ -11,7 +11,7 @@ import {NgClass} from "@angular/common";
     NgClass
   ],
   templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.css'
+  styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
   constructor(private router: Router) {}
