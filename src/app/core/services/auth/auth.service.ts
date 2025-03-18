@@ -34,7 +34,7 @@ export class AuthService {
   }
 
   resetPassword(user: ResetPassword): Observable<void> {
-    return this.http.post<void>(`${this.api}/reset-password`, user);
+    return this.http.put<void>(`${this.api}/reset-password`, user);
   }
 
   getUserRole(): string {

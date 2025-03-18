@@ -20,6 +20,8 @@ import {ProjectCardComponent} from "./project-card/project-card.component";
 import {MatProgressBar} from "@angular/material/progress-bar";
 import {ManageFeedbackComponent} from "./manage-feedback/manage-feedback.component";
 import {ProfileComponent} from "./profile/profile.component";
+import {StatisticComponent} from "./statistic/statistic.component";
+import {BaseChartDirective} from "ng2-charts";
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import {ProfileComponent} from "./profile/profile.component";
     AddProjectComponent,
     ProjectCardComponent,
     ManageFeedbackComponent,
-    ProfileComponent
+    ProfileComponent,
+    StatisticComponent
   ],
   imports: [
     CommonModule,
@@ -48,6 +51,7 @@ import {ProfileComponent} from "./profile/profile.component";
     NgxPaginationModule,
     QuillEditorComponent,
     MatProgressBar,
+    BaseChartDirective,
 
   ]
 })

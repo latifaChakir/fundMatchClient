@@ -18,6 +18,8 @@ import {MatInput} from "@angular/material/input";
 import {MatOption} from "@angular/material/autocomplete";
 import {MatSelect} from "@angular/material/select";
 import {MatStep, MatStepLabel, MatStepper, MatStepperNext, MatStepperPrevious} from "@angular/material/stepper";
+import {DashboardComponent} from "./dashboard/dashboard.component";
+import {BaseChartDirective} from "ng2-charts";
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import {MatStep, MatStepLabel, MatStepper, MatStepperNext, MatStepperPrevious} f
     AddInvestorComponent,
     ProjectSavedComponent,
     ProfileComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +51,8 @@ import {MatStep, MatStepLabel, MatStepper, MatStepperNext, MatStepperPrevious} f
     MatStepper,
     MatStepperNext,
     MatStepperPrevious,
-    MatError
+    MatError,
+    BaseChartDirective
   ]
 })
 export class InvestorModule { }

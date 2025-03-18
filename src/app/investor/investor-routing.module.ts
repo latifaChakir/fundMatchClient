@@ -6,12 +6,14 @@ import {ProfileComponent} from "./profile/profile.component";
 import {CreateAccountComponent} from "./create-account/create-account.component";
 import {authGuard} from "../core/guards/auth.guard";
 import {roleGuard} from "../core/guards/role.guard";
+import {DashboardComponent} from "./dashboard/dashboard.component";
 
 const routes: Routes = [
   {path:"invertissor-list", component:InvestorComponent , canActivate: [authGuard, roleGuard],  data: { roles: ['ADMIN'] }},
   {path:"project-saved", component:ProjectSavedComponent, canActivate: [authGuard, roleGuard],  data: { roles: ['INVESTOR'] }},
   {path:"investor-profile", component:ProfileComponent  ,canActivate: [authGuard, roleGuard],  data: { roles: ['INVESTOR'] }},
   {path:"create-profile", component:CreateAccountComponent ,canActivate: [authGuard, roleGuard],  data: { roles: ['INVESTOR'] }},
+  {path:"investor-dash", component:DashboardComponent ,canActivate: [authGuard, roleGuard],  data: { roles: ['INVESTOR'] }},
 ];
 
 @NgModule({
