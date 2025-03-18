@@ -9,6 +9,7 @@ import {MeetingComponent} from "./meeting/meeting.component";
 import {NotAuthorizedComponent} from "./not-authorized/not-authorized.component";
 import {authGuard} from "../core/guards/auth.guard";
 import {roleGuard} from "../core/guards/role.guard";
+import {CalendarComponent} from "./calendar/calendar.component";
 
 const routes: Routes = [
   { path: 'reservation-page/:id', component: ReservationComponent ,canActivate: [authGuard, roleGuard],  data: { roles: ['INVESTOR','ADMIN','STARTUP'] }},
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'startup-project/:id', component: StartupProjectComponent ,canActivate: [authGuard, roleGuard],  data: { roles: ['INVESTOR','ADMIN','STARTUP'] }},
   { path: 'meeting', component: MeetingComponent ,canActivate: [authGuard, roleGuard],  data: { roles: ['INVESTOR','ADMIN','STARTUP'] }},
   { path: 'NotAuthorized', component: NotAuthorizedComponent },
+  { path: 'calendar', component: CalendarComponent },
 
 ];
 

@@ -41,6 +41,10 @@ import {UserEffects} from "./core/stores/user/user.effects";
 import {provideCharts, withDefaultRegisterables} from "ng2-charts";
 import {RoleEffects} from "./core/stores/role/role.effects";
 import {roleReducer, rolesFeatureKey} from "./core/stores/role/role.reducer";
+import { CalendarModule, CalendarDateFormatter, DateAdapter,  } from 'angular-calendar';
+import {NativeDateAdapter} from "@angular/material/core";
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import {FullCalendarModule} from "@fullcalendar/angular";
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -81,13 +85,17 @@ import {roleReducer, rolesFeatureKey} from "./core/stores/role/role.reducer";
     NgxPaginationModule,
     QuillModule.forRoot(),
     UserModule,
-    DashboardModule
-
+    DashboardModule,
+    FullCalendarModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
   ],
   providers: [
     provideHttpClient(withInterceptors([authInterceptor])),
     provideAnimationsAsync(),
-    provideCharts(withDefaultRegisterables())
+    provideCharts(withDefaultRegisterables()),
   ],
   bootstrap: [AppComponent]
 })

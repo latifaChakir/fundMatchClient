@@ -17,6 +17,9 @@ import {MeetingComponent} from "./meeting/meeting.component";
 import {NavbarComponent} from "../layouts/navbar/navbar.component";
 import {SidebarComponent} from "../layouts/sidebar/sidebar.component";
 import {NotAuthorizedComponent} from "./not-authorized/not-authorized.component";
+import {CalendarMonthModule} from "angular-calendar";
+import {CalendarComponent} from "./calendar/calendar.component";
+import {FullCalendarModule} from "@fullcalendar/angular";
 
 
 @NgModule({
@@ -30,7 +33,8 @@ import {NotAuthorizedComponent} from "./not-authorized/not-authorized.component"
     StartupProjectComponent,
     InvestorsComponent,
     MeetingComponent,
-    NotAuthorizedComponent
+    NotAuthorizedComponent,
+    CalendarComponent
   ],
   exports: [
     NavComponent,
@@ -45,7 +49,9 @@ import {NotAuthorizedComponent} from "./not-authorized/not-authorized.component"
     ReactiveFormsModule,
     NgxPaginationModule,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    CalendarMonthModule,
+    FullCalendarModule
   ]
 })
 export class UserModule { }
