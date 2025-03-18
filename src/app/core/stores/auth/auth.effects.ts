@@ -37,7 +37,16 @@ export class AuthEffects {
         this.authService.login(action.login).pipe(
           map(user => {
             localStorage.setItem('token', user.token);
-            this.router.navigate(['/dashboard']);
+            const role = this.authService.getUserRole();
+
+            console.log(role);
+            if (role === 'Admin') {
+              this.router.navigate(['/dashboard']);
+            } else if (role === 'Startup') {
+              this.router.navigate(['/startup-overview']);
+            } else if (role === 'Investor') {
+              this.router.navigate(['/create-profile']);
+            }
             return AuthActions.loginUserSuccess({ user });
           }),
           catchError(error => of(AuthActions.loginUserFailure({ error: error.message })))

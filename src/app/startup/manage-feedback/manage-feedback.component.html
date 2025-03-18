@@ -81,6 +81,10 @@
                       </div>
                     </div>
                   </div>
+
+                </div>
+                <div *ngIf="filteredFeedbacks?.length === 0" class="text-center justify-content-center align-content-center">
+                  <h3>Aucun feedback trouvé</h3>
                 </div>
                 <pagination-controls
                   class="myPagination"

@@ -37,5 +37,13 @@ export class AuthService {
     return this.http.post<void>(`${this.api}/reset-password`, user);
   }
 
+  getUserRole(): string {
+    const token = localStorage.getItem('token');
+    if (!token) return '';
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return payload.authorities[0];
+  }
+
+
 
 }

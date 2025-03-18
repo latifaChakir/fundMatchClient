@@ -132,5 +132,10 @@ export class ChatExComponent implements OnInit {
       this.cdRef.detectChanges();
     }
   }
+  onSearchChange(event: any) {
+    console.log(event.target.value);
+    const value = event.target.value;
+    this.store.dispatch(UserActions.filterUsers({ searchTerm: value }));
+  }
 
 }
