@@ -24,26 +24,26 @@
   <div class="nk-sidebar-content">
     <div class="nk-sidebar-menu" data-simplebar>
       <ul class="nk-menu">
-        <li class="nk-menu-item has-sub" routerLinkActive="active">
+        <li class="nk-menu-item has-sub" *ngIf="isAdmin" routerLinkActive="active">
           <a routerLink="/dashboard" class="nk-menu-link" routerLinkActive="active">
             <span class="nk-menu-text" routerLinkActive="active">Dashboards</span>
           </a>
         </li>
-        <li class="nk-menu-item has-sub" routerLinkActive="active">
+        <li class="nk-menu-item has-sub" *ngIf="isStartup" routerLinkActive="active">
           <a routerLink="/dashboard-startup" class="nk-menu-link" routerLinkActive="active">
-            <span class="nk-menu-text" routerLinkActive="active"> Startup Dashboards</span>
+            <span class="nk-menu-text" routerLinkActive="active">  Dashboards</span>
           </a>
         </li>
-        <li class="nk-menu-item has-sub" routerLinkActive="active">
+        <li class="nk-menu-item has-sub" *ngIf="isInvestor" routerLinkActive="active">
           <a routerLink="/investor-dash" class="nk-menu-link" routerLinkActive="active">
-            <span class="nk-menu-text" routerLinkActive="active"> investor Dashboards</span>
+            <span class="nk-menu-text" routerLinkActive="active">  Dashboards</span>
           </a>
         </li>
         <li class="nk-menu-heading">
           <h6 class="overline-title text-primary-alt">Applications</h6>
         </li>
 
-        <li class="nk-menu-item has-sub" routerLinkActive="active">
+        <li class="nk-menu-item has-sub" *ngIf="isAdmin" routerLinkActive="active">
           <a
             href="#data"
             class="nk-menu-link nk-menu-toggle"
@@ -73,7 +73,7 @@
             </ul>
           </div>
         </li>
-        <li class="nk-menu-item has-sub" routerLinkActive="active">
+        <li class="nk-menu-item has-sub" *ngIf="isAdmin" routerLinkActive="active">
           <a
             href="#users"
             class="nk-menu-link nk-menu-toggle"
@@ -117,7 +117,7 @@
             </span>
             <span class="nk-menu-text">Applications</span>
           </a>
-          <div class="collapse" id="applications" [ngClass]="{'show': isActiveRoute(['chat','meeting'])}">
+          <div class="collapse" id="applications" [ngClass]="{'show': isActiveRoute(['chat','meeting','calendar'])}">
             <ul class="nk-menu-sub">
               <li class="nk-menu-item" routerLinkActive="active">
                 <a routerLink="/chat" class="nk-menu-link" routerLinkActive="active">
@@ -129,11 +129,16 @@
                   <span class="nk-menu-text">Meetings</span>
                 </a>
               </li>
+              <li class="nk-menu-item" routerLinkActive="active">
+                <a routerLink="/calendar" class="nk-menu-link">
+                  <span class="nk-menu-text">Calendar</span>
+                </a>
+              </li>
             </ul>
           </div>
         </li>
 
-        <li class="nk-menu-item has-sub" routerLinkActive="active">
+        <li class="nk-menu-item has-sub" *ngIf="isStartup || isAdmin" routerLinkActive="active">
           <a
             href="#startup"
             class="nk-menu-link nk-menu-toggle"
@@ -149,32 +154,32 @@
           </a>
           <div class="collapse" id="startup" [ngClass]="{'show': isActiveRoute(['startup-overview', 'startup-project','project-card','manage-feedback','profil-startup','startup-manage'])}">
             <ul class="nk-menu-sub">
-              <li class="nk-menu-item" routerLinkActive="active">
+              <li class="nk-menu-item" *ngIf="isStartup" routerLinkActive="active">
                 <a routerLink="/startup-overview" routerLinkActive="active" class="nk-menu-link">
                   <span class="nk-menu-text">Overview</span>
                 </a>
               </li>
-              <li class="nk-menu-item" routerLinkActive="active">
+              <li class="nk-menu-item" *ngIf="isStartup" routerLinkActive="active">
                 <a routerLink="/profil-startup" routerLinkActive="active" class="nk-menu-link">
                   <span class="nk-menu-text">Profile</span>
                 </a>
               </li>
-              <li class="nk-menu-item"  routerLinkActive="active">
+              <li class="nk-menu-item" *ngIf="isStartup" routerLinkActive="active">
                 <a routerLink="/startup-project" class="nk-menu-link"  routerLinkActive="active">
                   <span class="nk-menu-text">Projects</span>
                 </a>
               </li>
-              <li class="nk-menu-item"  routerLinkActive="active">
+              <li class="nk-menu-item" *ngIf="isStartup"  routerLinkActive="active">
                 <a routerLink="/project-card" class="nk-menu-link"  routerLinkActive="active">
                   <span class="nk-menu-text">Projects Card</span>
                 </a>
               </li>
-              <li class="nk-menu-item"  routerLinkActive="active">
+              <li class="nk-menu-item" *ngIf="isStartup" routerLinkActive="active">
                 <a routerLink="/manage-feedback" class="nk-menu-link"  routerLinkActive="active">
                   <span class="nk-menu-text">Projects Feedbacks</span>
                 </a>
               </li>
-              <li class="nk-menu-item"  routerLinkActive="active">
+              <li class="nk-menu-item" *ngIf="isAdmin" routerLinkActive="active">
                 <a routerLink="/startup-manage" class="nk-menu-link"  routerLinkActive="active">
                   <span class="nk-menu-text">Manage Startups</span>
                 </a>
@@ -183,7 +188,7 @@
           </div>
         </li>
 
-        <li class="nk-menu-item has-sub" routerLinkActive="active">
+        <li class="nk-menu-item has-sub" *ngIf="isInvestor || isAdmin" routerLinkActive="active">
           <a
             href="#invertissor"
             class="nk-menu-link nk-menu-toggle"
@@ -199,22 +204,22 @@
           </a>
           <div class="collapse" id="invertissor" [ngClass]="{'show': isActiveRoute(['invertissor-list', 'investor-profile','project-saved','create-profile'])}">
             <ul class="nk-menu-sub">
-              <li class="nk-menu-item" routerLinkActive="active">
+              <li class="nk-menu-item" *ngIf="isAdmin" routerLinkActive="active">
                 <a routerLink="/invertissor-list" class="nk-menu-link" routerLinkActive="active">
                   <span class="nk-menu-text">Investor List</span>
                 </a>
               </li>
-              <li class="nk-menu-item" routerLinkActive="active">
+              <li class="nk-menu-item" *ngIf="isInvestor" routerLinkActive="active">
                 <a routerLink="/investor-profile" class="nk-menu-link">
                   <span class="nk-menu-text">Investor Profil</span>
                 </a>
               </li>
-              <li class="nk-menu-item" routerLinkActive="active">
+              <li class="nk-menu-item" *ngIf="isInvestor" routerLinkActive="active">
                 <a routerLink="/project-saved" class="nk-menu-link">
                   <span class="nk-menu-text">Saved Project</span>
                 </a>
               </li>
-              <li class="nk-menu-item" routerLinkActive="active">
+              <li class="nk-menu-item" *ngIf="isInvestor" routerLinkActive="active">
                 <a routerLink="/create-profile" class="nk-menu-link">
                   <span class="nk-menu-text">Create Account</span>
                 </a>
@@ -223,7 +228,7 @@
           </div>
         </li>
 
-        <li class="nk-menu-item has-sub" routerLinkActive="active">
+        <li class="nk-menu-item has-sub" *ngIf="isAdmin" routerLinkActive="active">
           <a
             href="#project"
             class="nk-menu-link nk-menu-toggle"

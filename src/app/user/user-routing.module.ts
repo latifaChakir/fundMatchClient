@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'startup-project/:id', component: StartupProjectComponent ,canActivate: [authGuard, roleGuard],  data: { roles: ['INVESTOR','ADMIN','STARTUP'] }},
   { path: 'meeting', component: MeetingComponent ,canActivate: [authGuard, roleGuard],  data: { roles: ['INVESTOR','ADMIN','STARTUP'] }},
   { path: 'NotAuthorized', component: NotAuthorizedComponent },
-  { path: 'calendar', component: CalendarComponent },
+  { path: 'calendar', component: CalendarComponent ,canActivate: [authGuard, roleGuard],  data: { roles: ['INVESTOR','ADMIN','STARTUP'] }},
 
 ];
 
