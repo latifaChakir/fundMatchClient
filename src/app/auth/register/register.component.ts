@@ -14,7 +14,7 @@ import {RegisterRequest} from "../../core/models/auth/Register-request.model";
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   showRoleSelection = false;
-  selectedRole = 1;
+  selectedRole = 2;
 
   constructor(private store: Store, private fb: FormBuilder) {
   }

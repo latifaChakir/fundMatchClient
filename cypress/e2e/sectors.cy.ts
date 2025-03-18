@@ -47,8 +47,6 @@ describe('Sectors Page', () => {
     cy.get('app-add-sector').should('be.visible');
   });
 
-
-
   it('should delete a sector', () => {
     cy.intercept('DELETE', '**/api/sectors/1*').as('deleteSector');
 

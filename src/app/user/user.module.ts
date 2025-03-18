@@ -16,6 +16,7 @@ import {InvestorsComponent} from "./investors/investors.component";
 import {MeetingComponent} from "./meeting/meeting.component";
 import {NavbarComponent} from "../layouts/navbar/navbar.component";
 import {SidebarComponent} from "../layouts/sidebar/sidebar.component";
+import {NotAuthorizedComponent} from "./not-authorized/not-authorized.component";
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {SidebarComponent} from "../layouts/sidebar/sidebar.component";
     PaymentComponent,
     StartupProjectComponent,
     InvestorsComponent,
-    MeetingComponent
+    MeetingComponent,
+    NotAuthorizedComponent
   ],
   exports: [
     NavComponent,

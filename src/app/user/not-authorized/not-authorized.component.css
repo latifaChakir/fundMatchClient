@@ -1,0 +1,41 @@
+.nk-body {
+  background-color: #f5f6fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.nk-error-h {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #6c5ce7;
+  margin-bottom: 10px;
+}
+
+.nk-error-title {
+  font-family: Nunito, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #364a63;
+  margin: 0;
+}
+
+.nk-error-text {
+  font-size: 1rem;
+  color: #526484;
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  background-color: #6c5ce7;
+  border-color: #6c5ce7;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.btn-primary:hover {
+  background-color: #5a4ec7;
+  border-color: #5a4ec7;
+}

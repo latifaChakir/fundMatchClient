@@ -35947,13 +35947,13 @@ p > span > .icon.ni {
   padding-bottom: 30px;
   max-width: 90%;
 }
-.nk-error-head {
-  font-size: 160px;
-  font-weight: 700;
-  background: -webkit-linear-gradient(#733AEA, #170C2F);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  opacity: 0.9;
+.nk-error-h {
+  font-size: 160px !important;
+  font-weight: 700 !important;
+  background: -webkit-linear-gradient(#733AEA, #170C2F) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  opacity: 0.9 !important;
 }
 .nk-error-title {
   padding-bottom: 1rem;
@@ -44125,3 +44125,10 @@ body.dark-mode.nk-body.ui-softy, body.dark-mode.nk-body.ui-shady {
 }
 
 /*! END @iO */
+.mat-h2,
+.mat-headline-6,
+.mat-typography .mat-h2,
+.mat-typography .mat-headline-6,
+.mat-typography h2 {
+  all: unset;
+}

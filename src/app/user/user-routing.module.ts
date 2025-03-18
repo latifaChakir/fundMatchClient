@@ -6,6 +6,7 @@ import {PaymentComponent} from "./payment/payment.component";
 import {StartupProjectComponent} from "./startup-project/startup-project.component";
 import {InvestorsComponent} from "./investors/investors.component";
 import {MeetingComponent} from "./meeting/meeting.component";
+import {NotAuthorizedComponent} from "./not-authorized/not-authorized.component";
 
 const routes: Routes = [
   { path: 'reservation-page/:id', component: ReservationComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'ticket/:id', component: PaymentComponent },
   { path: 'startup-project/:id', component: StartupProjectComponent },
   { path: 'meeting', component: MeetingComponent },
+  { path: 'NotAuthorized', component: NotAuthorizedComponent },
 
 ];
 
