@@ -59,8 +59,8 @@
           <div class="form-group">
             <label for="date">Date :</label><span class="required-indicator">*</span>
             <input id="date" type="date" class="form-control" formControlName="date"  />
-            <div *ngIf="eventForm.controls['date'].invalid && eventForm.controls['date'].touched" class="text-danger">
-             Date is required
+            <div *ngIf="eventForm.controls['date'].invalid && eventForm.controls['date'].touched" class="text-danger" >
+             Date is required & Can not be in the past
             </div>
           </div>
           <div class="form-group">

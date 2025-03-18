@@ -21,6 +21,14 @@ export class MeetingComponent implements OnInit{
     if (!this.startTime || this.duration <= 0) {
       alert("Veuillez entrer une date et une durée valides.");
       return;
+
+    }
+    const selectedDate = new Date(this.startTime);
+    const now = new Date();
+
+    if (selectedDate <= now) {
+      alert("L'heure de début doit être dans le futur.");
+      return;
     }
 
     this.zoomService.createMeeting('Réunion Importante', this.startTime, this.duration)
@@ -41,6 +49,12 @@ export class MeetingComponent implements OnInit{
   closeModal(): void {
     this.showModal = false;
   }
+  isPastMeeting(startTime: string): boolean {
+    console.log("Comparing:", startTime, "with", new Date().toISOString());
+    return new Date(startTime) < new Date();
+  }
+
+
 
 
 }

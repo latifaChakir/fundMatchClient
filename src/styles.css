@@ -300,4 +300,8 @@ h3 {
 .header_navbar[_ngcontent-ng-c542901167] {
   position: fixed !important;
 }
+.past-meeting {
+  background-color: red !important;
+}
+
 

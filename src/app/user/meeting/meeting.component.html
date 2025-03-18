@@ -51,10 +51,11 @@
                               <label class="custom-control-label" for="pid"></label>
                             </div>
                           </div>
-                          <div class="nk-tb-col tb-col-sm"><span>topic</span></div>
-                          <div class="nk-tb-col tb-col-sm"><span>startTime</span></div>
-                          <div class="nk-tb-col tb-col-sm"><span>duration</span></div>
-                          <div class="nk-tb-col tb-col-sm"><span>joinUrl</span></div>
+                          <div class="nk-tb-col tb-col-sm"><span>Topic</span></div>
+                          <div class="nk-tb-col tb-col-sm"><span>Start Time</span></div>
+                          <div class="nk-tb-col tb-col-sm"><span>Duration</span></div>
+                          <div class="nk-tb-col tb-col-sm"><span>Join URL</span></div>
+                          <div class="nk-tb-col tb-col-sm"><span>Status</span></div>
                         </div>
 
                         <div *ngFor="let meet of (meetingDetails) ?? [] | paginate: { itemsPerPage: 3, currentPage: p }" class="nk-tb-item">
@@ -65,25 +66,31 @@
                             </div>
                           </div>
                           <div class="nk-tb-col tb-col-sm">
-                              <span class="tb-product">
-                                <span class="title">{{ meet.topic }}</span>
-                              </span>
+              <span class="tb-product">
+                <span class="title">{{ meet.topic }}</span>
+              </span>
                           </div>
                           <div class="nk-tb-col tb-col-sm">
-                              <span class="tb-product">
-                                <span class="title">{{ meet.startTime }}</span>
-                              </span>
+              <span class="tb-product">
+                <span class="title">{{ meet.startTime }}</span>
+              </span>
                           </div>
                           <div class="nk-tb-col tb-col-sm">
-                              <span class="tb-product">
-                                <span class="title">{{ meet.duration }}</span>
-                              </span>
+              <span class="tb-product">
+                <span class="title">{{ meet.duration }}</span>
+              </span>
                           </div>
-
                           <div class="nk-tb-col tb-col-sm">
-                              <span class="tb-product">
-                                <span class="title"><a [href]="meet.joinUrl" target="_blank">{{ meet.joinUrl }}</a></span>
-                              </span>
+              <span class="tb-product">
+                <span class="title"><a [href]="meet.joinUrl" target="_blank">{{ meet.joinUrl }}</a></span>
+              </span>
+                          </div>
+                          <div class="nk-tb-col tb-col-sm">
+              <span class="tb-product">
+                <span class="title" [ngClass]="{'text-danger': isPastMeeting(meet.startTime), 'text-success': !isPastMeeting(meet.startTime)}">
+                  {{ isPastMeeting(meet.startTime) ? 'Passed' : 'Upcoming' }}
+                </span>
+              </span>
                           </div>
                         </div>
                       </div>
@@ -92,10 +99,8 @@
                       class="myPagination"
                       previousLabel=""
                       nextLabel=""
-                      (pageChange)="p = $event"
-                    >
+                      (pageChange)="p = $event">
                     </pagination-controls>
-
                   </div>
                 </div>
               </div>
