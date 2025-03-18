@@ -27,9 +27,17 @@
           <div class="widget category">
             <h5 class="widget-header">Sectors</h5>
             <ul class="category-list m-0 p-0">
-              <li *ngFor="let sector of sectors$ | async "><a href="">{{sector.name}} <span class="float-right"><input type="radio" name="sector" value="{{ sector.name }}"></span></a></li>
+              <li *ngFor="let sector of sectors$ | async">
+                <a href="#">
+                  {{ sector.name }}
+                  <span class="float-right">
+                    <input type="radio" name="sector" value="{{ sector.name }}" (change)="onSectorChange($event)">
+                  </span>
+                </a>
+              </li>
             </ul>
           </div>
+
           <div class="widget tags">
             <h5 class="widget-header">Event Types</h5>
             <ul class="list-inline">

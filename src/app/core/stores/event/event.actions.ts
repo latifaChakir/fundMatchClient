@@ -30,5 +30,8 @@ export const EventActions = createActionGroup({
     'Update Event Status': props<{ eventId: number }>(),
     'Update Event Status Success':props<{ event: Event }>(),
     'Update Event Status Failure': props<{ error: string }>(),
+
+    'Filter Events By Sector': props<{ sector: string | null }>(),
+
   }
 });

@@ -35,4 +35,9 @@ export class EventComponent implements OnInit{
     const value = event.target.value;
     this.store.dispatch(EventActions.filterEvents({ searchTerm: value }));
   }
+  onSectorChange(event: any) {
+    const selectedSector = event.target.value;
+    this.store.dispatch(EventActions.filterEventsBySector({ sector: selectedSector }));
+  }
+
 }

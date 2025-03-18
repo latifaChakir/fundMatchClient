@@ -7,6 +7,8 @@ export interface EventState {
   filteredEvents: Event[];
   searchTerm: string;
   error: string | null;
+  selectedSector: string | null;
+
 }
 
 const initialState: EventState = {
@@ -14,6 +16,8 @@ const initialState: EventState = {
   filteredEvents: [],
   searchTerm: '',
   error: null,
+  selectedSector: null,
+
 };
 
 export const EventsFeature = createFeature({
@@ -120,6 +124,14 @@ export const EventsFeature = createFeature({
       ...state,
       error
     })),
+    on(EventActions.filterEventsBySector, (state, { sector }) => ({
+      ...state,
+      selectedSector: sector,
+      filteredEvents: state.events.filter(event =>
+        sector ? event.sector?.name === sector : true
+      ),
+    })),
+
   )
 });
 
