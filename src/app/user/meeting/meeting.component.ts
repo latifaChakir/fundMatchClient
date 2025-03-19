@@ -12,6 +12,7 @@ export class MeetingComponent implements OnInit{
   p: number = 1;
   showModal: boolean = false;
   meetingDetails: any = null;
+  type: string = 'INITIAL_DISCUSSION';
   ngOnInit() {
     this.getMeetingDetails();
   }
@@ -31,7 +32,7 @@ export class MeetingComponent implements OnInit{
       return;
     }
 
-    this.zoomService.createMeeting('Réunion Importante', this.startTime, this.duration)
+    this.zoomService.createMeeting('Réunion Importante', this.startTime, this.duration,this.type)
       .subscribe((response: any) => {
         this.closeModal();
         this.getMeetingDetails();

@@ -12,8 +12,8 @@ export class ZoomService {
 
   constructor(private http: HttpClient) {
   }
-  createMeeting(topic: string, startTime: string, duration: number) {
-    return this.http.post(`${this.api}/create-meeting`, { topic, startTime, duration });
+  createMeeting(topic: string, startTime: string, duration: number, type: string) {
+    return this.http.post(`${this.api}/create-meeting`, { topic, startTime, duration,type });
   }
   getMyMeetings():Observable<Meeting[]>{
     return this.http.get<Meeting[]>(`${this.api}/myMeetings`, {})

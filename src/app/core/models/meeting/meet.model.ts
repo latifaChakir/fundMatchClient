@@ -6,4 +6,5 @@ export interface Meeting {
   duration: number;
   joinUrl: string;
   createdBy: string;
+  type: string;
 }

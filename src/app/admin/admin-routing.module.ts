@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: 'stages', component: StageComponent , canActivate: [authGuard, roleGuard],  data: { roles: ['ADMIN'] }},
   {path: 'events', component: EventComponent , canActivate: [authGuard, roleGuard],  data: { roles: ['ADMIN'] }},
   {path: 'users', component: UserManagementComponent , canActivate: [authGuard, roleGuard],  data: { roles: ['ADMIN'] }},
-  {path: 'roles', component: RoleComponent , canActivate: [authGuard, roleGuard],  data: { roles: ['ADMIN'] }},
+  {path: 'roles', component: RoleComponent },
   {path: 'published-events', component: PublishedEventComponent , canActivate: [authGuard, roleGuard],  data: { roles: ['ADMIN'] }},
   {path: 'startup-manage', component: StartupManageComponent , canActivate: [authGuard, roleGuard],  data: { roles: ['ADMIN'] }},
 ];
