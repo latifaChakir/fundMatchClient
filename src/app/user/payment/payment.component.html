@@ -1,5 +1,5 @@
 <div *ngIf="paymentSuccess"
-     class="alert alert-primary alert-icon alert-dismissible fade show d-inline-block w-auto"
+     class="alert alert-primary alert-icon alert-dismissible fade show"
      style="background: #0FCA7A; color: #fff"
      role="alert">
   <em class="icon ni ni-check-circle"></em>
@@ -7,8 +7,19 @@
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="background: #0FCA7A;"></button>
 </div>
 
+
+
+
+<div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+  {{ error }}
+  <button type="button" class="btn-close" (click)="error = null"></button>
+</div>
+
+
 <div class="payment-form">
-  <h2>Paiement</h2>
+  <h2 style="font-family: Nunito, sans-serif;
+                    font-size: 1.5rem;
+                    font-weight: 700; margin: 0; color: #364a63 ">Paiement</h2>
   <form (submit)="pay()">
     <div class="form-group">
       <label for="card-element">Numéro de carte</label>
@@ -22,4 +33,10 @@
       <span *ngIf="!isLoading">Pay Now</span>
     </button>
   </form>
+
+  <div class="text-end mt-3">
+    <a routerLink="/event-page" class="btn btn-dim btn-outline-primary"><em class="icon ni ni-arrow-left-circle"></em><span>Back</span> </a>
+  </div>
+
 </div>
+

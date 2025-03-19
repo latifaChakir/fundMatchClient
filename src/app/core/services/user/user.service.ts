@@ -3,6 +3,7 @@ import {environment} from "../../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {map, Observable} from "rxjs";
 import {User} from "../../models/user/user.model";
+import {UserRequest} from "../../models/user/userRequest.model";
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,10 @@ export class UserService {
   getCurrentUser(): Observable<User> {
     return this.http.get<User>(`${this.api}/me`).pipe()
   }
+  updateProfile(user: UserRequest): Observable<User> {
+    return this.http.put<User>(`${this.api}/updateMyInfo`, user);
+  }
+
   blockUser(userId: number): Observable<User> {
     return this.http.get<User>(`${this.api}/block/${userId}`);
   }

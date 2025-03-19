@@ -15,6 +15,8 @@ export class PaymentComponent implements OnInit {
   eventId!: number;
   paymentSuccess = false;
   isLoading = false;
+  error: string | null = null;
+  success: string | null = null;
   constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -70,11 +72,14 @@ export class PaymentComponent implements OnInit {
       response => {
         console.log('Paiement réussi:', response);
         this.card.clear();
+        this.success="Paiement réussi! Votre réservation a été confirmée, Merci de vérifier ton email et télécharger le ticket.";
+
         this.paymentSuccess = true;
         this.isLoading = false;
       },
       err => {
         console.error('Erreur lors du paiement:', err);
+        this.error= "Erreur lors du paiement:";
         this.isLoading = false;
       }
     );

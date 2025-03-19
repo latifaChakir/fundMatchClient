@@ -20,6 +20,7 @@ import {NotAuthorizedComponent} from "./not-authorized/not-authorized.component"
 import {CalendarMonthModule} from "angular-calendar";
 import {CalendarComponent} from "./calendar/calendar.component";
 import {FullCalendarModule} from "@fullcalendar/angular";
+import {UserProfileComponent} from "./user-profile/user-profile.component";
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {FullCalendarModule} from "@fullcalendar/angular";
     InvestorsComponent,
     MeetingComponent,
     NotAuthorizedComponent,
-    CalendarComponent
+    CalendarComponent,
+    UserProfileComponent
   ],
   exports: [
     NavComponent,

@@ -10,6 +10,7 @@ import {NotAuthorizedComponent} from "./not-authorized/not-authorized.component"
 import {authGuard} from "../core/guards/auth.guard";
 import {roleGuard} from "../core/guards/role.guard";
 import {CalendarComponent} from "./calendar/calendar.component";
+import {UserProfileComponent} from "./user-profile/user-profile.component";
 
 const routes: Routes = [
   { path: 'reservation-page/:id', component: ReservationComponent ,canActivate: [authGuard, roleGuard],  data: { roles: ['INVESTOR','ADMIN','STARTUP'] }},
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'meeting', component: MeetingComponent ,canActivate: [authGuard, roleGuard],  data: { roles: ['INVESTOR','ADMIN','STARTUP'] }},
   { path: 'NotAuthorized', component: NotAuthorizedComponent },
   { path: 'calendar', component: CalendarComponent ,canActivate: [authGuard, roleGuard],  data: { roles: ['INVESTOR','ADMIN','STARTUP'] }},
+  { path: 'user-profile', component: UserProfileComponent ,canActivate: [authGuard, roleGuard],  data: { roles: ['INVESTOR','ADMIN','STARTUP'] }},
 
 ];
 
