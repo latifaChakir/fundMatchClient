@@ -49,7 +49,10 @@ export class AuthEffects {
             }
             return AuthActions.loginUserSuccess({ user });
           }),
-          catchError(error => of(AuthActions.loginUserFailure({ error: error.message })))
+          catchError(error => {
+            const errorMessage = error?.message || 'Une erreur est survenue email ou mot de password incorrect';
+            return of(AuthActions.loginUserFailure({ error: errorMessage }));
+          })
         )
       )
     )

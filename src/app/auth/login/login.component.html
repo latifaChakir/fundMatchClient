@@ -23,6 +23,7 @@
                   </svg>
                 </a>
               </div>
+
               <div class="nk-block-head">
                 <div class="nk-block-head-content">
                   <h5 class="nk-block-title" style="font-family: Nunito, sans-serif;
@@ -31,8 +32,12 @@
                   <div class="nk-block-des">
                     <p>Access the DashLite panel using your email and passcode.</p>
                   </div>
+                  <div *ngIf="errorMessage" class="error-message">
+                    {{ errorMessage }}
+                  </div>
                 </div>
               </div>
+
               <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                   <div class="form-label-group">

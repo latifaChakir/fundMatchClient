@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../../../environments/environment";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {map, Observable} from "rxjs";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
+import {catchError, map, Observable, throwError } from "rxjs";
 import {LoginRequest} from "../../models/auth/login-request.model";
 import {RegisterRequest} from "../../models/auth/Register-request.model";
 import {RegisterResponse} from "../../models/auth/register-response.interface";
@@ -18,8 +18,10 @@ export class AuthService {
   constructor(private http: HttpClient) { }
   login(request: LoginRequest): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.api}/login`, request).pipe(
-      map((response: any) => {
-        return response.data;
+      map((response: any) => response.data),
+      catchError((error: HttpErrorResponse) => {
+        const errorMessage = error.error?.message || "Une erreur est survenue email ou mot de password incorrect.";
+        return throwError(() => new Error(errorMessage));
       })
     );
   }
@@ -43,7 +45,5 @@ export class AuthService {
     const payload = JSON.parse(atob(token.split('.')[1]));
     return payload.authorities[0];
   }
-
-
 
 }
