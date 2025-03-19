@@ -5,6 +5,7 @@ import {Project, ProjectStage} from "../../core/models/project/project.model";
 import {FeedbackService} from "../../core/services/project/feedback.service";
 import {Feedback, FeedbackType} from "../../core/models/project/feedback.model";
 import {InvestorService} from "../../core/services/investor/investor.service";
+import {AuthService} from "../../core/services/auth/auth.service";
 
 @Component({
   selector: 'app-startup-project',
@@ -24,11 +25,15 @@ export class StartupProjectComponent implements OnInit {
   publicFeedbacks: Feedback[] = [];
   error: string | null = null;
   success: string | null = null;
+  isInvestor: boolean = false;
+
 
   constructor(private projectService: ProjectService,
               private feedbackService: FeedbackService,
               private investorService: InvestorService,
-              private route: ActivatedRoute) {}
+              private route: ActivatedRoute,
+              private authService : AuthService
+  ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -39,6 +44,8 @@ export class StartupProjectComponent implements OnInit {
       }
     });
     this.loadBookedProjects();
+    this.isInvestor= this.authService.getUserRole() == "Investor";
+
   }
   loadBookedProjects(){
     this.investorService.loadBookedProjects().subscribe(response => {

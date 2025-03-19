@@ -32,7 +32,7 @@
             <div class="post-content">
               <div class="d-flex justify-content-between">
                 <h1 class="mt-1 mb-2">{{project.title}}</h1>
-                <a style="cursor:pointer" (click)=" project.id ? bookProject(project.id) : null" class="btn btn-auto btn-icon"><em *ngIf=" project.id ? isProjectSaved(project.id) : null" class="icon ni ni-bookmark-fill"></em>
+                <a  *ngIf="isInvestor" style="cursor:pointer" (click)=" project.id ? bookProject(project.id) : null" class="btn btn-auto btn-icon"><em *ngIf=" project.id ? isProjectSaved(project.id) : null" class="icon ni ni-bookmark-fill"></em>
                   <em *ngIf="project.id ? !isProjectSaved(project.id) : null" class="icon ni ni-bookmark"></em>
                 </a>
               </div>
@@ -41,7 +41,7 @@
               <a style="cursor:pointer; color:rgb(102, 45, 145);" (click)="toggleDescription(project.id)">
                 {{ showFullDescription[project.id!] ? 'Show less' : 'Show more' }}
               </a>
-              <div>
+              <div *ngIf="isInvestor">
                   <a style="cursor : pointer; color:rgb(102, 45, 145);" (click)="toggleFeedbackEditor()">Add Feedback <em class="icon ni ni-chat-circle"></em>
                   </a>
               </div>
