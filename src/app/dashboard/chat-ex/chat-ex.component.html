@@ -91,7 +91,7 @@
                       </div>
                       <div class="chat-context">
                         <div class="text">
-                          <p>Dernier message...</p>
+                          <p>{{ lastMessagesMap.get(user.id) || 'Aucun message' }}</p>
                         </div>
                         <div class="status delivered">
                           <em class="icon ni ni-check-circle-fill"></em>

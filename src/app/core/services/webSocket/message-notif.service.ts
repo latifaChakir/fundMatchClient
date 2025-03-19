@@ -36,10 +36,10 @@ export class MessageNotifService {
       },
       onConnect: () => {
         this.subscribeToNotificationsMessages();
-        console.log('✅ WebSocket connecté pour les NotificationsMessages');
+        console.log('WebSocket connecté pour les NotificationsMessages');
       },
       onStompError: (error) => {
-        console.error('❌ Erreur WebSocket :', error);
+        console.error('Erreur WebSocket :', error);
       }
     });
 
@@ -48,17 +48,17 @@ export class MessageNotifService {
 
   private subscribeToNotificationsMessages() {
     this.stompClient.subscribe('/topic/messages', (message) => {
-      console.log('📩 Notification brute reçue:', message);
+      console.log('Notification brute reçue:', message);
       try {
         const notificationData = message.body;
-        console.log('✅ Notification après parsing:', notificationData);
+        console.log('Notification après parsing:', notificationData);
         this.NotificationsMessagesubject.next(notificationData);
       } catch (error) {
-        console.error('❌ Erreur lors du parse de la notification:', error);
+        console.error('Erreur lors du parse de la notification:', error);
       }
     });
 
-    console.log('✅ Abonné au canal de NotificationsMessages');
+    console.log('Abonné au canal de NotificationsMessages');
   }
 
   getNotificationsMessages() {

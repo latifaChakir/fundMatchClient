@@ -41,10 +41,10 @@ export class ChatService {
       },
       onConnect: () => {
         this.subscribeToMessages();
-        console.log('✅ WebSocket connecté');
+        console.log('WebSocket connecté');
       },
       onStompError: (error) => {
-        console.error('❌ Erreur WebSocket :', error);
+        console.error('Erreur WebSocket :', error);
       }
     });
 
@@ -63,30 +63,30 @@ export class ChatService {
         }
       });
 
-      console.log('✅ Message envoyé avec succès :', message);
+      console.log('Message envoyé avec succès :', message);
     } else {
-      console.warn('⚠️ WebSocket non connecté, message non envoyé.');
+      console.warn('WebSocket non connecté, message non envoyé.');
     }
   }
 
   private subscribeToMessages() {
     this.stompClient.subscribe(`/user/${this.currentUserId}/queue/messages`, (message) => {
-      console.log('📩 Message brut reçu:', message);
+      console.log('Message brut reçu:', message);
       try {
         const messageData = JSON.parse(message.body);
-        console.log('✅ Message après parsing:', messageData);
+        console.log('Message après parsing:', messageData);
         this.messageSubject.next(messageData);
       } catch (error) {
-        console.error('❌ Erreur lors du parse du message:', error);
+        console.error('Erreur lors du parse du message:', error);
       }
     });
 
-    console.log('✅ Abonné au canal de messages');
+    console.log('Abonné au canal de messages');
   }
 
   fetchUserMessages() {
     if (this.stompClient && this.stompClient.connected) {
-      console.log("📨 Demande de récupération des messages envoyée...");
+      console.log("Demande de récupération des messages envoyée...");
       this.stompClient.publish({
         destination: "/app/getUserMessages",
         headers: {
@@ -94,7 +94,7 @@ export class ChatService {
         }
       });
     } else {
-      console.warn("⚠️ WebSocket non encore connecté, attente...");
+      console.warn("WebSocket non encore connecté, attente...");
       this.waitForConnection().then(() => this.fetchUserMessages());
     }
   }
