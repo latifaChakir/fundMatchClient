@@ -112,28 +112,16 @@
           </a>
           <div class="dropdown-menu dropdown-menu-end">
             <ul class="language-list">
-              <li>
-                <a href="#" class="language-item">
+              <li (click)="changeLanguage('en')">
+                <a  style="cursor: pointer" (click)="changeLanguage('en')" class="language-item">
                   <img src="../../../assets/images/flags/english.png" alt="" class="language-flag">
                   <span class="language-name">English</span>
                 </a>
               </li>
-              <li>
-                <a href="#" class="language-item">
-                  <img src="../../../assets/images/flags/spanish.png" alt="" class="language-flag">
-                  <span class="language-name">Español</span>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="language-item">
+              <li >
+                <a style="cursor: pointer" (click)="changeLanguage('fr')"  class="language-item">
                   <img src="../../../assets/images/flags/french.png" alt="" class="language-flag">
                   <span class="language-name">Français</span>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="language-item">
-                  <img src="../../../assets/images/flags/turkey.png" alt="" class="language-flag">
-                  <span class="language-name">Türkçe</span>
                 </a>
               </li>
             </ul>

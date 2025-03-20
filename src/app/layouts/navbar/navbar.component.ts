@@ -3,6 +3,7 @@ import {Router, RouterLink} from "@angular/router";
 import {NotificationService} from "../../core/services/webSocket/notification.service";
 import {NgClass, NgForOf} from "@angular/common";
 import {MessageNotifService} from "../../core/services/webSocket/message-notif.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-navbar',
@@ -20,7 +21,11 @@ export class NavbarComponent implements OnInit{
   notificationsMessages: string[] = [];
   constructor(private router:Router,
               private messageNotif: MessageNotifService,
-              private notificationService: NotificationService) {
+              private notificationService: NotificationService,
+              private translate: TranslateService
+  ) {
+    this.translate.setDefaultLang('en');
+    this.translate.use('en');
   }
   logout(): void {
     console.log('Logging out...');
@@ -35,5 +40,8 @@ export class NavbarComponent implements OnInit{
     this.messageNotif.getNotificationsMessages().subscribe(notificationMessages => {
       this.notificationsMessages.push(notificationMessages);
     });
+  }
+  changeLanguage(lang: string) {
+    this.translate.use(lang);
   }
 }

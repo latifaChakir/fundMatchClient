@@ -3,7 +3,7 @@ import {isDevMode, NgModule} from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import {AuthModule} from "./auth/auth.module";
 import {AppComponent} from "./app.component";
-import {HttpClientModule, provideHttpClient, withInterceptors} from "@angular/common/http";
+import {HttpClient, HttpClientModule, provideHttpClient, withInterceptors} from "@angular/common/http";
 import {BrowserModule} from "@angular/platform-browser";
 import {StoreModule} from "@ngrx/store";
 import {EffectsModule} from "@ngrx/effects";
@@ -45,7 +45,12 @@ import { CalendarModule, CalendarDateFormatter, DateAdapter,  } from 'angular-ca
 import {NativeDateAdapter} from "@angular/material/core";
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import {FullCalendarModule} from "@fullcalendar/angular";
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [AppComponent,
@@ -90,6 +95,13 @@ import {FullCalendarModule} from "@fullcalendar/angular";
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,
+    }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
     }),
   ],
   providers: [

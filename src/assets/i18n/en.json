@@ -1,0 +1,37 @@
+{
+  "TABLEAU_DE_BORD": "Dashboards",
+  "STARTUP": "startup",
+  "SETTING": "Account Setting",
+  "PROFIL": "Profile",
+  "PROJECT": "Projects",
+  "PROJECT_CART": "Projects cards",
+  "PROJECT_FEED": "Projects feedbacks",
+  "OVER": "Overview",
+  "WELCOME": "Welcome to our platform!",
+  "CHAT": "Chats / Messenger",
+  "CALENDAR": "Calendar",
+  "MEET": "Meetings",
+
+  "DATA": "Basic Data",
+  "SECTEUR": "Sectors",
+  "STAGE": "Stages",
+  "USER_MANAGE": "User Manage",
+  "USERS": "Users",
+  "ROLE": "Roles",
+  "MANAGE_STARTUP": "Manage Startups",
+  "MANAGE_INV": "Manage Investors",
+  "LIST_INV": "Investors List",
+  "EVENT": "Events",
+  "MANAGE_EVENT": "Manage Events",
+  "COME_EVENT": "Comming events",
+  "INV_PROFIL": "Investor profile",
+  "PR_SAVED": "Saved Projects",
+  "ADD_ACC": "Create Account"
+
+
+
+
+
+
+
+}

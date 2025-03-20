@@ -29,6 +29,8 @@
     "@ngrx/entity": "^17.2.0",
     "@ngrx/store": "^17.2.0",
     "@ngrx/store-devtools": "^17.2.0",
+    "@ngx-translate/core": "^16.0.4",
+    "@ngx-translate/http-loader": "^16.0.1",
     "@stomp/stompjs": "^7.0.0",
     "@types/stripe-v3": "^3.1.33",
     "angular-calendar": "^0.31.1",

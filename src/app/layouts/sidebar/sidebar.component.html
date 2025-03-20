@@ -26,17 +26,17 @@
       <ul class="nk-menu">
         <li class="nk-menu-item has-sub" *ngIf="isAdmin" routerLinkActive="active">
           <a routerLink="/dashboard" class="nk-menu-link" routerLinkActive="active">
-            <span class="nk-menu-text" routerLinkActive="active">Dashboards</span>
+            <span class="nk-menu-text" routerLinkActive="active">{{'TABLEAU_DE_BORD' | translate }}</span>
           </a>
         </li>
         <li class="nk-menu-item has-sub" *ngIf="isStartup" routerLinkActive="active">
           <a routerLink="/dashboard-startup" class="nk-menu-link" routerLinkActive="active">
-            <span class="nk-menu-text" routerLinkActive="active">  Dashboards</span>
+            <span class="nk-menu-text" routerLinkActive="active">  {{'TABLEAU_DE_BORD' | translate }}</span>
           </a>
         </li>
         <li class="nk-menu-item has-sub" *ngIf="isInvestor" routerLinkActive="active">
           <a routerLink="/investor-dash" class="nk-menu-link" routerLinkActive="active">
-            <span class="nk-menu-text" routerLinkActive="active">  Dashboards</span>
+            <span class="nk-menu-text" routerLinkActive="active">  {{'TABLEAU_DE_BORD' | translate }} </span>
           </a>
         </li>
         <li class="nk-menu-heading">
@@ -55,18 +55,18 @@
             <span class="nk-menu-icon">
               <em class="icon ni ni-db-fill"></em>
             </span>
-            <span class="nk-menu-text">Basic Data</span>
+            <span class="nk-menu-text">{{'DATA' | translate }} </span>
           </a>
           <div class="collapse" id="data" [ngClass]="{'show': isActiveRoute(['sectors', 'stages'])}">
             <ul class="nk-menu-sub">
               <li class="nk-menu-item" routerLinkActive="active" >
                 <a routerLink="/sectors" routerLinkActive="active" class="nk-menu-link">
-                  <span class="nk-menu-text">Sectors</span>
+                  <span class="nk-menu-text">{{'SECTEUR' | translate }} </span>
                 </a>
               </li>
               <li class="nk-menu-item" routerLinkActive="active" >
                 <a routerLink="/stages"routerLinkActive="active"  class="nk-menu-link">
-                  <span class="nk-menu-text">Stages</span>
+                  <span class="nk-menu-text">{{'STAGE' | translate }}</span>
                 </a>
               </li>
 
@@ -85,18 +85,18 @@
           <span class="nk-menu-icon">
             <em class="icon ni ni-users"></em>
           </span>
-            <span class="nk-menu-text">User Manage</span>
+            <span class="nk-menu-text">{{'USER_MANAGE' | translate }} </span>
           </a>
           <div class="collapse" id="users" [ngClass]="{'show': isActiveRoute(['users','roles'])}">
             <ul class="nk-menu-sub">
               <li class="nk-menu-item" routerLinkActive="active">
                 <a routerLink="/users" class="nk-menu-link">
-                  <span class="nk-menu-text">Users</span>
+                  <span class="nk-menu-text">{{'USERS' | translate }}</span>
                 </a>
               </li>
               <li class="nk-menu-item" routerLinkActive="active">
                 <a routerLink="/roles" class="nk-menu-link">
-                  <span class="nk-menu-text">Roles</span>
+                  <span class="nk-menu-text">{{'ROLE' | translate }} </span>
                 </a>
               </li>
             </ul>
@@ -121,17 +121,17 @@
             <ul class="nk-menu-sub">
               <li class="nk-menu-item" routerLinkActive="active">
                 <a routerLink="/chat" class="nk-menu-link" routerLinkActive="active">
-                  <span class="nk-menu-text">Chats / Messenger</span>
+                  <span class="nk-menu-text">{{'CHAT' | translate }}</span>
                 </a>
               </li>
               <li class="nk-menu-item" routerLinkActive="active">
                 <a routerLink="/meeting" class="nk-menu-link">
-                  <span class="nk-menu-text">Meetings</span>
+                  <span class="nk-menu-text">{{'MEET' | translate }}</span>
                 </a>
               </li>
               <li class="nk-menu-item" routerLinkActive="active">
                 <a routerLink="/calendar" class="nk-menu-link">
-                  <span class="nk-menu-text">Calendar</span>
+                  <span class="nk-menu-text">{{'CALENDAR' | translate }}</span>
                 </a>
               </li>
             </ul>
@@ -150,38 +150,38 @@
           <span class="nk-menu-icon">
             <em class="icon ni ni-layers"></em>
           </span>
-            <span class="nk-menu-text">Startup</span>
+            <span class="nk-menu-text">{{'STARTUP' | translate }}</span>
           </a>
           <div class="collapse" id="startup" [ngClass]="{'show': isActiveRoute(['startup-overview', 'startup-project','project-card','manage-feedback','profil-startup','startup-manage'])}">
             <ul class="nk-menu-sub">
               <li class="nk-menu-item" *ngIf="isStartup" routerLinkActive="active">
                 <a routerLink="/startup-overview" routerLinkActive="active" class="nk-menu-link">
-                  <span class="nk-menu-text">Overview</span>
+                  <span class="nk-menu-text">{{'OVER' | translate }}</span>
                 </a>
               </li>
               <li class="nk-menu-item" *ngIf="isStartup" routerLinkActive="active">
                 <a routerLink="/profil-startup" routerLinkActive="active" class="nk-menu-link">
-                  <span class="nk-menu-text">Profile</span>
+                  <span class="nk-menu-text">{{'PROFIL' | translate }}</span>
                 </a>
               </li>
               <li class="nk-menu-item" *ngIf="isStartup" routerLinkActive="active">
                 <a routerLink="/startup-project" class="nk-menu-link"  routerLinkActive="active">
-                  <span class="nk-menu-text">Projects</span>
+                  <span class="nk-menu-text">{{'PROJECT' | translate }}</span>
                 </a>
               </li>
               <li class="nk-menu-item" *ngIf="isStartup"  routerLinkActive="active">
                 <a routerLink="/project-card" class="nk-menu-link"  routerLinkActive="active">
-                  <span class="nk-menu-text">Projects Card</span>
+                  <span class="nk-menu-text">{{'PROJECT_CART' | translate }}</span>
                 </a>
               </li>
               <li class="nk-menu-item" *ngIf="isStartup" routerLinkActive="active">
                 <a routerLink="/manage-feedback" class="nk-menu-link"  routerLinkActive="active">
-                  <span class="nk-menu-text">Projects Feedbacks</span>
+                  <span class="nk-menu-text">{{'PROJECT_FEED' | translate }}</span>
                 </a>
               </li>
               <li class="nk-menu-item" *ngIf="isAdmin" routerLinkActive="active">
                 <a routerLink="/startup-manage" class="nk-menu-link"  routerLinkActive="active">
-                  <span class="nk-menu-text">Manage Startups</span>
+                  <span class="nk-menu-text">{{'MANAGE_STARTUP' | translate }} </span>
                 </a>
               </li>
             </ul>
@@ -200,28 +200,28 @@
           <span class="nk-menu-icon">
             <em class="icon ni ni-coin"></em>
           </span>
-            <span class="nk-menu-text">Invertissor</span>
+            <span class="nk-menu-text">{{'MANAGE_INV' | translate }}</span>
           </a>
           <div class="collapse" id="invertissor" [ngClass]="{'show': isActiveRoute(['invertissor-list', 'investor-profile','project-saved','create-profile'])}">
             <ul class="nk-menu-sub">
               <li class="nk-menu-item" *ngIf="isAdmin" routerLinkActive="active">
                 <a routerLink="/invertissor-list" class="nk-menu-link" routerLinkActive="active">
-                  <span class="nk-menu-text">Investor List</span>
+                  <span class="nk-menu-text">{{'LIST_INV' | translate }} </span>
                 </a>
               </li>
               <li class="nk-menu-item" *ngIf="isInvestor" routerLinkActive="active">
                 <a routerLink="/investor-profile" class="nk-menu-link">
-                  <span class="nk-menu-text">Investor Profil</span>
+                  <span class="nk-menu-text">{{'INV_PROFIL' | translate }} </span>
                 </a>
               </li>
               <li class="nk-menu-item" *ngIf="isInvestor" routerLinkActive="active">
                 <a routerLink="/project-saved" class="nk-menu-link">
-                  <span class="nk-menu-text">Saved Project</span>
+                  <span class="nk-menu-text">{{'PR_SAVED' | translate }}</span>
                 </a>
               </li>
               <li class="nk-menu-item" *ngIf="isInvestor" routerLinkActive="active">
                 <a routerLink="/create-profile" class="nk-menu-link">
-                  <span class="nk-menu-text">Create Account</span>
+                  <span class="nk-menu-text">{{'ADD_ACC' | translate }}</span>
                 </a>
               </li>
             </ul>
@@ -240,18 +240,18 @@
           <span class="nk-menu-icon">
             <em class="icon ni ni-calendar"></em>
           </span>
-            <span class="nk-menu-text">Events</span>
+            <span class="nk-menu-text">{{'MANAGE_EVENT' | translate }} </span>
           </a>
           <div class="collapse" id="project" [ngClass]="{'show': isActiveRoute(['events', 'published-events'])}">
             <ul class="nk-menu-sub">
               <li class="nk-menu-item" routerLinkActive="active">
                 <a routerLink="/events" class="nk-menu-link">
-                  <span class="nk-menu-text">Events</span>
+                  <span class="nk-menu-text">{{'EVENT' | translate }} </span>
                 </a>
               </li>
               <li class="nk-menu-item" routerLinkActive="active">
                 <a routerLink="/published-events" class="nk-menu-link">
-                  <span class="nk-menu-text">Comming Events</span>
+                  <span class="nk-menu-text">{{'COME_EVENT' | translate }} </span>
                 </a>
               </li>
             </ul>
@@ -269,7 +269,7 @@
             <span class="nk-menu-icon">
               <em class="icon ni ni-setting-alt"></em>
             </span>
-            <span class="nk-menu-text">Account Setting</span>
+            <span class="nk-menu-text">{{'SETTING' | translate }}</span>
           </a>
         </li>
 
