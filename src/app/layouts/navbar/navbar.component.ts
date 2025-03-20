@@ -24,8 +24,9 @@ export class NavbarComponent implements OnInit{
               private notificationService: NotificationService,
               private translate: TranslateService
   ) {
-    this.translate.setDefaultLang('en');
-    this.translate.use('en');
+    const savedLang = localStorage.getItem('lang') || 'en';
+    this.translate.setDefaultLang(savedLang);
+    this.translate.use(savedLang);
   }
   logout(): void {
     console.log('Logging out...');
@@ -43,5 +44,6 @@ export class NavbarComponent implements OnInit{
   }
   changeLanguage(lang: string) {
     this.translate.use(lang);
+    localStorage.setItem('lang', lang);
   }
 }

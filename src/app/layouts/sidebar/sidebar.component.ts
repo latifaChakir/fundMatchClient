@@ -26,8 +26,9 @@ export class SidebarComponent implements OnInit{
 
   constructor(private router: Router, private authService : AuthService,
               private translate: TranslateService) {
-                this.translate.setDefaultLang('en');
-                this.translate.use('en');
+    const savedLang = localStorage.getItem('lang') || 'en';
+    this.translate.setDefaultLang(savedLang);
+    this.translate.use(savedLang);
   }
   ngOnInit() {
     this.isAdmin= this.authService.getUserRole() == "Admin";
