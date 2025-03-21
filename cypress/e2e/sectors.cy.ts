@@ -1,5 +1,19 @@
 describe('Sectors Page', () => {
   beforeEach(() => {
+    cy.request('POST', 'http://localhost:9091/api/auth/login', {
+      email: 'hiba@gmail.com',
+      password: 'hiba@gmail.com'
+    }).then((response) => {
+      window.localStorage.setItem('token', response.body.token);
+    });
+    cy.intercept('GET', '/api/users/me', {
+      statusCode: 200,
+      body: {
+        id: 1,
+        email: 'hiba@gmail.com',
+        roles: [{ name: 'ADMIN' }]
+      }
+    }).as('getCurrentUser');
     cy.intercept('GET', '/api/sectors/all', {
       statusCode: 200,
       body: {

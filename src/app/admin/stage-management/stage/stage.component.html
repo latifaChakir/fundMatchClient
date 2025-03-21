@@ -90,12 +90,12 @@
                                   <div class="dropdown-menu dropdown-menu-end">
                                     <ul class="link-list-opt no-bdr">
                                       <li>
-                                        <a (click)="stage.id ? editStage(stage.id) : null" style="cursor:pointer">
+                                        <a (click)="stage.id ? editStage(stage.id) : null" style="cursor:pointer" data-test-id="edit-stage">
                                           <em class="icon ni ni-edit"></em><span>Edit stage</span>
                                         </a>
                                       </li>
                                       <li>
-                                        <a (click)="stage.id ? showDeleteConfirmation(stage.id) : null" style="cursor:pointer">
+                                        <a (click)="stage.id ? showDeleteConfirmation(stage.id) : null" style="cursor:pointer" data-test-id="delete-stage">
                                           <em class="icon ni ni-trash"></em><span>Remove stage</span>
                                         </a>
                                       </li>
