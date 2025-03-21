@@ -8,11 +8,10 @@
 </div>
 
 
-
-
-<div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+<div *ngIf="error" class="alert alert-icon alert-dismissible fade show"
+     style="background: #d9534f; color: white;" role="alert">
   {{ error }}
-  <button type="button" class="btn-close" (click)="error = null"></button>
+  <button type="button" class="btn-close" (click)="error = null" style="background: #d9534f;"></button>
 </div>
 
 

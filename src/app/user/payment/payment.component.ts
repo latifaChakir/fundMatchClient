@@ -79,7 +79,7 @@ export class PaymentComponent implements OnInit {
       },
       err => {
         console.error('Erreur lors du paiement:', err);
-        this.error= "Erreur lors du paiement:";
+        this.error= "Erreur lors du paiement Event is fully booked.";
         this.isLoading = false;
       }
     );
