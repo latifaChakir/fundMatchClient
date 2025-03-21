@@ -7,11 +7,50 @@ import { SidebarComponent } from "../../../layouts/sidebar/sidebar.component";
 import { NavbarComponent } from "../../../layouts/navbar/navbar.component";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { By } from '@angular/platform-browser';
-import {DialogModule} from "@angular/cdk/dialog";
+import { DialogModule } from "@angular/cdk/dialog";
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {of} from "rxjs";
+import { ActivatedRoute } from "@angular/router";
+import { Observable, of } from "rxjs";
+import { TranslateService, TranslateStore, TranslateModule, TranslateLoader, TranslatePipe } from "@ngx-translate/core";
 
+class MockTranslateService {
+  private translationObject = {};
+
+  get onLangChange(): Observable<any> { return of({ lang: 'en' }); }
+  get onTranslationChange(): Observable<any> { return of({}); }
+  get onDefaultLangChange(): Observable<any> { return of({}); }
+
+  setTranslation(lang: string, translations: any, shouldMerge = false) {
+    this.translationObject = translations;
+    return this;
+  }
+
+  setDefaultLang(lang: string) {}
+  use(lang: string): Observable<any> { return of({}); }
+
+  get(key: string | Array<string>, interpolateParams?: Object): Observable<string | any> {
+    return of(typeof key === 'string' ? key : key.join(' '));
+  }
+
+  stream(key: string | Array<string>, interpolateParams?: Object): Observable<string | any> {
+    return this.get(key, interpolateParams);
+  }
+
+  instant(key: string | Array<string>, interpolateParams?: Object): string | any {
+    return typeof key === 'string' ? key : key.join(' ');
+  }
+
+  getBrowserLang(): string { return 'en'; }
+  getBrowserCultureLang(): string { return 'en-US'; }
+
+  get currentLang(): string { return 'en'; }
+}
+
+class MockTranslateLoader implements TranslateLoader {
+  getTranslation(lang: string): Observable<any> {
+    return of({});
+  }
+}
 
 describe('SectorComponent', () => {
   let component: SectorComponent;
@@ -27,21 +66,38 @@ describe('SectorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, SidebarComponent, NavbarComponent,DialogModule],
-      declarations: [SectorComponent],
-      providers: [provideMockStore({
-        selectors: [
-          { selector: selectFilteredSectors, value: mockSectors },
-          { selector: selectSectors, value: mockSectors }
-        ]
-      }),
+      imports: [
+        HttpClientTestingModule,
+        TranslateModule.forRoot({
+          loader: { provide: TranslateLoader, useClass: MockTranslateLoader }
+        }),
+        SidebarComponent,
+        NavbarComponent,
+        DialogModule
+      ],
+      declarations: [
+        SectorComponent
+      ],
+      providers: [
+        provideMockStore({
+          selectors: [
+            { selector: selectFilteredSectors, value: mockSectors },
+            { selector: selectSectors, value: mockSectors }
+          ]
+        }),
         {
           provide: ActivatedRoute,
           useValue: {
             params: of({}),
             snapshot: { params: {} }
           }
-        }],
+        },
+        {
+          provide: TranslateService,
+          useClass: MockTranslateService
+        },
+        TranslateStore
+      ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
 
