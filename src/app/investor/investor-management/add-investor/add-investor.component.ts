@@ -4,6 +4,11 @@ import {Store} from "@ngrx/store";
 import {Investor} from "../../../core/models/investor/investor.model";
 import {InvestorActions} from "../../../core/stores/investor/investor.actions";
 import {createInvestorValidator} from "../../../core/validators/investor/investor-validators";
+import {Observable} from "rxjs";
+import {Sector} from "../../../core/models/sector/sector.model";
+import {selectSectors} from "../../../core/stores/sector/sector.reducer";
+import {SectorActions} from "../../../core/stores/sector/sector.actions";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-add-investor',
@@ -15,9 +20,20 @@ export class AddInvestorComponent implements OnInit{
   @Output() openPopup = new EventEmitter<void>();
   @Input() initialRequestData: Investor | null = null;
   investorForm!: FormGroup;
-
-  constructor(private fb: FormBuilder, private store: Store) { }
+  sectors$: Observable<Sector[]>;
+  sectorsData$: Observable<any[]>;
+  preferredGeographies: string[] = [
+    "Afrique", "Amérique du Nord", "Amérique du Sud",
+    "Asie", "Europe", "Océanie", "Moyen-Orient"
+  ];
+  constructor(private fb: FormBuilder, private store: Store) {
+    this.sectors$ = this.store.select(selectSectors);
+    this.sectorsData$ = this.sectors$.pipe(
+      map(sectors => sectors.map(sector => ({ id: sector.id, text: sector.name })))
+    );
+  }
   ngOnInit() {
+    this.store.dispatch(SectorActions.loadSectors());
     this.investorForm = createInvestorValidator(this.fb);
     if (this.initialRequestData) {
       this.investorForm.patchValue(this.initialRequestData);
@@ -28,7 +44,8 @@ export class AddInvestorComponent implements OnInit{
     const investor: Investor = {
       id: this.initialRequestData ? this.initialRequestData.id : undefined,
       organization: formValues.organization,
-      sectors: formValues.sectors,
+      preferredGeographies: formValues.preferredGeographies,
+      sectors: formValues.sectors.map((id: number) => ({ id })),
       minInvestment: formValues.minInvestment,
       maxInvestment: formValues.maxInvestment,
       investmentType: formValues.investmentType,
@@ -36,7 +53,6 @@ export class AddInvestorComponent implements OnInit{
       experienceYears: formValues.experienceYears,
       averageInvestmentsPerYear: formValues.averageInvestmentsPerYear,
       investmentStrategy: formValues.investmentStrategy,
-      preferredGeographies: formValues.preferredGeographies,
       contactInfo: formValues.contactInfo,
     };
 

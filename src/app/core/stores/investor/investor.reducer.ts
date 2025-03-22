@@ -83,11 +83,16 @@ export const InvestorsFeature = createFeature({
       ...state,
       error: null
     })),
-    on(InvestorActions.deleteInvestorSuccess, (state, { id }) => ({
-      ...state,
-      investors: state.investors.filter(s => s.id !== id),
-      error: null
-    })),
+    on(InvestorActions.deleteInvestorSuccess, (state, { id }) => {
+      console.log("Investor supprimé du state:", id);
+      return {
+        ...state,
+        investors: state.investors.filter(s => s.id !== id),
+        filteredInvestors: state.filteredInvestors.filter(s => s.id !== id),
+        error: null
+      };
+    })
+    ,
     on(InvestorActions.deleteInvestorFailure, (state, { error }) => ({
       ...state,
       error

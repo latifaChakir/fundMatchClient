@@ -21,6 +21,7 @@
           <div class="form-group">
             <label for="sectors">Sectors:</label><span class="required-indicator">*</span>
             <select id="sectors" class="form-control" formControlName="sectors" multiple>
+              <option *ngFor="let sector of sectorsData$ | async" [value]="sector.id">{{sector.text}}</option>
             </select>
           </div>
 
@@ -62,6 +63,7 @@
           <div class="form-group">
             <label for="preferredGeographies">Preferred Geographies:</label>
             <select id="preferredGeographies" class="form-control" formControlName="preferredGeographies" multiple>
+              <option *ngFor="let geo of preferredGeographies" [value]="geo">{{geo}}</option>
             </select>
           </div>
 

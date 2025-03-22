@@ -142,7 +142,7 @@ p {
     line-height: 40px;
     font-size: 16px; } }
 .main-btn:hover {
-  background-color: rgba(8, 152, 231, 0.8);
+  background-color: rgb(102, 45, 145);
   color: #fff; }
 .main-btn.main-btn-2 {
   background-color: #fff;

@@ -73,10 +73,17 @@ export class InvestorEffects {
       ofType(InvestorActions.deleteInvestor),
       mergeMap((action) =>
         this.investorService.deleteInvestor(action.id).pipe(
-          map(() => InvestorActions.deleteInvestorSuccess({ id: action.id })),
-          catchError((error) => of(InvestorActions.deleteInvestorFailure({ error: error.message })))
+          map(() => {
+            console.log("Suppression réussie pour l'ID:", action.id);
+            return InvestorActions.deleteInvestorSuccess({ id: action.id });
+          }),
+          catchError((error) => {
+            console.error("Erreur lors de la suppression:", error);
+            return of(InvestorActions.deleteInvestorFailure({ error: error.message }));
+          })
         )
       )
     )
   );
+
 }

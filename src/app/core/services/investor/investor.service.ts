@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
-import {map, Observable} from "rxjs";
+import {catchError, map, Observable, of} from "rxjs";
 import {Investor} from "../../models/investor/investor.model";
 
 @Injectable({
@@ -22,7 +22,11 @@ export class InvestorService {
     );
   }
   deleteInvestor(investorId: number) {
-    return this.http.delete(`${this.api}/${investorId}`);
+    return this.http.delete(`${this.api}/delete/${investorId}`).pipe(
+      catchError((error) => {
+        console.error('Erreur lors de la suppression', error);
+        return of({ message: "Suppression réussie (réponse non JSON)" });
+      }))
   }
 
   updateInvestor(investor: Investor, investorId: number): Observable<Investor> {

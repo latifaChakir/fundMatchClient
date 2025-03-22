@@ -31,7 +31,7 @@ export class NavbarComponent implements OnInit{
   logout(): void {
     console.log('Logging out...');
     localStorage.removeItem('token');
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
   ngOnInit() {
     this.notificationService.getNotifications().subscribe(notification => {

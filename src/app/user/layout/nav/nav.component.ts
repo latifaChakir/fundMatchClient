@@ -47,4 +47,9 @@ export class NavComponent implements AfterViewInit {
     }
     return false;
   }
+  logout(): void {
+    console.log('Logging out...');
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
 }
