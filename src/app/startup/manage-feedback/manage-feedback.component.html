@@ -51,11 +51,6 @@
                   <button type="button" class="btn-close" (click)="success = null"></button>
                 </div>
 
-                <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
-                  {{ error }}
-                  <button type="button" class="btn-close" (click)="error = null"></button>
-                </div>
-
                 <div class="row mt-20">
                   <div class="col-lg-6 col-md-6" *ngFor="let feedback of filteredFeedbacks | paginate: { itemsPerPage: 2, currentPage: p }">
                     <div class="testimonial-item">

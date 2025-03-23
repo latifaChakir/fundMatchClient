@@ -43,8 +43,9 @@
                               <a href="#" class="dropdown-toggle btn btn-white btn-dim btn-outline-light" data-bs-toggle="dropdown"><em class="d-none d-sm-inline icon ni ni-filter-alt"></em><span>Filtered By</span><em class="dd-indc icon ni ni-chevron-right"></em></a>
                               <div class="dropdown-menu dropdown-menu-end">
                                 <ul class="link-list-opt no-bdr">
-                                  <li><a href="#"><span>Open</span></a></li>
-                                  <li><a href="#"><span>Done</span></a></li>
+                                  <li><a style="cursor:pointer" (click)="filterByStatus('PENDING')"><span>Open</span></a></li>
+                                  <li><a  style="cursor:pointer" (click)="filterByStatus('COMPLETED')"><span>Done</span></a></li>
+                                  <li><a  style="cursor:pointer" (click)="filterByStatus('')"><span>All</span></a></li>
                                 </ul>
                               </div>
                             </div>
@@ -67,7 +68,7 @@
                         <div class="project">
                           <div class="project-head">
                             <a href="html/apps-kanban.html" class="project-title">
-                              <div class="user-avatar sq"><span>RW</span></div>
+                              <div class="user-avatar sq"><span>{{ (project.title?.[0] || '').toUpperCase() }}{{ (project.title?.[1] || '').toUpperCase() }}</span></div>
                               <div class="project-info">
                                 <h6 class="title">{{ project.title }}</h6>
                                 <span class="sub-text">{{ project.stage }}</span>

@@ -119,7 +119,10 @@ export const ProjectsFeature = createFeature({
       ...state,
       error
     })),
-
+    on(ProjectActions.filterProjectsByStatus, (state, { status }) => ({
+      ...state,
+      filteredProjects: state.projects.filter(project => project.status === status),
+    })),
   )
 });
 

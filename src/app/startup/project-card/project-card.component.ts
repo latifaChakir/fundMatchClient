@@ -29,6 +29,15 @@ export class ProjectCardComponent implements OnInit{
   updateStatus(projectId: number) {
     this.store.dispatch(ProjectActions.updateProjectStatus({ projectId }));
   }
+  filterByStatus(status: string) {
+    if (status) {
+      this.store.dispatch(ProjectActions.filterProjectsByStatus({ status }));
+    } else {
+      this.store.dispatch(ProjectActions.loadProjects());
+    }
+  }
+
+
 
   toggleDescription(projectId: number | undefined) {
     if (projectId !== undefined) {
