@@ -32,7 +32,10 @@ export class AddEventComponent implements OnInit{
     this.store.dispatch(SectorActions.loadSectors());
     this.eventForm = createEventValidator(this.fb);
     if (this.initialRequestData) {
-      this.eventForm.patchValue(this.initialRequestData);
+      this.eventForm.patchValue({
+        ...this.initialRequestData,
+        sector: this.initialRequestData.sector
+      });
     }
   }
 
@@ -55,8 +58,7 @@ export class AddEventComponent implements OnInit{
       formData.append('maxParticipants', formValues.maxParticipants);
       formData.append('type', formValues.type);
       formData.append('cost', formValues.cost);
-      formData.append('sector', formValues.sector);
-
+      formData.append('sector', String(formValues.sector));
       if (this.imageFile) {
         formData.append('file', this.imageFile);
       } else {

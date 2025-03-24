@@ -55,7 +55,9 @@ export class ProjectEffects {
     this.actions$.pipe(
       ofType(ProjectActions.updateProject),
       mergeMap((action) => {
-        const projectId = action.project.id;
+        const projectId = action.project instanceof FormData
+          ? action.project.get('id')
+          : action.project.id;
         if (!projectId) {
           console.error("Project ID is not valid:", action.project);
           return of(ProjectActions.updateProjectFailure({ error: "Invalid Project ID" }));

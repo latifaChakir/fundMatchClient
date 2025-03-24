@@ -66,8 +66,11 @@
           <div class="form-group">
             <label for="sector">Sector :</label><span class="required-indicator">*</span>
             <select id="sector" class="form-control" formControlName="sector">
-              <option *ngFor="let sector of sectors$ | async" [value]="sector.id">{{ sector.name }}</option>
+              <option *ngFor="let sector of sectors$ | async" [value]="sector.id">
+                {{ sector.name }}
+              </option>
             </select>
+
             <div *ngIf="eventForm.controls['sector'].invalid && eventForm.controls['sector'].touched" class="text-danger">
               Sector is required
             </div>

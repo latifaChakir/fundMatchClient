@@ -55,7 +55,9 @@ export class EventEffects {
     this.actions$.pipe(
       ofType(EventActions.updateEvent),
       mergeMap((action) => {
-        const eventId = action.event.id;
+        const eventId = action.event instanceof FormData
+          ? action.event.get('id')
+          : action.event.id;
         if (!eventId) {
           console.error("Event ID is not valid:", action.event);
           return of(EventActions.updateEventFailure({ error: "Invalid Event ID" }));

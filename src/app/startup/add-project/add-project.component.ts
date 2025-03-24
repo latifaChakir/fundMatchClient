@@ -56,6 +56,7 @@ export class AddProjectComponent implements OnInit{
       }
 
       if (this.initialRequestData) {
+        formData.append('id', String(this.initialRequestData.id));
         this.store.dispatch(ProjectActions.updateProject({ project: formData }));
       } else {
         this.store.dispatch(ProjectActions.addProject({ project: formData }));
